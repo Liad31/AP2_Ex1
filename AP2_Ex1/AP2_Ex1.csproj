@@ -57,6 +57,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ControlBarViewModel.cs" />
+    <Compile Include="controls\ControlBarView.xaml.cs">
+      <DependentUpon>ControlBarView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="controls\speedClock.xaml.cs">
       <DependentUpon>speedClock.xaml</DependentUpon>
     </Compile>
@@ -64,12 +68,14 @@
     <Compile Include="controls\Stick.xaml.cs">
       <DependentUpon>Stick.xaml</DependentUpon>
     </Compile>
-    <Compile Include="flightGearModel.cs" />
+    <Compile Include="IDatabase.cs" />
+    <Compile Include="IModel.cs" />
+    <Compile Include="ModelImplementation.cs" />
     <Compile Include="SteeringViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="videoViewModel.cs" />
+    <Page Include="controls\ControlBarView.xaml" />
     <Page Include="controls\speedClock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

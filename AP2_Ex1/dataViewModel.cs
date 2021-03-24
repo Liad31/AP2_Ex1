@@ -11,26 +11,22 @@ namespace AP2_Ex1
     public class dataViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private double mv_altitude;// making them all properties and not fields
-        private double mv_direction;
-        private double mv_yaw;
-        private double mv_roll;
-        private double mv_pitch;
-        private flightGearModel model;
+        private IModel model;
 
-        public dataViewModel(flightGearModel model)
+        public dataViewModel(IModel model)
         {
             this.model = model;
+            
         }
         public double MV_Altitude
         {
             get
             {
-                return model.altitude;
+                return model.Altitude;
             }
             set
             {
-                this.model.altitude = value;
+                this.model.Altitude = value;
                 NotifyPropertyChanged("MV_Altitude");
             }
         }
@@ -38,11 +34,11 @@ namespace AP2_Ex1
         {
             get
             {
-                return model.speed;
+                return model.Speed;
             }
             set
             {
-                this.model.speed = value;
+                this.model.Speed = value;
                 NotifyPropertyChanged("MV_Speed");
             }
         }
@@ -50,11 +46,11 @@ namespace AP2_Ex1
         {
             get
             {
-                return model.direction;
+                return model.Direction;
             }
             set
             {
-                this.model.direction = value;
+                this.model.Direction = value;
                 NotifyPropertyChanged("MV_Direction");
             }
         }
@@ -62,11 +58,11 @@ namespace AP2_Ex1
         {
             get
             {
-                return model.yaw;
+                return model.Yaw;
             }
             set
             {
-                this.model.yaw = value;
+                this.model.Yaw = value;
                 NotifyPropertyChanged("MV_Yaw");
             }
         }
@@ -74,11 +70,11 @@ namespace AP2_Ex1
         {
             get
             {
-                return model.roll;
+                return model.Roll;
             }
             set
             {
-                this.model.roll = value;
+                this.model.Roll = value;
                 NotifyPropertyChanged("MV_Roll");
             }
         }
@@ -86,11 +82,11 @@ namespace AP2_Ex1
         {
             get
             {
-                return model.pitch;
+                return model.Pitch;
             }
             set
             {
-                this.model.pitch = value;
+                this.model.Pitch = value;
                 NotifyPropertyChanged("MV_Pitch");
             }
         }

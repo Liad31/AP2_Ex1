@@ -60,7 +60,7 @@ namespace AP2_Ex1
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            MainWindow mw = new MainWindow(CSVFile, XMLFile);
+            var mw = new MainWindow(CSVFile, XMLFile);
             mw.Show();
             this.Close();
         }

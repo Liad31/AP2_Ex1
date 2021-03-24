@@ -21,16 +21,11 @@ namespace AP2_Ex1
     public partial class MainWindow : Window
     {
         private SteeringViewModel vm_steering;
-        private videoViewModel vm_video;
         private dataViewModel vm_data;
         public MainWindow(string csvFilePath, string xmlFilePath)
         {
             InitializeComponent();
-            flightGearModel model = new flightGearModel(csvFilePath, xmlFilePath);
-            this.vm_video = new videoViewModel(model);
-            this.vm_steering = new SteeringViewModel(model);
-            this.vm_data = new dataViewModel(model);
-
+            //TODO: initialize view models and other needed classes
             vm_steering.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) {
                 if (e.PropertyName == "MV_Aileron")
                 {

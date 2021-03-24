@@ -6,13 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AP2_Ex1
-{ 
-    public class SteeringViewModel : INotifyPropertyChanged
+{
+    public class ControlBarViewModel : INotifyPropertyChanged
     {
+        IModel model;
         public event PropertyChangedEventHandler PropertyChanged;
-        private IModel model;
-
-        public SteeringViewModel(IModel model)
+        public ControlBarViewModel(IModel model)
         {
             this.model = model;
             model.PropertyChanged += delegate(object sender, PropertyChangedEventArgs e)
@@ -20,61 +19,55 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
         }
-        
-        public double MV_Rudder
+        public int VM_LineCount
         {
             get
             {
-                return model.Rudder;
-            }
-            set
-            {
-                this.model.Rudder = value;
-                NotifyPropertyChanged("MV_Rudder");
+                return model.LineCount;
             }
         }
-        public double MV_Throttle
+        public int VM_CurrentLine
         {
             get
             {
-                return model.Throttle;
+                return model.CurrentLine;
             }
             set
             {
-                this.model.Throttle = value;
-                NotifyPropertyChanged("MV_Throttle");
+                this.model.CurrentLine = value;
             }
+
         }
-        public double MV_Aileron
+        public bool VM_IsPaused
         {
             get
             {
-                return model.Aileron;
+                return model.IsPaused;
             }
             set
             {
-                this.model.Aileron = value;
-                NotifyPropertyChanged("MV_Aileron");
+                this.model.IsPaused = value;
             }
         }
-        public double MV_Elevator
+        public double VM_SpeedMultiplier
         {
             get
             {
-                return model.Elevator;
+                return model.SpeedMultiplier;
             }
             set
             {
-                this.model.Elevator = value;
-                NotifyPropertyChanged("MV_Elevator");
+                this.model.SpeedMultiplier = value;
             }
         }
+       
 
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
+        
 
     }
 }
