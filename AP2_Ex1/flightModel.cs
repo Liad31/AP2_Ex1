@@ -1,21 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
-//placeholderClass
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace AP2_Ex1
 {
-    public class ModelImplementation :IModel
+    public class FlightModel : IModel
     {
-        public ModelImplementation(IDatabase database)
-        {
-            
-        }
-        event PropertyChangedEventHandler INotifyPropertyChanged.PropertyChanged
-        {
-            add => throw new System.NotImplementedException();
-            remove => throw new System.NotImplementedException();
-        }
-
-        public Dictionary<string, double> LastLine { get; }
+        private IDatabase database;
+        public event PropertyChangedEventHandler PropertyChanged;
+        public Dictionary<String, double> LastLine { get; }
+        //please implement the set functions so they will invoke NotifyPropertyChanged!!!!
         public int LineCount { get; }
         public int CurrentLine { get; set; }
         public double CurrentTime { get; set; }
@@ -31,11 +28,14 @@ namespace AP2_Ex1
         public double Yaw { get; set; }
         public double Roll { get; set; }
         public double Pitch { get; set; }
-
-        event PropertyChangedEventHandler IModel.PropertyChanged
+        public FlightModel(IDatabase database)
         {
-            add => throw new System.NotImplementedException();
-            remove => throw new System.NotImplementedException();
+            this.database = database;
+        }
+        public void NotifyPropertyChanged(string propName)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
     }
 }

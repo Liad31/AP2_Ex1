@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
+<<<<<<< Updated upstream
 VisualStudioVersion = 16.0.29613.14
+=======
+VisualStudioVersion = 16.0.29306.81
+>>>>>>> Stashed changes
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AP2_Ex1", "AP2_Ex1\AP2_Ex1.csproj", "{0F803120-5A0F-452C-A7CD-ECCAC3837B47}"
 EndProject
@@ -20,6 +24,10 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+<<<<<<< Updated upstream
 		SolutionGuid = {0F21669C-A31D-4F80-863C-17B836012BEA}
+=======
+		SolutionGuid = {988D44A2-219C-4E59-9F61-E5209CFC43C2}
+>>>>>>> Stashed changes
 	EndGlobalSection
 EndGlobal

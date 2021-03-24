@@ -21,7 +21,7 @@ namespace AP2_Ex1
             };
         }
         
-        public double MV_Rudder
+        public double VM_Rudder
         {
             get
             {
@@ -33,7 +33,7 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("MV_Rudder");
             }
         }
-        public double MV_Throttle
+        public double VM_Throttle
         {
             get
             {
@@ -45,7 +45,7 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("MV_Throttle");
             }
         }
-        public double MV_Aileron
+        public double VM_Aileron
         {
             get
             {
@@ -57,7 +57,7 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("MV_Aileron");
             }
         }
-        public double MV_Elevator
+        public double VM_Elevator
         {
             get
             {
@@ -69,7 +69,78 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("MV_Elevator");
             }
         }
-
+        public double VM_Altitude
+        {
+            get
+            {
+                return model.Altitude;
+            }
+            set
+            {
+                this.model.Altitude = value;
+                NotifyPropertyChanged("VM_Altitude");
+            }
+        }
+        public double VM_Speed
+        {
+            get
+            {
+                return model.Speed;
+            }
+            set
+            {
+                this.model.Speed = value;
+                NotifyPropertyChanged("VM_Speed");
+            }
+        }
+        public double VM_Direction
+        {
+            get
+            {
+                return model.Direction;
+            }
+            set
+            {
+                this.model.Direction = value;
+                NotifyPropertyChanged("VM_Direction");
+            }
+        }
+        public double VM_Yaw
+        {
+            get
+            {
+                return model.Yaw;
+            }
+            set
+            {
+                this.model.Yaw = value;
+                NotifyPropertyChanged("VM_Yaw");
+            }
+        }
+        public double VM_Roll
+        {
+            get
+            {
+                return model.Roll;
+            }
+            set
+            {
+                this.model.Roll = value;
+                NotifyPropertyChanged("VM_Roll");
+            }
+        }
+        public double VM_Pitch
+        {
+            get
+            {
+                return model.Pitch;
+            }
+            set
+            {
+                this.model.Pitch = value;
+                NotifyPropertyChanged("VM_Pitch");
+            }
+        }
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)

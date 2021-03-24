@@ -21,19 +21,20 @@ namespace AP2_Ex1
     public partial class MainWindow : Window
     {
         private SteeringViewModel vm_steering;
-        private dataViewModel vm_data;
         public MainWindow(string csvFilePath, string xmlFilePath)
         {
             InitializeComponent();
-            //TODO: initialize view models and other needed classes
+            var database = new FlightDatabase(csvFilePath);
+            var model = new FlightModel(database);
+            vm_steering = new SteeringViewModel(model);
             vm_steering.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) {
-                if (e.PropertyName == "MV_Aileron")
+                if (e.PropertyName == "VM_Aileron")
                 {
-                    //stick.updateX(vm_steering.MV_Aileron);
+                    stick.updateX(vm_steering.VM_Aileron);
                 }
-                if (e.PropertyName == "MV_Elevator")
+                if (e.PropertyName == "MVM_Elevator")
                 {
-                    //stick.updateY(vm_steering.MV_Elevator);
+                    stick.updateY(vm_steering.VM_Elevator);
                 }
           
             };
