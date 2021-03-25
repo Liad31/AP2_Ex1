@@ -30,7 +30,7 @@
         </Grid.RowDefinitions>
         <Rectangle x:Name="panel1" Fill="#FF8FDBDE"/>
         <Rectangle x:Name="panel2" Fill="#FF8FDBDE" Grid.Row="1" Grid.Column="1"/>
-        <Slider x:Name="throttle" Value="{Binding ElementName=vm_steering, Path=MV_Throttle}" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" HorizontalAlignment="Center" IsEnabled="False">
+        <Slider x:Name="throttle" Value="{Binding ElementName=vm_steering, Path=VM_Throttle}" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" HorizontalAlignment="Center" IsEnabled="False">
           <Slider.RenderTransform>
             <TransformGroup>
               <ScaleTransform ScaleX="3.3" ScaleY="1"/>
@@ -40,7 +40,7 @@
             </TransformGroup>
           </Slider.RenderTransform>
         </Slider>
-        <Slider x:Name="rudder" Value="{Binding ElementName=vm_steering, Path=VM_Rudder}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" IsEnabled="False">
+        <Slider x:Name="rudder" Value="{Binding ElementName=vm_steering, Path=VM_Rudder}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" IsEnabled="False" Minimum="7">
           <Slider.RenderTransform>
             <TransformGroup>
               <ScaleTransform ScaleY="2.3" ScaleX="1"/>

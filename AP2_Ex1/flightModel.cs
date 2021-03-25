@@ -11,10 +11,11 @@ namespace AP2_Ex1
     {
         private IDatabase database;
         public event PropertyChangedEventHandler PropertyChanged;
+        public LinkedList<string> propertyByColumn { get; }
         public Dictionary<String, double> LastLine { get; }
         //please implement the set functions so they will invoke NotifyPropertyChanged!!!!
         public int LineCount { get; }
-        public int CurrentLine { get; set; }
+        public int CurrentLine{ get; set; }
         public double CurrentTime { get; set; }
         public double SpeedMultiplier { get; set; }
         public bool IsPaused { get; set; }
@@ -31,6 +32,7 @@ namespace AP2_Ex1
         public FlightModel(IDatabase database)
         {
             this.database = database;
+            //init propertyByColumn
         }
         public void NotifyPropertyChanged(string propName)
         {
