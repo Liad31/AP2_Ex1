@@ -19,7 +19,7 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
         }
-        public List<string> Properties
+        public List<string> VM_Properties
         {
             get
             {
@@ -32,18 +32,53 @@ namespace AP2_Ex1
                 return model.Line;
             }
         }
-        public List<double> values
+        public List<double> VM_Values
         {
             get
             {
                 return model.values.GetRange(0, VM_Line);
             }
         }
-        public List<double> LineList
+        public List<double> VM_FullValuesArray
+        {
+            get
+            {
+                return model.values;
+            }
+        }
+        public List<double> VM_CorellativeValues
+        {
+            get
+            {
+                return model.correlativeValues.GetRange(0, VM_Line);
+            }
+        }
+        public List<double> VM_FullCorellativeValuesArray
+        {
+            get
+            {
+                return model.correlativeValues;
+            }
+        }
+        public List<double> VM_LineList
         {
             get
             {
                 return model.LineList.GetRange(0, VM_Line);
+            }
+        }
+        public string VM_CurrentProperty
+        {
+            get
+            {
+                return model.currentProperty;
+            }
+        }
+        public string VM_MostCorellativeProperty
+        {
+            get
+            {
+                return model.mostCorelative[VM_CurrentProperty].name;
             }
         }
 
@@ -52,6 +87,24 @@ namespace AP2_Ex1
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
-
+        public void switchGraphs(string propName)
+        {
+            model.currentProperty = propName;
+            model.switchGraphs();
+        }
+        public double VM_SlopeLinearRegression
+        {
+            get
+            {
+                return model.mostCorelative[VM_CurrentProperty].slopeOfLinearRegression;
+            }
+        }
+        public double VM_InterceptLinearRegression
+        {
+            get
+            {
+                return model.mostCorelative[VM_CurrentProperty].yInterceptLinearRegression;
+            }
+        }
     }
 }

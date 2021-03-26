@@ -4,12 +4,19 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace AP2_Ex1
 {
+    public class corellativeProperty
+    {
+        public string name { get; set; }
+        public double slopeOfLinearRegression { get; set; }
+        public double yInterceptLinearRegression { get; set; }
+    }
     public class GraphsModel : INotifyPropertyChanged
     {
-        public Dictionary<string, string> mostCorelative { get; }
+        public Dictionary<string, corellativeProperty> mostCorelative { get; }
         public IDatabase database { get; }
         public string currentProperty { get; set; }
         public List<double> values { get; private set; }
@@ -36,33 +43,84 @@ namespace AP2_Ex1
         }
         private void initCorelatives()
         {
-            foreach (var property in database.Properties)
+            foreach (string property in database.Properties)
             {
                 double max = -1;
                 mostCorelative.Add(property, null);
-                List<double> arr1 = database.getPropertyArray(property);
-                foreach (var otherProperty in database.Properties)
+                var arr1 = database.getPropertyArray(property) as List<double>;
+                foreach (string otherProperty in database.Properties)
                 {
                     if (property != otherProperty)
                     {
-                        List<double> arr2 =database.getPropertyArray(otherProperty);
-                        double tempPearson = getPearson(arr1, arr2);
+                        var arr2 = database.getPropertyArray(otherProperty) as List<double>;
+                        var tempPearson = getPearson(arr1, arr2);
                         if (tempPearson > max)
                         {
                             max = tempPearson;
-                            mostCorelative[property] = otherProperty;
+                            mostCorelative[property].name = otherProperty;
                         }
-
                     }
                 }
+                //initializg the linear regression of each 2 corelative variables
+                values = database.getPropertyArray(property);
+                correlativeValues = database.getPropertyArray(mostCorelative[property].name);
+                double slope, intercept;
+
+                LinearRegression(values.ToArray(), correlativeValues.ToArray(), out intercept, out slope);
+                mostCorelative[property].yInterceptLinearRegression = intercept;
+                mostCorelative[property].slopeOfLinearRegression = slope;
             }
         }
 
-        private double getPearson(List<double> arr1, List<double> arr2)
+        public static void LinearRegression(
+            double[] xVals,
+            double[] yVals,
+            out double yIntercept,
+            out double slope)
+        {
+            if (xVals.Length != yVals.Length)
+            {
+                throw new Exception("Input values should be with the same length.");
+            }
+
+            double sumOfX = 0;
+            double sumOfY = 0;
+            double sumOfXSq = 0;
+            double sumOfYSq = 0;
+            double sumCodeviates = 0;
+
+            for (var i = 0; i < xVals.Length; i++)
+            {
+                var x = xVals[i];
+                var y = yVals[i];
+                sumCodeviates += x * y;
+                sumOfX += x;
+                sumOfY += y;
+                sumOfXSq += x * x;
+                sumOfYSq += y * y;
+            }
+
+            var count = xVals.Length;
+            var ssX = sumOfXSq - ((sumOfX * sumOfX) / count);
+            var ssY = sumOfYSq - ((sumOfY * sumOfY) / count);
+
+            var rNumerator = (count * sumCodeviates) - (sumOfX * sumOfY);
+            var rDenom = (count * sumOfXSq - (sumOfX * sumOfX)) * (count * sumOfYSq - (sumOfY * sumOfY));
+            var sCo = sumCodeviates - ((sumOfX * sumOfY) / count);
+
+            var meanX = sumOfX / count;
+            var meanY = sumOfY / count;
+            var dblR = rNumerator / Math.Sqrt(rDenom);
+
+            yIntercept = meanY - ((sCo / ssX) * meanX);
+            slope = sCo / ssX;
+        }
+
+    private double getPearson(List<double> arr1, List<double> arr2)
         {
             if (arr1.Count() != arr2.Count())
                 throw new ArgumentException("values must be the same length");
-
+            
             var avg1 = arr1.Average();
             var avg2 = arr2.Average();
 
@@ -80,6 +138,12 @@ namespace AP2_Ex1
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+        }
+        public void switchGraphs()
+        {
+            values = database.getPropertyArray(currentProperty);
+            correlativeValues = database.getPropertyArray(mostCorelative[currentProperty].name);
+            NotifyPropertyChanged("currentProperty");
         }
     }
 }

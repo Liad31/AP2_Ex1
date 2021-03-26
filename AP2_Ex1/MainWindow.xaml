@@ -186,18 +186,33 @@
             <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1"/>
           </Grid>
         </Grid>
-        <Grid Background="LightGray">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-            <ListBox ItemsSource="{Binding ElementName=vm_graphs, Path=Properties}" BorderThickness="5" BorderBrush="Bisque" Grid.RowSpan="2" Background="White" SelectionChanged="ListBox_SelectionChanged"/>
-        </Grid>
-            <WpfPlot Name="p" Grid.Column="1"/>
+            <Grid Background="LightGray">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <ListBox ItemsSource="{Binding ElementName=vm_graphs, Path=Properties}" BorderThickness="5" BorderBrush="Bisque" Grid.RowSpan="2" Background="White"/>
+                <WpfPlot Name="graph1" Grid.Column="1"/>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="7*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="the most corellative property is: {0}">
+                                <Binding ElementName="vm_graphs" Path="mostCorellativeProperty"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <WpfPlot Name="graph2" Grid.Row="1"/>
+                </Grid>
+            </Grid>
+            <WpfPlot Name="linearRegression" Grid.Column="1"/>
 
 
 

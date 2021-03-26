@@ -45,19 +45,40 @@ namespace AP2_Ex1
             {
                 if (e.PropertyName == "VM_Line")
                 {
-                    p.Plot.Clear();
                     try
                     {
-                        p.Plot.AddScatter(vm_graphs.LineList.ToArray(), vm_graphs.values.ToArray());
-                    } catch(Exception ex) {}
+                        updateGraphs();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+                if (e.PropertyName == "VM_currentProperty")
+                {
+                    try
+                    {
+                        linearRegression.Plot.Clear();
+                        updateGraphs();
+                        linearRegression.Plot.PlotLine(vm_graphs.VM_SlopeLinearRegression, vm_graphs.VM_InterceptLinearRegression, (vm_graphs.VM_FullValuesArray.Min(),vm_graphs.VM_FullValuesArray.Max()),lineWidth: 2);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             };
           
         }
-
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+           
+        private void updateGraphs()
         {
-
+            graph1.Plot.Clear();
+            graph2.Plot.Clear();
+            graph2.Plot.AddScatter(vm_graphs.VM_LineList.ToArray(), vm_graphs.VM_CorellativeValues.ToArray());
+            graph1.Plot.AddScatter(vm_graphs.VM_LineList.ToArray(), vm_graphs.VM_Values.ToArray());
+            linearRegression.Plot.PlotScatter(vm_graphs.VM_Values.GetRange(vm_graphs.VM_Values.Count()-300, 300).ToArray(), vm_graphs.VM_CorellativeValues.GetRange(vm_graphs.VM_Values.Count() - 300, 300).ToArray(), System.Drawing.Color.Gray,lineWidth: 0);
+            //30 seconds and not 300!!!!
         }
     }
 }
