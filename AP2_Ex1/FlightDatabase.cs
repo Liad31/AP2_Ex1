@@ -12,7 +12,7 @@ namespace AP2_Ex1
     {
         private ArrayList data;
         private ArrayList lines;
-        public List<string> Properties { get; }
+        private ArrayList keys;
         public FlightDatabase(string CSVFilePath)
         {
             StreamReader reader = new StreamReader(File.OpenRead(CSVFilePath));
@@ -69,22 +69,40 @@ namespace AP2_Ex1
 
                 data.Add(d);
             }
+            //loop to get keys (yes, I am lazy)
+            foreach(KeyValuePair<string, double> p in (Dictionary<string, double>) data[0])
+            {
+                keys.Add(p.Key);
+            }
         }
-        public List<double> getPropertyArray(string name)
+        public IList Keys
         {
-            //implement!!
-            return null;
+            get
+            {
+                return keys;
+            }
         }
+
+        public Dictionary<string, double> getLine(int lineNumber)
+        {
+            return (Dictionary<string, double>)data[lineNumber];
+        }
+
         public string getLineString(int lineNumber)
         {
-            return null;
+            return (string)lines[lineNumber];
         }
 
-
-        public Dictionary<String, double> getLine(int lineNumber)
+        public IList getPropertyArray(string key)
         {
-            //Implement!!!!!!!!!!!!!!!!
-            return null;
+            IList values = new ArrayList();
+            foreach (Dictionary<string, double> d in data)
+            {
+                double value;
+                d.TryGetValue(key, out value);
+                values.Add(value);
+            }
+            return values;
         }
 
     }
