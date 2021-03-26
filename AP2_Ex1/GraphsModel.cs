@@ -1,32 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AP2_Ex1
 {
-    public class GraphsModel
+    public class GraphsModel : INotifyPropertyChanged
     {
         public Dictionary<string, string> mostCorelative { get; }
         public IDatabase database { get; }
-        public GraphsModel(IDatabase database)
+        public string currentProperty { get; set; }
+        public List<double> values { get; private set; }
+        public List<double> correlativeValues { get; private set; }
+        public int Line { get; private set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public List<double> LineList { get; private set; }
+
+        public GraphsModel(IDatabase database, IModel mainModel)
         {
             this.database = database;
+            for (int i = 1; i < mainModel.LineCount; ++i)
+            {
+                LineList.Add(i);
+            }
+            mainModel.PropertyChanged += delegate(Object sender, PropertyChangedEventArgs e) {
+                if (e.PropertyName == "CurrentLine")
+                {
+                    Line++;
+                    NotifyPropertyChanged("Line");
+                }
+            };
             initCorelatives();
         }
         private void initCorelatives()
         {
-            foreach (var property in database.properties)
+            foreach (var property in database.Properties)
             {
                 double max = -1;
                 mostCorelative.Add(property, null);
-                double[] arr1 = getPropertyArray(property);
-                foreach (var otherProperty in database.properties)
+                List<double> arr1 = database.getPropertyArray(property);
+                foreach (var otherProperty in database.Properties)
                 {
                     if (property != otherProperty)
                     {
-                        double[] arr2 = getPropertyArray(otherProperty);
+                        List<double> arr2 =database.getPropertyArray(otherProperty);
                         double tempPearson = getPearson(arr1, arr2);
                         if (tempPearson > max)
                         {
@@ -39,9 +58,9 @@ namespace AP2_Ex1
             }
         }
 
-        private double getPearson(double [] arr1, Double [] arr2)
+        private double getPearson(List<double> arr1, List<double> arr2)
         {
-            if (arr1.Length != arr2.Length)
+            if (arr1.Count() != arr2.Count())
                 throw new ArgumentException("values must be the same length");
 
             var avg1 = arr1.Average();
@@ -55,6 +74,12 @@ namespace AP2_Ex1
             var result = sum1 / Math.Sqrt(sumSqr1 * sumSqr2);
 
             return result;
+        }
+
+        public void NotifyPropertyChanged(string propName)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
     }
 }

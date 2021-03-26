@@ -25,15 +25,13 @@ namespace AP2_Ex1
         public MainWindow(string csvFilePath, string xmlFilePath)
         {
             InitializeComponent();
-            double[] dataX = new double[] { 1, 2, 3, 4, 5 };
-            double[] dataY = new double[] { 1, 4, 9, 16, 25 };
-            p.Plot.AddScatter(dataX, dataY);
             var database = new FlightDatabase(csvFilePath);
             var model = new FlightModel(database);
-            var graphsModel = new GraphsModel(database);
+            var graphsModel = new GraphsModel(database, model);
             vm_steering = new SteeringViewModel(model);
             vm_graphs = new GraphsPanelViewModel(graphsModel);
-            vm_steering.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) {
+            vm_steering.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
+            {
                 if (e.PropertyName == "VM_Aileron")
                 {
                     stick.updateX(vm_steering.VM_Aileron);
@@ -42,9 +40,24 @@ namespace AP2_Ex1
                 {
                     stick.updateY(vm_steering.VM_Elevator);
                 }
-          
             };
+            vm_graphs.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
+            {
+                if (e.PropertyName == "VM_Line")
+                {
+                    p.Plot.Clear();
+                    try
+                    {
+                        p.Plot.AddScatter(vm_graphs.LineList.ToArray(), vm_graphs.values.ToArray());
+                    } catch(Exception ex) {}
+                }
+            };
+          
         }
 
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

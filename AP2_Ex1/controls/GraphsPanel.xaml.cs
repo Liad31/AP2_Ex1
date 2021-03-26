@@ -24,8 +24,8 @@ namespace AP2_Ex1.controls
         public GraphsPanel(GraphsPanelViewModel vm_graphs, IDatabase database)
         {
             InitializeComponent();
-            GraphsModel model = new GraphsModel(database);
-            this.vm_graphs = vm_graphs;
+            //GraphsModel model = new GraphsModel(database);
+            //this.vm_graphs = vm_graphs;
         }
     }
 }

@@ -195,7 +195,7 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <ListBox ItemsSource="{Binding ElementName=vm_graphs, Path=Properties}" BorderThickness="5" BorderBrush="Bisque" Grid.RowSpan="2" Background="White"/>
+            <ListBox ItemsSource="{Binding ElementName=vm_graphs, Path=Properties}" BorderThickness="5" BorderBrush="Bisque" Grid.RowSpan="2" Background="White" SelectionChanged="ListBox_SelectionChanged"/>
         </Grid>
             <WpfPlot Name="p" Grid.Column="1"/>
 

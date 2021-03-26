@@ -13,7 +13,7 @@
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <ListBox Name="listOfProperties" ItemsSource="{Binding Path=properties, ElementName=}" BorderThickness="2"/>
+            <ListBox Name="listOfProperties" ItemsSource="{Binding Path=Properties, ElementName=vm_graphs}" BorderThickness="2"/>
             <Border BorderThickness="5" BorderBrush="Beige"/>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>

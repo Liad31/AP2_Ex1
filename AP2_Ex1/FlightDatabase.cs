@@ -9,17 +9,20 @@ namespace AP2_Ex1
     class FlightDatabase : IDatabase
     {
         private string CSVFilePath;
-        private Dictionary<string, double[]> data;
+        public List<string> Properties { get; }
         public FlightDatabase(string CSVFilePath)
         {
             this.CSVFilePath = CSVFilePath;
         }
-        public  double[] getPropertyArray(string property)
+        public List<double> getPropertyArray(string name)
         {
             //implement!!
             return null;
         }
-
+        public string getLineString(int lineNumber)
+        {
+            return null;
+        }
 
 
         public Dictionary<String, double> getLine(int lineNumber)
