@@ -75,7 +75,7 @@ namespace AP2_Ex1
                 keys.Add(p.Key);
             }
         }
-        public List<string> Keys
+        public List<string> Properties
         {
             get
             {
