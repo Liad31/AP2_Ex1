@@ -20,9 +20,12 @@ namespace AP2_Ex1.controls
     /// </summary>
     public partial class GraphsPanel : UserControl
     {
-        public GraphsPanel()
+        GraphsPanelViewModel vm_graphs;
+        public GraphsPanel(GraphsPanelViewModel vm_graphs, IDatabase database)
         {
             InitializeComponent();
+            GraphsModel model = new GraphsModel(database);
+            this.vm_graphs = vm_graphs;
         }
     }
 }

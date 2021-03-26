@@ -26,5 +26,6 @@ namespace AP2_Ex1
         double Direction { get; set; }
         double Yaw { get; set; }
         double Roll { get; set; }
-        double Pitch { get; set; }    }
+        double Pitch { get; set; }
+    }
 }

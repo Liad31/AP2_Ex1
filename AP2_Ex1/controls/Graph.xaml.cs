@@ -25,5 +25,6 @@ namespace AP2_Ex1.controls
         {
             InitializeComponent();
         }
+
     }
 }

@@ -11,7 +11,6 @@ namespace AP2_Ex1
     {
         private IDatabase database;
         public event PropertyChangedEventHandler PropertyChanged;
-        public LinkedList<string> propertyByColumn { get; }
         public Dictionary<String, double> LastLine { get; }
         //please implement the set functions so they will invoke NotifyPropertyChanged!!!!
         public int LineCount { get; }

@@ -21,18 +21,24 @@ namespace AP2_Ex1
     public partial class MainWindow : Window
     {
         private SteeringViewModel vm_steering;
+        private GraphsPanelViewModel vm_graphs;
         public MainWindow(string csvFilePath, string xmlFilePath)
         {
             InitializeComponent();
+            double[] dataX = new double[] { 1, 2, 3, 4, 5 };
+            double[] dataY = new double[] { 1, 4, 9, 16, 25 };
+            p.Plot.AddScatter(dataX, dataY);
             var database = new FlightDatabase(csvFilePath);
             var model = new FlightModel(database);
+            var graphsModel = new GraphsModel(database);
             vm_steering = new SteeringViewModel(model);
+            vm_graphs = new GraphsPanelViewModel(graphsModel);
             vm_steering.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) {
                 if (e.PropertyName == "VM_Aileron")
                 {
                     stick.updateX(vm_steering.VM_Aileron);
                 }
-                if (e.PropertyName == "MVM_Elevator")
+                if (e.PropertyName == "VM_Elevator")
                 {
                     stick.updateY(vm_steering.VM_Elevator);
                 }

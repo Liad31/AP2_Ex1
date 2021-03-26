@@ -9,7 +9,7 @@ namespace AP2_Ex1
     class FlightDatabase : IDatabase
     {
         private string CSVFilePath;
-        Dictionary<string, double[]> data;
+        private Dictionary<string, double[]> data;
         public FlightDatabase(string CSVFilePath)
         {
             this.CSVFilePath = CSVFilePath;

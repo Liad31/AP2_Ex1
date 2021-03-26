@@ -9,7 +9,7 @@
   <Grid>
     <Grid>
       <Grid.RowDefinitions>
-        <RowDefinition Height="4*"/>
+        <RowDefinition Height="5*"/>
         <RowDefinition Height="3*"/>
         <RowDefinition Height="1*"/>
       </Grid.RowDefinitions>
@@ -186,9 +186,21 @@
             <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1"/>
           </Grid>
         </Grid>
-      </Grid>
+        <Grid Background="LightGray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <ListBox ItemsSource="{Binding ElementName=vm_graphs, Path=Properties}" BorderThickness="5" BorderBrush="Bisque" Grid.RowSpan="2" Background="White"/>
+        </Grid>
+            <WpfPlot Name="p" Grid.Column="1"/>
 
 
 
+        </Grid>
   </Grid>
 </Window>
