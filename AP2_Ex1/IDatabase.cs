@@ -23,13 +23,13 @@ namespace AP2_Ex1
         /// <summary>
         /// The keys we have, list of strings.
         /// </summary>
-        IList Keys { get; }
+        List<string> Keys { get; }
 
        /// <summary>
        /// Get a list of all the data under the given property, sorted as it was in  the CSV file.
        /// </summary>
        /// <param name="key">key we want to get</param>
        /// <returns>List of doubles od the data</returns>
-        IList getPropertyArray(string key);
+        List<double> getPropertyArray(string key);
     }
 }
