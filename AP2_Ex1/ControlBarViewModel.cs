@@ -24,7 +24,7 @@ namespace AP2_Ex1
         {
             get
             {
-                return model.LineCount;
+                return model.LineCount - 1;
             }
         }
         public int VM_CurrentLine

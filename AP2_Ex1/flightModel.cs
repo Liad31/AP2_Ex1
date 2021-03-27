@@ -204,11 +204,11 @@ namespace AP2_Ex1
                 Dictionary<string, double> dic = database.getLine(CurrentLine);
                 while (!stop)
                 {
-                    if (!IsPaused && CurrentLine < lineCount)
+                    if (!IsPaused && CurrentLine < lineCount - 1)
                     {
                         CurrentLine++;
-                        dic = database.getLine(CurrentLine);
                     }
+                    dic = database.getLine(CurrentLine);
                     double temp;
                     dic.TryGetValue("roll-deg", out temp);
                     Roll = temp;
