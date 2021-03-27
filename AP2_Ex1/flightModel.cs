@@ -24,6 +24,7 @@ namespace AP2_Ex1
         private double altimeter;
         private double airspeed;
         private double direction;
+        private double speedMultiplier;
         public event PropertyChangedEventHandler PropertyChanged;
         public Dictionary<String, double> LastLine { get; }
         //please implement the set functions so they will invoke NotifyPropertyChanged!!!!
@@ -47,10 +48,8 @@ namespace AP2_Ex1
                 currentLine = value;
                 NotifyPropertyChanged("CurrentLine");
             }
-
         }
         public double CurrentTime { get; set; }
-        public double SpeedMultiplier { get; set; }
         public bool IsPaused{ get; set; }
         public double Rudder
         {
@@ -171,11 +170,22 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("Pitch");
             }
         }
+        public double SpeedMultiplier
+        {
+            get { return speedMultiplier; }
+            set
+            {
+                speedMultiplier = value;
+                NotifyPropertyChanged("SpeedMultiplier");
+            }
+        }
+
         public int LPS { get; private set; }
         public FlightModel(IDatabase database, int lps)
         {
             this.database = database;
             LineCount = database.numOfLines();
+            SpeedMultiplier = 1;
             LPS = lps;
             //init propertyByColumn
         }
@@ -220,7 +230,8 @@ namespace AP2_Ex1
                     Altitude = temp;
                     //add the "direction"!!!
 
-                    Thread.Sleep(1000/LPS);
+                    CurrentTime = CurrentLine / LPS;
+                    Thread.Sleep((int) (1000/(LPS * SpeedMultiplier)));
                 }
             }).Start();
         }

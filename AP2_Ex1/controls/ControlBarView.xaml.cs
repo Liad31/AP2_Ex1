@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 
 namespace AP2_Ex1.controls
 {
@@ -6,10 +7,16 @@ namespace AP2_Ex1.controls
     {
         private const int RWD_FWD = 5;
         ControlBarViewModel viewModel;
+        private bool isMouseDownInProgress;
         public ControlBarView()
         {
             InitializeComponent();
-            
+
+            //So cmb have defualt value, without invoking selction changed
+            cmbSpeedMultiplier.SelectedIndex = 3;
+            cmbSpeedMultiplier.SelectionChanged += ComboBox_SelectionChanged;
+
+
         }
 
         public IModel Model
@@ -51,6 +58,37 @@ namespace AP2_Ex1.controls
                 viewModel.VM_CurrentLine += lineToMove;
             }
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (cmbSpeedMultiplier.SelectedIndex)
+            {
+                case 0:
+                    viewModel.VM_SpeedMultiplier = 2;
+                    break;
+                case 1:
+                    viewModel.VM_SpeedMultiplier = 1.5;
+                    break;
+                case 2:
+                    viewModel.VM_SpeedMultiplier = 1.25;
+                    break;
+                case 3:
+                    viewModel.VM_SpeedMultiplier = 1;
+                    break;
+                case 4:
+                    viewModel.VM_SpeedMultiplier = 0.5;
+                    break;
+                case 5:
+                    viewModel.VM_SpeedMultiplier = 0.25;
+                    break;
+            }
+        }
+
+        private void Progress_ValueChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<double> e)
+        {
+            Progress.Value = e.NewValue;
+        }
+
         //TODO: organize controls in grid, implement all function, check if this works if it doesn't delete all and start from scratch
     }
 }
