@@ -78,12 +78,6 @@
     <Compile Include="controls\ControlBarView.xaml.cs">
       <DependentUpon>ControlBarView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="controls\Graph.xaml.cs">
-      <DependentUpon>Graph.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="controls\GraphsPanel.xaml.cs">
-      <DependentUpon>GraphsPanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="controls\speedClock.xaml.cs">
       <DependentUpon>speedClock.xaml</DependentUpon>
     </Compile>
@@ -101,14 +95,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="controls\ControlBarView.xaml" />
-    <Page Include="controls\Graph.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="controls\GraphsPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="controls\speedClock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -16,18 +16,28 @@ namespace AP2_Ex1
     }
     public class GraphsModel : INotifyPropertyChanged
     {
-        public Dictionary<string, corellativeProperty> mostCorelative { get; }
+        public Dictionary<string, corellativeProperty> mostCorelative { get; private set; }
         public IDatabase database { get; }
         public string currentProperty { get; set; }
         public List<double> values { get; private set; }
         public List<double> correlativeValues { get; private set; }
         public int Line { get; private set; }
         public event PropertyChangedEventHandler PropertyChanged;
+        private int lps;
+        public int LPS
+        {
+            get
+            {
+                return lps;
+            }
+        }
         public List<double> LineList { get; private set; }
 
         public GraphsModel(IDatabase database, IModel mainModel)
         {
             this.database = database;
+            lps = mainModel.LPS;
+            LineList = new List<double>();
             for (int i = 1; i < mainModel.LineCount; ++i)
             {
                 LineList.Add(i);
@@ -46,10 +56,12 @@ namespace AP2_Ex1
             foreach (string property in database.Properties)
             {
                 double max = -1;
+                mostCorelative = new Dictionary<string, corellativeProperty>();
                 mostCorelative.Add(property, null);
                 var arr1 = database.getPropertyArray(property) as List<double>;
                 foreach (string otherProperty in database.Properties)
                 {
+                    mostCorelative[property] = new corellativeProperty();
                     if (property != otherProperty)
                     {
                         var arr2 = database.getPropertyArray(otherProperty) as List<double>;

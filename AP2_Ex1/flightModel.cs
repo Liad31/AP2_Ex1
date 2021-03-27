@@ -14,6 +14,16 @@ namespace AP2_Ex1
         private IDatabase database;
         private int currentLine;
         private int lineCount;
+        private double roll;
+        private double pitch;
+        private double yaw;
+        private double aileron;
+        private double elevator;
+        private double throttle;
+        private double rudder;
+        private double altimeter;
+        private double airspeed;
+        private double direction;
         public event PropertyChangedEventHandler PropertyChanged;
         public Dictionary<String, double> LastLine { get; }
         //please implement the set functions so they will invoke NotifyPropertyChanged!!!!
@@ -41,17 +51,126 @@ namespace AP2_Ex1
         }
         public double CurrentTime { get; set; }
         public double SpeedMultiplier { get; set; }
-        public bool IsPaused { get; set; }
-        public double Rudder { get; set; }
-        public double Throttle { get; set; }
-        public double Aileron { get; set; }
-        public double Elevator { get; set; }
-        public double Altitude { get; set; }
-        public double Speed { get; set; }
-        public double Direction { get; set; }
-        public double Yaw { get; set; }
-        public double Roll { get; set; }
-        public double Pitch { get; set; }
+        public bool IsPaused{ get; set; }
+        public double Rudder
+        {
+            get
+            {
+                return rudder;
+            }
+            set
+            {
+                rudder = value;
+                NotifyPropertyChanged("Rudder");
+            }
+        }
+        public double Throttle
+        {
+            get
+            {
+                return throttle;
+            }
+            set
+            {
+                throttle = value;
+                NotifyPropertyChanged("Throttle");
+            }
+        }
+        public double Aileron
+        {
+            get
+            {
+                return aileron;
+            }
+            set
+            {
+                aileron = value;
+                NotifyPropertyChanged("Aileron");
+            }
+        }
+        public double Elevator
+        {
+            get
+            {
+                return elevator;
+            }
+            set
+            {
+                elevator = value;
+                NotifyPropertyChanged("Elevator");
+            }
+        }
+        public double Altitude
+        {
+            get
+            {
+                return altimeter;
+            }
+            set
+            {
+                altimeter = value;
+                NotifyPropertyChanged("Altitude");
+            }
+        }
+        public double Speed
+        {
+            get
+            {
+                return airspeed;
+            }
+            set
+            {
+                airspeed = value;
+                NotifyPropertyChanged("Speed");
+            }
+        }
+        public double Direction
+        {
+            get
+            {
+                return yaw;
+            }
+            set
+            {
+                yaw = value;
+                NotifyPropertyChanged("Direction");
+            }
+        }
+        public double Yaw
+        {
+            get
+            {
+                return yaw;
+            }
+            set
+            {
+                yaw = value;
+                NotifyPropertyChanged("Yaw");
+            }
+        }
+        public double Roll {
+            get
+            {
+                return roll;
+            }
+            set
+            {
+                roll = value;
+                NotifyPropertyChanged("Roll");
+            }
+        }
+        public double Pitch
+        {
+            get
+            {
+                return pitch;
+            }
+            set
+            {
+                pitch = value;
+                NotifyPropertyChanged("Pitch");
+            }
+        }
         public int LPS { get; private set; }
         public FlightModel(IDatabase database, int lps)
         {
@@ -72,12 +191,35 @@ namespace AP2_Ex1
             {
 
                 stop = false;
+                Dictionary<string, double> dic = database.getLine(CurrentLine);
                 while (!stop)
                 {
                     if (!IsPaused && CurrentLine < lineCount)
                     {
                         CurrentLine++;
+                        dic = database.getLine(CurrentLine);
                     }
+                    double temp;
+                    dic.TryGetValue("roll-deg", out temp);
+                    Roll = temp;
+                    dic.TryGetValue("pitch-deg", out temp);
+                    Pitch = temp;
+                    dic.TryGetValue("side-slip-deg", out temp);
+                    Yaw = temp;
+                    dic.TryGetValue("aileron", out temp);
+                    Aileron = temp;
+                    dic.TryGetValue("elevator", out temp);
+                    Elevator = temp;
+                    dic.TryGetValue("rudder", out temp);
+                    Rudder = temp;
+                    dic.TryGetValue("throttle", out temp);
+                    Throttle = temp;
+                    dic.TryGetValue("airspeed-kt", out temp);
+                    Speed = temp;
+                    dic.TryGetValue("altitude-ft", out temp);
+                    Altitude = temp;
+                    //add the "direction"!!!
+
                     Thread.Sleep(1000/LPS);
                 }
             }).Start();

@@ -86,6 +86,7 @@ namespace AP2_Ex1
 
         public Dictionary<string, double> getLine(int lineNumber)
         {
+            //if (lineNumber < maxLIneNUmber)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! someoe please implement this, it causes a run time exception you nigga
             return (Dictionary<string, double>)data[lineNumber];
         }
 
@@ -99,7 +100,7 @@ namespace AP2_Ex1
             IList values = new ArrayList();
             foreach (Dictionary<string, double> d in data)
             {
-                double value;
+                double value= 0;
                 d.TryGetValue(key, out value);
                 values.Add(value);
             }

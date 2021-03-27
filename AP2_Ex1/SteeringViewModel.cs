@@ -54,7 +54,6 @@ namespace AP2_Ex1
             set
             {
                 this.model.Aileron = value;
-                NotifyPropertyChanged("MV_Aileron");
             }
         }
         public double VM_Elevator
@@ -66,7 +65,6 @@ namespace AP2_Ex1
             set
             {
                 this.model.Elevator = value;
-                NotifyPropertyChanged("MV_Elevator");
             }
         }
         public double VM_Altitude
@@ -78,7 +76,6 @@ namespace AP2_Ex1
             set
             {
                 this.model.Altitude = value;
-                NotifyPropertyChanged("VM_Altitude");
             }
         }
         public double VM_Speed
@@ -90,7 +87,6 @@ namespace AP2_Ex1
             set
             {
                 this.model.Speed = value;
-                NotifyPropertyChanged("VM_Speed");
             }
         }
         public double VM_Direction
@@ -102,7 +98,6 @@ namespace AP2_Ex1
             set
             {
                 this.model.Direction = value;
-                NotifyPropertyChanged("VM_Direction");
             }
         }
         public double VM_Yaw
@@ -114,7 +109,6 @@ namespace AP2_Ex1
             set
             {
                 this.model.Yaw = value;
-                NotifyPropertyChanged("VM_Yaw");
             }
         }
         public double VM_Roll
@@ -126,7 +120,6 @@ namespace AP2_Ex1
             set
             {
                 this.model.Roll = value;
-                NotifyPropertyChanged("VM_Roll");
             }
         }
         public double VM_Pitch
@@ -138,7 +131,6 @@ namespace AP2_Ex1
             set
             {
                 this.model.Pitch = value;
-                NotifyPropertyChanged("VM_Pitch");
             }
         }
         public void NotifyPropertyChanged(string propName)

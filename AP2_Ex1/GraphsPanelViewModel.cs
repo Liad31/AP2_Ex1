@@ -106,5 +106,12 @@ namespace AP2_Ex1
                 return model.mostCorelative[VM_CurrentProperty].yInterceptLinearRegression;
             }
         }
+        public int LPS
+        {
+            get
+            {
+                return model.LPS;
+            }
+        }
     }
 }
