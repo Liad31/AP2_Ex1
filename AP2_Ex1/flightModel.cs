@@ -74,7 +74,7 @@ namespace AP2_Ex1
                 stop = false;
                 while (!stop)
                 {
-                    if (!IsPaused)
+                    if (!IsPaused && CurrentLine < lineCount)
                     {
                         CurrentLine++;
                     }

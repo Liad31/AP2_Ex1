@@ -17,9 +17,9 @@
 
         </Grid.ColumnDefinitions>
         <Button Content="Open" HorizontalAlignment="Left" Margin="0,3,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="rwd" HorizontalAlignment="Left" Margin="89,3,0,0" VerticalAlignment="Top" Width="30"/>
-        <Button Content="S/P" HorizontalAlignment="Left" Margin="124,3,0,0" VerticalAlignment="Top" Width="30" Click="Button_Click"/>
-        <Button Content="fwd" HorizontalAlignment="Left" Margin="159,3,0,0" VerticalAlignment="Top" Width="30"/>
+        <Button Content="rwd" HorizontalAlignment="Left" Margin="89,3,0,0" VerticalAlignment="Top" Width="30" Click="rwdClick"/>
+        <Button Content="S/P" HorizontalAlignment="Left" Margin="124,3,0,0" VerticalAlignment="Top" Width="30" Click="SPButtonClick"/>
+        <Button Content="fwd" HorizontalAlignment="Left" Margin="159,3,0,0" VerticalAlignment="Top" Width="30" Click="fwdClick"/>
         <ComboBox HorizontalAlignment="Left" Margin="210,1,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="350,5,0,0" TextWrapping="Wrap" Text="Time" VerticalAlignment="Top" Width="120"/>
         <Slider x:Name="Progress" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="500" Minimum="0" Maximum="{Binding  Path=VM_LineCount}" Value="{Binding Path=VM_CurrentLine}"/>

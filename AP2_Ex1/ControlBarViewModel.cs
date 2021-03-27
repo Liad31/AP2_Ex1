@@ -61,6 +61,14 @@ namespace AP2_Ex1
                 this.model.SpeedMultiplier = value;
             }
         }
+
+        public int VM_LPS
+        {
+            get
+            {
+                return model.LPS;
+            }
+        }
        
 
         public void NotifyPropertyChanged(string propName)
