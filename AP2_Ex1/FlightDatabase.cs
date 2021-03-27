@@ -70,6 +70,7 @@ namespace AP2_Ex1
                 data.Add(d);
             }
             //loop to get keys (yes, I am lazy)
+            keys = new List<string>();
             foreach(KeyValuePair<string, double> p in (Dictionary<string, double>) data[0])
             {
                 keys.Add(p.Key);
