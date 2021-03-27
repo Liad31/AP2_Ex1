@@ -26,7 +26,7 @@ namespace AP2_Ex1
         {
             InitializeComponent();
             IDatabase database = new FlightDatabase(csvFilePath);
-            IModel model = new FlightModel(database);
+            IModel model = new FlightModel(database, 10);
             //var graphsModel = new GraphsModel(database, model);
             vm_steering = new SteeringViewModel(model);
             //vm_graphs = new GraphsPanelViewModel(graphsModel);

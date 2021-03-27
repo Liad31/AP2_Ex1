@@ -116,7 +116,7 @@ namespace AP2_Ex1
             return result;
         }
 
-        public int numOfLine()
+        public int numOfLines()
         {
             return lines.Count;
         }

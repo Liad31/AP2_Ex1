@@ -36,6 +36,6 @@ namespace AP2_Ex1
         /// returns number of lines of info
         /// </summary>
         /// <returns>num of lines</returns>
-        int numOfLine();
+        int numOfLines();
     }
 }

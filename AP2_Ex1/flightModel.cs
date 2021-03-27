@@ -52,10 +52,12 @@ namespace AP2_Ex1
         public double Yaw { get; set; }
         public double Roll { get; set; }
         public double Pitch { get; set; }
-        public FlightModel(IDatabase database)
+        public int LPS { get; private set; }
+        public FlightModel(IDatabase database, int lps)
         {
             this.database = database;
-            LineCount = 1000;
+            LineCount = database.numOfLines();
+            LPS = lps;
             //init propertyByColumn
         }
         public void NotifyPropertyChanged(string propName)
@@ -76,7 +78,7 @@ namespace AP2_Ex1
                     {
                         CurrentLine++;
                     }
-                    Thread.Sleep(100);
+                    Thread.Sleep(1000/LPS);
                 }
             }).Start();
         }
