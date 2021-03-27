@@ -115,5 +115,10 @@ namespace AP2_Ex1
 
             return result;
         }
+
+        public int numOfLine()
+        {
+            return lines.Count;
+        }
     }
 }

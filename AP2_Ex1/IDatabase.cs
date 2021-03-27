@@ -31,5 +31,11 @@ namespace AP2_Ex1
        /// <param name="key">key we want to get</param>
        /// <returns>List of doubles od the data</returns>
         List<double> getPropertyArray(string key);
+
+        /// <summary>
+        /// returns number of lines of info
+        /// </summary>
+        /// <returns>num of lines</returns>
+        int numOfLine();
     }
 }
