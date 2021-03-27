@@ -9,7 +9,6 @@ namespace AP2_Ex1
 {
      public interface IModel : INotifyPropertyChanged
     {
-        event PropertyChangedEventHandler PropertyChanged;
         Dictionary<String, double> LastLine { get; }
         int LineCount{get;}
         int CurrentLine { get; set; }

@@ -27,9 +27,9 @@ namespace AP2_Ex1
             InitializeComponent();
             var database = new FlightDatabase(csvFilePath);
             var model = new FlightModel(database);
-            var graphsModel = new GraphsModel(database, model);
+            //var graphsModel = new GraphsModel(database, model);
             vm_steering = new SteeringViewModel(model);
-            vm_graphs = new GraphsPanelViewModel(graphsModel);
+            //vm_graphs = new GraphsPanelViewModel(graphsModel);
             vm_steering.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
             {
                 if (e.PropertyName == "VM_Aileron")
@@ -41,33 +41,33 @@ namespace AP2_Ex1
                     stick.updateY(vm_steering.VM_Elevator);
                 }
             };
-            vm_graphs.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
-            {
-                if (e.PropertyName == "VM_Line")
-                {
-                    try
-                    {
-                        updateGraphs();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-                if (e.PropertyName == "VM_currentProperty")
-                {
-                    try
-                    {
-                        linearRegression.Plot.Clear();
-                        updateGraphs();
-                        linearRegression.Plot.PlotLine(vm_graphs.VM_SlopeLinearRegression, vm_graphs.VM_InterceptLinearRegression, (vm_graphs.VM_FullValuesArray.Min(),vm_graphs.VM_FullValuesArray.Max()),lineWidth: 2);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-            };
+            //vm_graphs.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
+            //{
+            //    if (e.PropertyName == "VM_Line")
+            //    {
+            //        try
+            //        {
+            //            updateGraphs();
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            MessageBox.Show(ex.Message);
+            //        }
+            //    }
+            //    if (e.PropertyName == "VM_currentProperty")
+            //    {
+            //        try
+            //        {
+            //            linearRegression.Plot.Clear();
+            //            updateGraphs();
+            //            linearRegression.Plot.PlotLine(vm_graphs.VM_SlopeLinearRegression, vm_graphs.VM_InterceptLinearRegression, (vm_graphs.VM_FullValuesArray.Min(),vm_graphs.VM_FullValuesArray.Max()),lineWidth: 2);
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            MessageBox.Show(ex.Message);
+            //        }
+            //    }
+            //};
           
         }
            
