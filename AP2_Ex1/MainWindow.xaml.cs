@@ -25,11 +25,12 @@ namespace AP2_Ex1
         public MainWindow(string csvFilePath, string xmlFilePath)
         {
             InitializeComponent();
-            var database = new FlightDatabase(csvFilePath);
-            var model = new FlightModel(database);
+            IDatabase database = new FlightDatabase(csvFilePath);
+            IModel model = new FlightModel(database);
             //var graphsModel = new GraphsModel(database, model);
             vm_steering = new SteeringViewModel(model);
             //vm_graphs = new GraphsPanelViewModel(graphsModel);
+            controlBar.Model = model;
             vm_steering.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
             {
                 if (e.PropertyName == "VM_Aileron")
@@ -68,7 +69,7 @@ namespace AP2_Ex1
             //        }
             //    }
             //};
-          
+            model.Start();
         }
            
         private void updateGraphs()

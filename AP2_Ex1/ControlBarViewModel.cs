@@ -18,6 +18,7 @@ namespace AP2_Ex1
             {
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
+            VM_IsPaused = false;
         }
         public int VM_LineCount
         {

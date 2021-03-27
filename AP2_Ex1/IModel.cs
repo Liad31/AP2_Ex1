@@ -9,6 +9,8 @@ namespace AP2_Ex1
 {
      public interface IModel : INotifyPropertyChanged
     {
+        void Start();
+        void Stop();
         Dictionary<String, double> LastLine { get; }
         int LineCount{get;}
         int CurrentLine { get; set; }

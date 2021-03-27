@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
         <Button Content="Open" HorizontalAlignment="Left" Margin="0,3,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Content="rwd" HorizontalAlignment="Left" Margin="89,3,0,0" VerticalAlignment="Top" Width="30"/>
-        <Button Content="S/P" HorizontalAlignment="Left" Margin="124,3,0,0" VerticalAlignment="Top" Width="30"/>
+        <Button Content="S/P" HorizontalAlignment="Left" Margin="124,3,0,0" VerticalAlignment="Top" Width="30" Click="Button_Click"/>
         <Button Content="fwd" HorizontalAlignment="Left" Margin="159,3,0,0" VerticalAlignment="Top" Width="30"/>
         <ComboBox HorizontalAlignment="Left" Margin="210,1,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="350,5,0,0" TextWrapping="Wrap" Text="Time" VerticalAlignment="Top" Width="120"/>

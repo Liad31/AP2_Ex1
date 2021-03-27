@@ -3,18 +3,42 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AP2_Ex1
 {
     public class FlightModel : IModel
     {
+        private bool stop;
         private IDatabase database;
+        private int currentLine;
+        private int lineCount;
         public event PropertyChangedEventHandler PropertyChanged;
         public Dictionary<String, double> LastLine { get; }
         //please implement the set functions so they will invoke NotifyPropertyChanged!!!!
-        public int LineCount { get; }
-        public int CurrentLine{ get; set; }
+        public int LineCount
+        {
+            get
+            {
+                return lineCount;
+            }
+            private set
+            {
+                lineCount = value;
+                NotifyPropertyChanged("LineCount");
+            }
+        }
+        public int CurrentLine
+        {
+            get { return currentLine; }
+            set
+            {
+                currentLine = value;
+                NotifyPropertyChanged("CurrentLine");
+            }
+
+        }
         public double CurrentTime { get; set; }
         public double SpeedMultiplier { get; set; }
         public bool IsPaused { get; set; }
@@ -37,6 +61,28 @@ namespace AP2_Ex1
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+        }
+
+        public void Start()
+        {
+            new Thread(delegate ()
+            {
+                LineCount = 1000;
+                stop = false;
+                while (!stop)
+                {
+                    if (!IsPaused)
+                    {
+                        CurrentLine++;
+                    }
+                    Thread.Sleep(100);
+                }
+            }).Start();
+        }
+
+        public void Stop()
+        {
+            stop = true;
         }
     }
 }

@@ -8,6 +8,7 @@ namespace AP2_Ex1.controls
         public ControlBarView()
         {
             InitializeComponent();
+            this.DataContext = viewModel;
         }
 
         public IModel Model
@@ -16,6 +17,11 @@ namespace AP2_Ex1.controls
             {
                 this.viewModel = new ControlBarViewModel(value); 
             }
+        }
+
+        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            viewModel.VM_IsPaused = !viewModel.VM_IsPaused;
         }
         //TODO: organize controls in grid, implement all function, check if this works if it doesn't delete all and start from scratch
     }
