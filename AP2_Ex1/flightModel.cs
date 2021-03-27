@@ -55,6 +55,7 @@ namespace AP2_Ex1
         public FlightModel(IDatabase database)
         {
             this.database = database;
+            LineCount = 1000;
             //init propertyByColumn
         }
         public void NotifyPropertyChanged(string propName)
@@ -67,7 +68,7 @@ namespace AP2_Ex1
         {
             new Thread(delegate ()
             {
-                LineCount = 1000;
+
                 stop = false;
                 while (!stop)
                 {

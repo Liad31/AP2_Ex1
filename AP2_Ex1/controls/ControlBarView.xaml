@@ -22,7 +22,7 @@
         <Button Content="fwd" HorizontalAlignment="Left" Margin="159,3,0,0" VerticalAlignment="Top" Width="30"/>
         <ComboBox HorizontalAlignment="Left" Margin="210,1,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="350,5,0,0" TextWrapping="Wrap" Text="Time" VerticalAlignment="Top" Width="120"/>
-        <Slider x:Name="Progress" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="500" Minimum="0" Maximum="{Binding  Path=VM_LineCount, Mode=TwoWay}" Value="{Binding Path=VM_CurrentLine}"/>
+        <Slider x:Name="Progress" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="500" Minimum="0" Maximum="{Binding  Path=VM_LineCount}" Value="{Binding Path=VM_CurrentLine}"/>
 
     </Grid>
     </Viewbox>

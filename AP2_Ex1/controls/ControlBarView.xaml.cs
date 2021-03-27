@@ -8,14 +8,15 @@ namespace AP2_Ex1.controls
         public ControlBarView()
         {
             InitializeComponent();
-            this.DataContext = viewModel;
+            
         }
 
         public IModel Model
         {
             set
             {
-                this.viewModel = new ControlBarViewModel(value); 
+                this.viewModel = new ControlBarViewModel(value);
+                this.DataContext = viewModel;
             }
         }
 
