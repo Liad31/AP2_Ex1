@@ -96,6 +96,7 @@ namespace AP2_Ex1
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+
         }
         public void switchGraphs(string propName)
         {

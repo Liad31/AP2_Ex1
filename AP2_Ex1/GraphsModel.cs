@@ -20,7 +20,18 @@ namespace AP2_Ex1
         public static Mutex mutex = new Mutex();
         public Dictionary<string, corellativeProperty> mostCorelative { get; private set; }
         public IDatabase database { get; }
-        public string currentProperty { get; set; }
+        private string cProperty;
+        public string currentProperty { get
+            {
+                return this.cProperty;
+            }
+            set
+            {
+                this.cProperty = value;
+                NotifyPropertyChanged("CurrentProperty");
+                NotifyPropertyChanged("MostCorellativeProperty");
+            }
+        }
         public List<double> values { get; private set; }
         public List<double> correlativeValues { get; private set; }
         public int Line { get; private set; }

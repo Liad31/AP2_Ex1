@@ -164,7 +164,7 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <ListBox x:Name="properties" ItemsSource="{Binding Path=VM_Properties}" BorderThickness="5" BorderBrush="Bisque" Grid.RowSpan="2" Background="White" SelectionChanged="Properties_SelectionChanged"/>
-                <WpfPlot Name="graph1" Grid.Column="1"/>
+                <WpfPlot Name="graph1" Grid.Column="1" IsEnabled="False"/>
                 <Grid Grid.Row="1" Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -172,7 +172,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock x:Name="titleGraph2" FontWeight="bold" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Run Text="the most corellative property is: "/>
-                        <Run Text="{Binding Path=VM_MostCorellativeProperty, Mode=Default}"/>
+                        <Run Text="{Binding Path=VM_MostCorellativeProperty}"/>
                     </TextBlock>
                     <WpfPlot Name="graph2" Grid.Row="1"/>
                 </Grid>

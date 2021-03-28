@@ -43,7 +43,6 @@ namespace AP2_Ex1
                     try
                     {
                         updateGraphs();
-                        Console.WriteLine(vm_graphs.VM_Line);
                     }
                     catch (Exception ex)
                     {
@@ -81,36 +80,33 @@ namespace AP2_Ex1
             model.Start();
         }
 
-        private void updateGraphs()
-        {
-            if (vm_graphs.VM_CurrentProperty != null)
+            private void updateGraphs()
             {
-                try
+                if (vm_graphs.VM_CurrentProperty != null)
                 {
-                    graph1.Plot.Clear();
-                    graph2.Plot.Clear();
-                    int len = vm_graphs.VM_Line;
-                    double[] arr = new double[len];
-                    double[] arr1 = new double[len];
-                    double[] arr2 = new double[len];
-                    vm_graphs.VM_LineList.GetRange(0, vm_graphs.VM_Line).ToArray().CopyTo(arr, 0);
-                    vm_graphs.VM_FullValuesArray.GetRange(0, vm_graphs.VM_Line).ToArray().CopyTo(arr1, 0);
-                    vm_graphs.VM_FullCorellativeValuesArray.GetRange(0, vm_graphs.VM_Line).ToArray().CopyTo(arr2, 0);
-                    graph2.Plot.AddScatter(arr, arr2);
-                    graph1.Plot.AddScatter(arr, arr1);
-                    graph1.Plot.AxisAuto();
-                    graph2.Plot.AxisAuto();
-                    graph1.Plot.SetAxisLimits(0, vm_graphs.VM_Line, arr1.Min(), arr1.Max());
-                    graph2.Plot.SetAxisLimits(0, vm_graphs.VM_Line, arr2.Min(), arr2.Max());
-                    graph1.Plot.Render();
-                    graph2.Plot.Render();
+                    try
+                    {
+                        graph1.Plot.Clear();
+                        graph2.Plot.Clear();
+                        int len = vm_graphs.VM_Line;
+                        double[] arr = new double[len];
+                        double[] arr1 = new double[len];
+                        double[] arr2 = new double[len];
+                        vm_graphs.VM_LineList.GetRange(0, vm_graphs.VM_Line).ToArray().CopyTo(arr, 0);
+                        vm_graphs.VM_FullValuesArray.GetRange(0, vm_graphs.VM_Line).ToArray().CopyTo(arr1, 0);
+                        vm_graphs.VM_FullCorellativeValuesArray.GetRange(0, vm_graphs.VM_Line).ToArray().CopyTo(arr2, 0);
+                        graph2.Plot.AddScatter(arr, arr2);
+                        graph1.Plot.AddScatter(arr, arr1);
+                        graph1.Plot.AxisAuto();
+                        graph2.Plot.AxisAuto();
+                        graph1.Render();
+                        graph2.Render();
 
 
 
-
-                    //linearRegression.Plot.PlotScatter(vm_graphs.VM_Values.GetRange(Math.Max(vm_graphs.VM_Values.Count() - vm_graphs.LPS * 30, 0), Math.Min(vm_graphs.LPS * 30, vm_graphs.VM_Values.Count())).ToArray(),
-                    //vm_graphs.VM_CorellativeValues.GetRange(Math.Max(vm_graphs.VM_Values.Count() - vm_graphs.LPS * 30, 0), Math.Min(vm_graphs.LPS * 30, vm_graphs.VM_Values.Count())).ToArray(), System.Drawing.Color.Gray, lineWidth: 0);
-                }
+                        //linearRegression.Plot.PlotScatter(vm_graphs.VM_Values.GetRange(Math.Max(vm_graphs.VM_Values.Count() - vm_graphs.LPS * 30, 0), Math.Min(vm_graphs.LPS * 30, vm_graphs.VM_Values.Count())).ToArray(),
+                        //vm_graphs.VM_CorellativeValues.GetRange(Math.Max(vm_graphs.VM_Values.Count() - vm_graphs.LPS * 30, 0), Math.Min(vm_graphs.LPS * 30, vm_graphs.VM_Values.Count())).ToArray(), System.Drawing.Color.Gray, lineWidth: 0);
+                    }
                 catch (Exception e)
                 {
                 }
