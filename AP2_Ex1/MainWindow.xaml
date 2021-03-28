@@ -6,154 +6,154 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="800">
-  <Grid>
     <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="6*"/>
-        <RowDefinition Height="3*"/>
-        <RowDefinition Height="1*"/>
-      </Grid.RowDefinitions>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="7*"/>
-        <ColumnDefinition Width="3*"/>
-      </Grid.ColumnDefinitions>
-      <Border BorderBrush="Black" BorderThickness="2" Grid.Column="2" Grid.Row="1"/>
-      <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="1"/>
-      <Grid x:Name="stickPanel" Grid.Column="3" Background="Honeydew" Grid.Row="1" RenderTransformOrigin="0.5,0.5">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="1*"/>
-          <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-          <RowDefinition Height="3*"/>
-          <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <Rectangle x:Name="panel1" Fill="#FF8FDBDE"/>
-        <Rectangle x:Name="panel2" Fill="#FF8FDBDE" Grid.Row="1" Grid.Column="1"/>
-        <Slider x:Name="throttle" Value="{Binding Path=VM_Throttle}" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" HorizontalAlignment="Center" IsEnabled="False">
-          <Slider.RenderTransform>
-            <TransformGroup>
-              <ScaleTransform ScaleX="3.3" ScaleY="1"/>
-              <SkewTransform AngleY="0" AngleX="0"/>
-              <RotateTransform Angle="0"/>
-              <TranslateTransform/>
-            </TransformGroup>
-          </Slider.RenderTransform>
-        </Slider>
-        <Slider x:Name="rudder" Value="{Binding Path=VM_Rudder}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" IsEnabled="False" Minimum="7">
-          <Slider.RenderTransform>
-            <TransformGroup>
-              <ScaleTransform ScaleY="2.3" ScaleX="1"/>
-              <SkewTransform/>
-              <RotateTransform/>
-              <TranslateTransform/>
-            </TransformGroup>
-          </Slider.RenderTransform>
-        </Slider>
-        <Controls:Stick x:Name="stick" Grid.Column="2" Grid.Row="0" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Border BorderBrush="Black" BorderThickness="2" Grid.Column="2" Grid.Row="1"/>
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="1"/>
+            <Grid x:Name="stickPanel" Grid.Column="3" Background="Honeydew" Grid.Row="1" RenderTransformOrigin="0.5,0.5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Rectangle x:Name="panel1" Fill="#FF8FDBDE"/>
+                <Rectangle x:Name="panel2" Fill="#FF8FDBDE" Grid.Row="1" Grid.Column="1"/>
+                <Slider x:Name="throttle" Value="{Binding Path=VM_Throttle}" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" HorizontalAlignment="Center" IsEnabled="False">
+                    <Slider.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="3.3" ScaleY="1"/>
+                            <SkewTransform AngleY="0" AngleX="0"/>
+                            <RotateTransform Angle="0"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Slider.RenderTransform>
+                </Slider>
+                <Slider x:Name="rudder" Value="{Binding Path=VM_Rudder}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" IsEnabled="False" Minimum="7">
+                    <Slider.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="2.3" ScaleX="1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Slider.RenderTransform>
+                </Slider>
+                <Controls:Stick x:Name="stick" Grid.Column="2" Grid.Row="0" />
 
 
-      </Grid>
-      <Grid x:Name="dataClocks" Grid.Row="1" Background="Honeydew">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="2*"/>
-          <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="1*"/>
-          <ColumnDefinition Width="1*"/>
-          <ColumnDefinition Width="1*"/>
-          <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <Slider x:Name="altitudeSlider" Value="{Binding Path=VM_Altitude}" Orientation="Vertical" HorizontalAlignment="Center" BorderThickness="1" IsEnabled="False" TickPlacement="Both" RenderTransformOrigin="0.5,0.5" BorderBrush="Black">
-          <Slider.RenderTransform>
-            <TransformGroup>
-              <ScaleTransform ScaleX="2"/>
-              <SkewTransform/>
-              <RotateTransform/>
-              <TranslateTransform/>
-            </TransformGroup>
-          </Slider.RenderTransform>
-        </Slider>
+            </Grid>
+            <Grid x:Name="dataClocks" Grid.Row="1" Background="Honeydew">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Slider x:Name="altitudeSlider" Value="{Binding Path=VM_Altitude}" Orientation="Vertical" HorizontalAlignment="Center" BorderThickness="1" IsEnabled="False" TickPlacement="Both" RenderTransformOrigin="0.5,0.5" BorderBrush="Black">
+                    <Slider.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="2"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Slider.RenderTransform>
+                </Slider>
                 <TextBlock x:Name="altitudeText" Text="{Binding Path=VM_Altitude}" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" RenderTransformOrigin="0.5,0.5" FontWeight="Bold">
                 </TextBlock>
-        <TextBlock x:Name="speed" Text="{Binding Path=VM_Speed}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" RenderTransformOrigin="0.5,0.5" >
-          <TextBlock.RenderTransform>
-            <TransformGroup>
-              <ScaleTransform ScaleX="3" ScaleY="3"/>
-              <SkewTransform/>
-              <RotateTransform/>
-              <TranslateTransform/>
-            </TransformGroup>
-          </TextBlock.RenderTransform>
-        </TextBlock>
-        <TextBlock x:Name="direction" Text="{Binding Path=VM_Direction}" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" RenderTransformOrigin="0.5,0.5" >
-          <TextBlock.RenderTransform>
-            <TransformGroup>
-              <ScaleTransform ScaleX="3" ScaleY="3"/>
-              <SkewTransform/>
-              <RotateTransform/>
-              <TranslateTransform/>
-            </TransformGroup>
-          </TextBlock.RenderTransform>
-        </TextBlock>
-        <Grid Grid.Column="3" DataContext="{Binding ElementName=this.vm_steering, Path=.}">
-          <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-          </Grid.RowDefinitions>
-          <TextBlock Text="yaw:" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
-            <TextBlock.RenderTransform>
-              <TransformGroup>
-                <ScaleTransform ScaleX="2" ScaleY="2"/>
-                <SkewTransform/>
-                <RotateTransform/>
-                <TranslateTransform/>
-              </TransformGroup>
-            </TextBlock.RenderTransform>
-          </TextBlock>
-          <TextBlock Text="roll:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" RenderTransformOrigin="0.5,0.5">
-            <TextBlock.RenderTransform>
-              <TransformGroup>
-                <ScaleTransform ScaleX="2" ScaleY="2"/>
-                <SkewTransform/>
-                <RotateTransform/>
-                <TranslateTransform/>
-              </TransformGroup>
-            </TextBlock.RenderTransform>
-          </TextBlock>
-            <TextBlock x:Name="yaw" Text="{Binding Path=VM_Yaw}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" >
-            </TextBlock>
-            <TextBlock x:Name="roll" Text="{Binding Path=VM_Roll}" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" >
-            </TextBlock>
-          <Border BorderBrush="Black" BorderThickness="1"/>
-          <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1"/>
-          <Border BorderBrush="Black" BorderThickness="1" Grid.Row="2" />
-          <Border BorderBrush="Black" BorderThickness="1" Grid.Row="3"/>
-        </Grid>
-          <Grid Grid.Column="3" Grid.Row="1">
-            <Grid.RowDefinitions>
-              <RowDefinition Height="1*"/>
-              <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-            <TextBlock Text="pitch:" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
-              <TextBlock.RenderTransform>
-                <TransformGroup>
-                  <ScaleTransform ScaleX="2" ScaleY="2"/>
-                  <SkewTransform/>
-                  <RotateTransform/>
-                  <TranslateTransform/>
-                </TransformGroup>
-              </TextBlock.RenderTransform>
-            </TextBlock>
-            <TextBlock x:Name="pitch" Text="{Binding Path=VM_Pitch}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold">
-            </TextBlock>
-            <Border BorderBrush="Black" BorderThickness="1"/>
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1"/>
-          </Grid>
-        </Grid>
+                <TextBlock x:Name="speed" Text="{Binding Path=VM_Speed}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" RenderTransformOrigin="0.5,0.5" >
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="3" ScaleY="3"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock x:Name="direction" Text="{Binding Path=VM_Direction}" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" RenderTransformOrigin="0.5,0.5" >
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="3" ScaleY="3"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <Grid Grid.Column="3" DataContext="{Binding ElementName=this.vm_steering, Path=.}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="yaw:" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="2" ScaleY="2"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBlock Text="roll:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="2" ScaleY="2"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBlock x:Name="yaw" Text="{Binding Path=VM_Yaw}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" >
+                    </TextBlock>
+                    <TextBlock x:Name="roll" Text="{Binding Path=VM_Roll}" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" >
+                    </TextBlock>
+                    <Border BorderBrush="Black" BorderThickness="1"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Grid.Row="2" />
+                    <Border BorderBrush="Black" BorderThickness="1" Grid.Row="3"/>
+                </Grid>
+                <Grid Grid.Column="3" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="pitch:" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="2" ScaleY="2"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBlock x:Name="pitch" Text="{Binding Path=VM_Pitch}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold">
+                    </TextBlock>
+                    <Border BorderBrush="Black" BorderThickness="1"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1"/>
+                </Grid>
+            </Grid>
             <Grid Background="LightGray">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
@@ -163,19 +163,16 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <ListBox ItemsSource="{Binding ElementName=this.vm_graphs, Path=VM_Properties}" BorderThickness="5" BorderBrush="Bisque" Grid.RowSpan="2" Background="White"/>
+                <ListBox x:Name="properties" ItemsSource="{Binding Path=VM_Properties}" BorderThickness="5" BorderBrush="Bisque" Grid.RowSpan="2" Background="White" SelectionChanged="Properties_SelectionChanged"/>
                 <WpfPlot Name="graph1" Grid.Column="1"/>
                 <Grid Grid.Row="1" Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="7*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock>
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat="the most corellative property is: {0}">
-                                <Binding ElementName="vm_graphs" Path="mostCorellativeProperty"/>
-                            </MultiBinding>
-                        </TextBlock.Text>
+                    <TextBlock x:Name="titleGraph2" FontWeight="bold" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Run Text="the most corellative property is: "/>
+                        <Run Text="{Binding Path=VM_MostCorellativeProperty, Mode=Default}"/>
                     </TextBlock>
                     <WpfPlot Name="graph2" Grid.Row="1"/>
                 </Grid>
@@ -183,5 +180,5 @@
             <WpfPlot Name="linearRegression" Grid.Column="1"/>
             <Controls:ControlBarView x:Name="controlBar" Grid.ColumnSpan="2" Grid.Row="2" />
         </Grid>
-  </Grid>
+    </Grid>
 </Window>

@@ -12,7 +12,8 @@ namespace AP2_Ex1
         GraphsModel model;
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public GraphsPanelViewModel(GraphsModel model) {
+        public GraphsPanelViewModel(GraphsModel model)
+        {
             this.model = model;
             model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
             {
@@ -26,7 +27,8 @@ namespace AP2_Ex1
                 return model.database.Properties;
             }
         }
-        public int VM_Line{
+        public int VM_Line
+        {
             get
             {
                 return model.Line;
@@ -64,7 +66,7 @@ namespace AP2_Ex1
         {
             get
             {
-                return model.LineList.GetRange(0, VM_Line);
+                return model.LineList;
             }
         }
         public string VM_CurrentProperty
@@ -78,7 +80,15 @@ namespace AP2_Ex1
         {
             get
             {
+                if (model.currentProperty == null)
+                {
+                    return "Uninitialized yet";
+                }
                 return model.mostCorelative[VM_CurrentProperty].name;
+            }
+            set
+            {
+
             }
         }
 

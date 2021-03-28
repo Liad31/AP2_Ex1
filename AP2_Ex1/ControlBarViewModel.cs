@@ -74,7 +74,7 @@ namespace AP2_Ex1
         {
             get
             {
-                return model.CurrentTime;
+                return model.CurrentTimeString;
             }
         }
        

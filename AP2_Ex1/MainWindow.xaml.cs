@@ -23,53 +23,49 @@ namespace AP2_Ex1
         private SteeringViewModel vm_steering;
         private GraphsPanelViewModel vm_graphs;
         private int i = 0;
+        private double[] arr;
+        private double[] xs;
+        private double[] ys;
         public MainWindow(string csvFilePath, string xmlFilePath)
         {
             InitializeComponent();
             IDatabase database = new FlightDatabase(csvFilePath);
             IModel model = new FlightModel(database, 10);
-            //graphsModel graphsModel = new GraphsModel(database, model);
+            GraphsModel graphsModel = new GraphsModel(database, model);
             vm_steering = new SteeringViewModel(model);
-            //vm_graphs = new GraphsPanelViewModel(graphsModel);
+            vm_graphs = new GraphsPanelViewModel(graphsModel);
             controlBar.Model = model;
-            vm_steering.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
+            stick.VM_Steering = vm_steering;
+            vm_graphs.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
             {
-                if (e.PropertyName == "VM_Aileron")
+                if (e.PropertyName == "VM_Line")
                 {
-                    //stick.updateX(vm_steering.VM_Aileron);
+                    try
+                    {
+                        updateGraphs();
+                        Console.WriteLine(vm_graphs.VM_Line);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-                if (e.PropertyName == "VM_Elevator")
+                if (e.PropertyName == "VM_CurrentProperty")
                 {
-                    //stick.updateY(vm_steering.VM_Elevator);
+                    try
+                    {
+                        linearRegression.Plot.Clear();
+                        updateGraphs();
+                        linearRegression.Plot.PlotLine(vm_graphs.VM_SlopeLinearRegression, vm_graphs.VM_InterceptLinearRegression, (vm_graphs.VM_FullValuesArray.Min(), vm_graphs.VM_FullValuesArray.Max()), lineWidth: 2);
+                        linearRegression.Plot.AxisAuto();
+                        linearRegression.Plot.Render();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             };
-            //vm_graphs.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
-            //{
-            //    if (e.PropertyName == "VM_Line")
-            //    {
-            //        try
-            //        {
-            //            updateGraphs();
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            MessageBox.Show(ex.Message);
-            //        }
-            //    }
-            //    if (e.PropertyName == "VM_currentProperty")
-            //    {
-            //        try
-            //        {
-            //            linearRegression.Plot.Clear();
-            //            updateGraphs();
-            //            linearRegression.Plot.PlotLine(vm_graphs.VM_SlopeLinearRegression, vm_graphs.VM_InterceptLinearRegression, (vm_graphs.VM_FullValuesArray.Min(),vm_graphs.VM_FullValuesArray.Max()),lineWidth: 2);
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            MessageBox.Show(ex.Message);
-            //        }
-            //    }
-            //};
 
             roll.DataContext = vm_steering;
             yaw.DataContext = vm_steering;
@@ -80,17 +76,54 @@ namespace AP2_Ex1
             throttle.DataContext = vm_steering;
             rudder.DataContext = vm_steering;
             speed.DataContext = vm_steering;
+            titleGraph2.DataContext = vm_graphs;
+            properties.DataContext = vm_graphs;
             model.Start();
         }
-           
+
         private void updateGraphs()
         {
-            graph1.Plot.Clear();
-            graph2.Plot.Clear();
-            graph2.Plot.AddScatter(vm_graphs.VM_LineList.ToArray(), vm_graphs.VM_CorellativeValues.ToArray());
-            graph1.Plot.AddScatter(vm_graphs.VM_LineList.ToArray(), vm_graphs.VM_Values.ToArray());
-            linearRegression.Plot.PlotScatter(vm_graphs.VM_Values.GetRange(vm_graphs.VM_Values.Count()-vm_graphs.LPS * 30, vm_graphs.LPS * 30).ToArray(), vm_graphs.VM_CorellativeValues.GetRange(vm_graphs.VM_Values.Count() - vm_graphs.LPS * 30, vm_graphs.LPS * 30).ToArray(), System.Drawing.Color.Gray,lineWidth: 0);
-            //30 seconds and not 300!!!!
+            if (vm_graphs.VM_CurrentProperty != null)
+            {
+                try
+                {
+                    graph1.Plot.Clear();
+                    graph2.Plot.Clear();
+                    int len = vm_graphs.VM_Line;
+                    double[] arr = new double[len];
+                    double[] arr1 = new double[len];
+                    double[] arr2 = new double[len];
+                    vm_graphs.VM_LineList.GetRange(0, vm_graphs.VM_Line).ToArray().CopyTo(arr, 0);
+                    vm_graphs.VM_FullValuesArray.GetRange(0, vm_graphs.VM_Line).ToArray().CopyTo(arr1, 0);
+                    vm_graphs.VM_FullCorellativeValuesArray.GetRange(0, vm_graphs.VM_Line).ToArray().CopyTo(arr2, 0);
+                    graph2.Plot.AddScatter(arr, arr2);
+                    graph1.Plot.AddScatter(arr, arr1);
+                    graph1.Plot.AxisAuto();
+                    graph2.Plot.AxisAuto();
+                    graph1.Plot.SetAxisLimits(0, vm_graphs.VM_Line, arr1.Min(), arr1.Max());
+                    graph2.Plot.SetAxisLimits(0, vm_graphs.VM_Line, arr2.Min(), arr2.Max());
+                    graph1.Plot.Render();
+                    graph2.Plot.Render();
+
+
+
+
+                    //linearRegression.Plot.PlotScatter(vm_graphs.VM_Values.GetRange(Math.Max(vm_graphs.VM_Values.Count() - vm_graphs.LPS * 30, 0), Math.Min(vm_graphs.LPS * 30, vm_graphs.VM_Values.Count())).ToArray(),
+                    //vm_graphs.VM_CorellativeValues.GetRange(Math.Max(vm_graphs.VM_Values.Count() - vm_graphs.LPS * 30, 0), Math.Min(vm_graphs.LPS * 30, vm_graphs.VM_Values.Count())).ToArray(), System.Drawing.Color.Gray, lineWidth: 0);
+                }
+                catch (Exception e)
+                {
+                }
+            }
+        }
+
+        private void Properties_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                vm_graphs.switchGraphs(properties.SelectedItem.ToString());
+            }
+            catch (Exception ex) { }
         }
     }
 }

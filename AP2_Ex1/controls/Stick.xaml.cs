@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace AP2_Ex1.controls
 {
@@ -20,7 +21,29 @@ namespace AP2_Ex1.controls
     /// </summary>
     public partial class Stick : UserControl
     {
-
+        private SteeringViewModel vm_steering;
+        public SteeringViewModel VM_Steering
+        {
+            get
+            {
+                return vm_steering;
+            }
+            set
+            {
+                vm_steering = value;
+                vm_steering.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
+                {
+                    if (e.PropertyName == "VM_Aileron")
+                    {
+                        this.Dispatcher.Invoke(() => { updateX(vm_steering.VM_Aileron); });
+                    }
+                    if (e.PropertyName == "VM_Elevator")
+                    {
+                        this.Dispatcher.Invoke(() => { updateY(vm_steering.VM_Aileron); });
+                    }
+                };
+            }
+        }
         public Stick()
         {
             InitializeComponent();

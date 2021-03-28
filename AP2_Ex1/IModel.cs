@@ -14,7 +14,8 @@ namespace AP2_Ex1
         Dictionary<String, double> LastLine { get; }
         int LineCount{get;}
         int CurrentLine { get; set; }
-        string CurrentTime { get; set; }
+        string CurrentTimeString { get; set; }
+        double CurrentTime { get; set; }
         double SpeedMultiplier { get; set; }
         bool IsPaused { get; set; }
         

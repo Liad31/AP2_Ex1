@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using System.Threading;
 
 namespace AP2_Ex1
 {
@@ -16,6 +17,7 @@ namespace AP2_Ex1
     }
     public class GraphsModel : INotifyPropertyChanged
     {
+        public static Mutex mutex = new Mutex();
         public Dictionary<string, corellativeProperty> mostCorelative { get; private set; }
         public IDatabase database { get; }
         public string currentProperty { get; set; }
@@ -42,10 +44,10 @@ namespace AP2_Ex1
             {
                 LineList.Add(i);
             }
-            mainModel.PropertyChanged += delegate(Object sender, PropertyChangedEventArgs e) {
+            mainModel.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) {
                 if (e.PropertyName == "CurrentLine")
                 {
-                    Line++;
+                    Line = mainModel.CurrentLine;
                     NotifyPropertyChanged("Line");
                 }
             };
@@ -53,15 +55,15 @@ namespace AP2_Ex1
         }
         private void initCorelatives()
         {
+            mostCorelative = new Dictionary<string, corellativeProperty>();
             foreach (string property in database.Properties)
             {
-                double max = -1;
-                mostCorelative = new Dictionary<string, corellativeProperty>();
+                double max = -2;// pearson is between -1 to 1
                 mostCorelative.Add(property, null);
                 var arr1 = database.getPropertyArray(property) as List<double>;
+                mostCorelative[property] = new corellativeProperty();
                 foreach (string otherProperty in database.Properties)
                 {
-                    mostCorelative[property] = new corellativeProperty();
                     if (property != otherProperty)
                     {
                         var arr2 = database.getPropertyArray(otherProperty) as List<double>;
@@ -87,8 +89,8 @@ namespace AP2_Ex1
         public static void LinearRegression(
             double[] xVals,
             double[] yVals,
-            out double yIntercept,
-            out double slope)
+            out Double yIntercept,
+            out Double slope)
         {
             if (xVals.Length != yVals.Length)
             {
@@ -126,13 +128,21 @@ namespace AP2_Ex1
 
             yIntercept = meanY - ((sCo / ssX) * meanX);
             slope = sCo / ssX;
+            if (Double.IsNaN(yIntercept))
+            {
+                yIntercept = 0;
+            }
+            if (Double.IsNaN(slope))
+            {
+                slope = 0;
+            }
         }
 
-    private double getPearson(List<double> arr1, List<double> arr2)
+        private double getPearson(List<double> arr1, List<double> arr2)
         {
             if (arr1.Count() != arr2.Count())
                 throw new ArgumentException("values must be the same length");
-            
+
             var avg1 = arr1.Average();
             var avg2 = arr2.Average();
 
@@ -140,6 +150,10 @@ namespace AP2_Ex1
 
             var sumSqr1 = arr1.Sum(x => Math.Pow((x - avg1), 2.0));
             var sumSqr2 = arr2.Sum(y => Math.Pow((y - avg2), 2.0));
+            if (sumSqr1 * sumSqr2 == 0)
+            {
+                return -1;
+            }
 
             var result = sum1 / Math.Sqrt(sumSqr1 * sumSqr2);
 
@@ -153,9 +167,16 @@ namespace AP2_Ex1
         }
         public void switchGraphs()
         {
-            values = database.getPropertyArray(currentProperty);
-            correlativeValues = database.getPropertyArray(mostCorelative[currentProperty].name);
-            NotifyPropertyChanged("currentProperty");
+            try
+            {
+                values = database.getPropertyArray(currentProperty);
+                correlativeValues = database.getPropertyArray(mostCorelative[currentProperty].name);
+                NotifyPropertyChanged("CurrentProperty");
+            }
+            catch (Exception e)
+            {
+
+            }
         }
     }
 }

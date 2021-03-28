@@ -19,7 +19,7 @@ namespace AP2_Ex1
             data = new ArrayList();
             lines = new ArrayList();
             while (!reader.EndOfStream)
-            { 
+            {
                 Dictionary<String, Double> d = new Dictionary<string, double>();
                 String line = reader.ReadLine();
                 lines.Add(line);
@@ -31,11 +31,11 @@ namespace AP2_Ex1
                 d.Add("slats", Convert.ToDouble(values[4]));
                 d.Add("speedbrake", Convert.ToDouble(values[5]));
                 d.Add("throttle", Convert.ToDouble(values[6]));
-              //d.Add("throttle", Convert.ToDouble(values[7]));
+                //d.Add("throttle", Convert.ToDouble(values[7]));
                 d.Add("engine-pump", Convert.ToDouble(values[8]));
-              //d.Add("engine-pump", Convert.ToDouble(values[9]));
+                //d.Add("engine-pump", Convert.ToDouble(values[9]));
                 d.Add("electric-pump", Convert.ToDouble(values[10]));
-              //d.Add("electric-pump", Convert.ToDouble(values[11]));
+                //d.Add("electric-pump", Convert.ToDouble(values[11]));
                 d.Add("external-power", Convert.ToDouble(values[12]));
                 d.Add("APU-generator", Convert.ToDouble(values[13]));
                 d.Add("latitude-deg", Convert.ToDouble(values[14]));
@@ -71,7 +71,7 @@ namespace AP2_Ex1
             }
             //loop to get keys (yes, I am lazy)
             keys = new List<string>();
-            foreach(KeyValuePair<string, double> p in (Dictionary<string, double>) data[0])
+            foreach (KeyValuePair<string, double> p in (Dictionary<string, double>)data[0])
             {
                 keys.Add(p.Key);
             }
@@ -86,8 +86,11 @@ namespace AP2_Ex1
 
         public Dictionary<string, double> getLine(int lineNumber)
         {
-            //if (lineNumber < maxLIneNUmber)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! someoe please implement this, it causes a run time exception you nigga
-            return (Dictionary<string, double>)data[lineNumber];
+            if (lineNumber < data.Count)
+            {
+                return (Dictionary<string, double>)data[lineNumber];
+            }
+            return (Dictionary<string, double>)data[data.Count - 1];
         }
 
         public string getLineString(int lineNumber)
@@ -100,7 +103,7 @@ namespace AP2_Ex1
             IList values = new ArrayList();
             foreach (Dictionary<string, double> d in data)
             {
-                double value= 0;
+                double value = 0;
                 d.TryGetValue(key, out value);
                 values.Add(value);
             }
