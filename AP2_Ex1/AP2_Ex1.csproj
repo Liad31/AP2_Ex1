@@ -75,6 +75,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ControlBarViewModel.cs" />
+    <Compile Include="controls\Compass.xaml.cs">
+      <DependentUpon>Compass.xaml</DependentUpon>
+    </Compile>
     <Compile Include="controls\ControlBarView.xaml.cs">
       <DependentUpon>ControlBarView.xaml</DependentUpon>
     </Compile>
@@ -94,6 +97,10 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="controls\Compass.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="controls\ControlBarView.xaml" />
     <Page Include="controls\speedClock.xaml">
       <SubType>Designer</SubType>
@@ -147,8 +154,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="images\" />
+    <Resource Include="images\compass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\speed_clock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
