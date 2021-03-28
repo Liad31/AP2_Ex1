@@ -69,6 +69,14 @@ namespace AP2_Ex1
                 return model.LPS;
             }
         }
+
+        public string VM_CurrentTime
+        {
+            get
+            {
+                return model.CurrentTime;
+            }
+        }
        
 
         public void NotifyPropertyChanged(string propName)

@@ -29,7 +29,7 @@
                 <ComboBoxItem Content="X0.25"/>
             </ComboBox>
 
-            <TextBlock HorizontalAlignment="Left" Margin="350,5,0,0" TextWrapping="Wrap" Text="Time" VerticalAlignment="Top" Width="120"/>
+            <TextBlock HorizontalAlignment="Left" Margin="350,5,0,0" TextWrapping="Wrap" Text="{Binding Path=VM_CurrentTime}" VerticalAlignment="Top" Width="120"/>
         <Slider x:Name="Progress" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="500" Minimum="0" Maximum="{Binding  Path=VM_LineCount}" Value="{Binding Path=VM_CurrentLine}" IsMoveToPointEnabled="True" ValueChanged="Progress_ValueChanged"/>
 
     </Grid>

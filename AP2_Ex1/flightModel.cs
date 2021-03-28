@@ -25,6 +25,7 @@ namespace AP2_Ex1
         private double airspeed;
         private double direction;
         private double speedMultiplier;
+        private string currentTime;
         public event PropertyChangedEventHandler PropertyChanged;
         public Dictionary<String, double> LastLine { get; }
         //please implement the set functions so they will invoke NotifyPropertyChanged!!!!
@@ -49,7 +50,18 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("CurrentLine");
             }
         }
-        public double CurrentTime { get; set; }
+        public string CurrentTime
+        {
+            get
+            {
+                return currentTime;
+            }
+            set
+            {
+                currentTime = value;
+                NotifyPropertyChanged("CurrentTime");
+            }
+        }
         public bool IsPaused{ get; set; }
         public double Rudder
         {
@@ -230,7 +242,7 @@ namespace AP2_Ex1
                     Altitude = temp;
                     //add the "direction"!!!
 
-                    CurrentTime = CurrentLine / LPS;
+                    CurrentTime =  (TimeSpan.FromSeconds(CurrentLine / LPS)).ToString(@"mm\:ss"); ;
                     Thread.Sleep((int) (1000/(LPS * SpeedMultiplier)));
                 }
             }).Start();
