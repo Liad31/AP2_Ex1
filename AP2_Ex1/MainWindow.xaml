@@ -176,10 +176,10 @@
                         <Run Text="the most corellative property is: "/>
                         <Run Text="{Binding Path=VM_MostCorellativeProperty}"/>
                     </TextBlock>
-                    <WpfPlot Name="graph2" Grid.Row="1"/>
+                    <WpfPlot Name="graph2" Grid.Row="1" IsEnabled="false"/>
                 </Grid>
             </Grid>
-            <WpfPlot Name="linearRegression" Grid.Column="1"/>
+            <WpfPlot Name="linearRegression" Grid.Column="1" IsEnabled="false"/>
             <Controls:ControlBarView x:Name="controlBar" Grid.ColumnSpan="2" Grid.Row="2" />
         </Grid>
     </Grid>
