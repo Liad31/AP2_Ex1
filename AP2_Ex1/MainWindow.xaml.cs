@@ -80,42 +80,62 @@ namespace AP2_Ex1
             model.Start();
         }
 
-            private void updateGraphs()
+        private void updateGraphs()
+        {
+            if (vm_graphs.VM_CurrentProperty != null)
             {
-                if (vm_graphs.VM_CurrentProperty != null)
+                try
                 {
-                    try
+                    graph1.Plot.Clear();
+                    graph2.Plot.Clear();
+                    int len = vm_graphs.VM_Line;
+                    double[] arr = new double[len];
+                    double[] arr1 = new double[len];
+                    double[] arr2 = new double[len];
+                    vm_graphs.VM_LineList.GetRange(0, vm_graphs.VM_Line).ToArray().CopyTo(arr, 0);
+                    vm_graphs.VM_FullValuesArray.GetRange(0, vm_graphs.VM_Line).ToArray().CopyTo(arr1, 0);
+                    vm_graphs.VM_FullCorellativeValuesArray.GetRange(0, vm_graphs.VM_Line).ToArray().CopyTo(arr2, 0);
+                    graph2.Plot.AddScatter(arr, arr2);
+                    graph1.Plot.AddScatter(arr, arr1);
+                    graph1.Plot.AxisAuto();
+                    graph2.Plot.AxisAuto();
+                    this.Dispatcher.Invoke(() =>
                     {
-                        graph1.Plot.Clear();
-                        graph2.Plot.Clear();
-                        int len = vm_graphs.VM_Line;
-                        double[] arr = new double[len];
-                        double[] arr1 = new double[len];
-                        double[] arr2 = new double[len];
-                        vm_graphs.VM_LineList.GetRange(0, vm_graphs.VM_Line).ToArray().CopyTo(arr, 0);
-                        vm_graphs.VM_FullValuesArray.GetRange(0, vm_graphs.VM_Line).ToArray().CopyTo(arr1, 0);
-                        vm_graphs.VM_FullCorellativeValuesArray.GetRange(0, vm_graphs.VM_Line).ToArray().CopyTo(arr2, 0);
-                        graph2.Plot.AddScatter(arr, arr2);
-                        graph1.Plot.AddScatter(arr, arr1);
-                        graph1.Plot.AxisAuto();
-                        graph2.Plot.AxisAuto();
-                        this.Dispatcher.Invoke(() => { graph1.Render(); });
-                        this.Dispatcher.Invoke(() => { graph2.Render(); });
+                        try
+                        {
+                            graph1.Render();
+                        }
+                        catch (Exception e) { }
+                    });
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        try
+                        {
+                            graph2.Render();
+                        }
+                        catch (Exception e) { }
+                    });
 
-
-                        linearRegression.Plot.Clear();
-                        linearRegression.Plot.AddLine(vm_graphs.VM_SlopeLinearRegression, vm_graphs.VM_InterceptLinearRegression,
-                            (vm_graphs.minLinearRegressionVal, vm_graphs.maxLinearRegressionVal), lineWidth: 2);
-                        linearRegression.Plot.AxisAuto();
-                        //printing the last 30 seconds samples
-                        linearRegression.Plot.AddScatter(vm_graphs.VM_Values.GetRange(Math.Max(vm_graphs.VM_Values.Count() - vm_graphs.LPS * 30, 0), Math.Min(vm_graphs.LPS * 30, vm_graphs.VM_Values.Count())).ToArray(),
-                         vm_graphs.VM_CorellativeValues.GetRange(Math.Max(vm_graphs.VM_Values.Count() - vm_graphs.LPS * 30, 0), Math.Min(vm_graphs.LPS * 30, vm_graphs.VM_Values.Count())).ToArray(), System.Drawing.Color.Gray, lineWidth: 0);
-                        this.Dispatcher.Invoke(() => { linearRegression.Render(); });
+                    linearRegression.Plot.Clear();
+                    linearRegression.Plot.AddLine(vm_graphs.VM_SlopeLinearRegression, vm_graphs.VM_InterceptLinearRegression,
+                        (vm_graphs.minLinearRegressionVal, vm_graphs.maxLinearRegressionVal), lineWidth: 2);
+                    linearRegression.Plot.AxisAuto();
+                    //printing the last 30 seconds samples
+                    linearRegression.Plot.AddScatter(vm_graphs.VM_Values.GetRange(Math.Max(vm_graphs.VM_Values.Count() - vm_graphs.LPS * 30, 0), Math.Min(vm_graphs.LPS * 30, vm_graphs.VM_Values.Count())).ToArray(),
+                     vm_graphs.VM_CorellativeValues.GetRange(Math.Max(vm_graphs.VM_Values.Count() - vm_graphs.LPS * 30, 0), Math.Min(vm_graphs.LPS * 30, vm_graphs.VM_Values.Count())).ToArray(), System.Drawing.Color.Gray, lineWidth: 0);
+                    this.Dispatcher.Invoke(() => 
+                    {
+                        try
+                        {
+                            graph1.Render();
+                        }
+                        catch (Exception e) { }
+                    });
                 }
                 catch (Exception e)
-                    {
+                {
                     Console.WriteLine(e.Message);
-                    }
+                }
             }
         }
 
