@@ -11,6 +11,9 @@ namespace AP2_Ex1
     {
         GraphsModel model;
         public event PropertyChangedEventHandler PropertyChanged;
+        public double minLinearRegressionVal { get; set; }
+        public double maxLinearRegressionVal { get; set; }
+
 
         public GraphsPanelViewModel(GraphsModel model)
         {
