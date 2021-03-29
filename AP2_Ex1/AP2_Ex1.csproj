@@ -93,6 +93,7 @@
     <Compile Include="GraphsPanelViewModel.cs" />
     <Compile Include="IDatabase.cs" />
     <Compile Include="IModel.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="SteeringViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
