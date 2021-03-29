@@ -25,6 +25,7 @@ namespace AP2_Ex1
         public void sendString(String str)
         {
             stream.Write(Encoding.ASCII.GetBytes(str), 0, str.Length);
+            stream.Flush();
         }
 
         public void close()

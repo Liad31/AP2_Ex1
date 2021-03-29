@@ -224,7 +224,7 @@ namespace AP2_Ex1
                     {
                         CurrentLine++;
                     }
-                    client.sendString(database.getLineString(CurrentLine));
+                    client.sendString(database.getLineString(CurrentLine) + "\n");
                     dic = database.getLine(CurrentLine);
                     double temp;
                     dic.TryGetValue("roll-deg", out temp);
@@ -248,8 +248,6 @@ namespace AP2_Ex1
                     //add the "direction"!!!
 
                     CurrentTimeString = (TimeSpan.FromSeconds(CurrentLine / LPS)).ToString(@"mm\:ss"); ;
-                    Thread.Sleep((int)(1000 / (LPS * SpeedMultiplier)));
-                    CurrentTime = CurrentLine / LPS;
                     Thread.Sleep((int)(1000 / (LPS * SpeedMultiplier)));
                 }
                 client.close();
