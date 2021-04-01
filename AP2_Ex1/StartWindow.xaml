@@ -6,14 +6,45 @@
         xmlns:local="clr-namespace:AP2_Ex1"
         mc:Ignorable="d"
         Title="StartWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="choose the data file" FontSize="16" HorizontalAlignment="Left" Margin="200,290,0,0" VerticalAlignment="Top" Width="200" Height="45" RenderTransformOrigin="0.5,1.481" Click="Button_Click"  Background="OrangeRed" BorderBrush="Black"/>
-        <Button Content="choose the xml file" FontSize="16" HorizontalAlignment="Left" Margin="400,290,0,0" VerticalAlignment="Top" Width="200" RenderTransformOrigin="-0.021,-0.789" Height="45" Click="Button_Click_1" Background="OrangeRed" BorderBrush="Black"/>
-        <Button Content="start simulation" FontSize="22" HorizontalAlignment="Left" Margin="200,335,0,0" VerticalAlignment="Top" Width="400" Height="50" Click="Button_Click_2" Background="Green"/>
-        <TextBlock x:Name="dataFileBox" HorizontalAlignment="Left" FontSize="16" Height="75" Margin="200,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Background="LightGray" />
-        <TextBlock x:Name="XMLFileBox" HorizontalAlignment="Left" FontSize="16" Height="75" Margin="400,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Background="LightGray" />
-        <TextBlock HorizontalAlignment="Left" Height="80" Margin="300,25,0,0" TextWrapping="Wrap" Text="welcome to our flight simulator" VerticalAlignment="Top" Width="200" FontSize="24" TextAlignment="Center" FontStyle="Italic" Background="Azure"/>
-        <Image Source="images/home.jpg" Margin="285,105,270,195" Width="230"/>
-        <Rectangle Width="2" Height="75" Fill="Black" Margin="399,215,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+   
+    <Grid Background="SkyBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <TextBlock TextWrapping="Wrap" Text="Welcome to our flight simulator!" VerticalAlignment="Center" Width="350"
+                   FontSize="24" TextAlignment="Center" FontStyle="Italic" />
+        <Image Source="/images/home.jpg" Grid.Row="1" />
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Button Content="Choose the flight file you want to inspect" FontSize="15" Click="FlightPathClick"
+                    Background="OrangeRed" BorderBrush="Black" Grid.Column="0" Grid.ColumnSpan="2" />
+            <Button Content="Choose the training file for anomaly detection algorithms" FontSize="15"
+                    Click="TrainingPathClick" Background="OrangeRed" BorderBrush="Black" Grid.Column="0" Grid.Row="2" />
+            <Button Content="Specify flight gear executable location" FontSize="15" Click="FlightGearPathClick"
+                    Background="OrangeRed" BorderBrush="Black" Grid.Column="1" Grid.Row="2" />
+            <TextBox x:Name="FlightFileBox" Text="{Binding Path=FlightCsvPath, Mode=TwoWay}" TextAlignment="Center" Grid.Row="1"
+                     FontSize="15" Background="LightGray" TextWrapping="Wrap"  Grid.ColumnSpan="2" Grid.Column="0" />
+            <TextBox x:Name="TrainingFileBox" Text="{Binding Path=TrainingCsvPath, Mode=TwoWay}" TextAlignment="Center"
+                       Grid.Row="3" Grid.Column="0" FontSize="15" Background="LightGray" TextWrapping="Wrap" />
+            <TextBox x:Name="FlightGearPathBox" Text="{Binding Path=FlightGearPath, Mode=TwoWay}" TextAlignment="Center"
+                       Grid.Row="3" Grid.Column="1" FontSize="15" Background="LightGray" TextWrapping="Wrap" />
+        </Grid>
+
+        <Button Content="Let's Go!" FontSize="22" Click="StartSimulation" Grid.Row="3" Background="Green" />
+
+
     </Grid>
 </Window>
