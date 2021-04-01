@@ -87,7 +87,7 @@ namespace AP2_Ex1
                 serializer.Serialize(writer, settings);
             }
             //if the user never intended to open flight gear there's no reason to try or display a message box
-            if (settings.FlightGearPath !=null) 
+            if (!string.IsNullOrEmpty(settings.FlightGearPath)) 
             {
                 try
                 {
