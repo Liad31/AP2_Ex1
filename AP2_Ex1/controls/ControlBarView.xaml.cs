@@ -31,6 +31,7 @@ namespace AP2_Ex1.controls
         private void SPButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
             viewModel.VM_IsPaused = !viewModel.VM_IsPaused;
+            StartPauseButton.Content= viewModel.VM_IsPaused ? "S" : "P";
         }
 
         private void rwdClick(object sender, System.Windows.RoutedEventArgs e)
