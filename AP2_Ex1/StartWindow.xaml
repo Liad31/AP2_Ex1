@@ -29,7 +29,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Button Content="Choose the flight file you want to inspect" FontSize="15" Click="FlightPathClick"
+            <Button Content="Choose the flight file you want to inspect (Required)" FontSize="15" Click="FlightPathClick"
                     Background="OrangeRed" BorderBrush="Black" Grid.Column="0" Grid.ColumnSpan="2" />
             <Button Content="Choose the training file for anomaly detection algorithms" FontSize="15"
                     Click="TrainingPathClick" Background="OrangeRed" BorderBrush="Black" Grid.Column="0" Grid.Row="2" />

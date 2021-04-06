@@ -51,6 +51,7 @@ namespace AP2_Ex1
             if (result == true)
             {
                 FlightFileBox.Text= dlg.FileName;
+                settings.FlightCsvPath = dlg.FileName;
             }
 
         }
@@ -64,6 +65,7 @@ namespace AP2_Ex1
             if (result == true)
             {
                 TrainingFileBox.Text= dlg.FileName;
+                settings.TrainingCsvPath = dlg.FileName;
             }
         }
         
@@ -76,11 +78,17 @@ namespace AP2_Ex1
             if (result == true)
             {
                 FlightGearPathBox.Text= dlg.FileName;
+                settings.FlightGearPath = dlg.FileName;
             }
         }
 
         private void StartSimulation(object sender, RoutedEventArgs e)
         {
+            if(!File.Exists(settings.FlightCsvPath))
+            {
+                MessageBox.Show("Flight file is invalid or doesn't exist, please pick a valid one.");
+                return;
+            }
             var serializer = new XmlSerializer(settings.GetType());
             using (var writer = XmlWriter.Create("settings.xml"))
             {
