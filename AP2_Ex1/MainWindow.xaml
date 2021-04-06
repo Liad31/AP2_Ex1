@@ -30,7 +30,7 @@
                 </Grid.RowDefinitions>
                 <Rectangle x:Name="panel1" Fill="#FF8FDBDE"/>
                 <Rectangle x:Name="panel2" Fill="#FF8FDBDE" Grid.Row="1" Grid.Column="1"/>
-                <Slider x:Name="throttle" Value="{Binding Path=VM_Throttle}" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" HorizontalAlignment="Center" IsEnabled="False">
+                <Slider x:Name="throttle" Value="{Binding Path=VM_Throttle}" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" HorizontalAlignment="Center" IsEnabled="False" Minimum="-1" Maximum="1">
                     <Slider.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleX="3.3" ScaleY="1"/>
@@ -40,7 +40,7 @@
                         </TransformGroup>
                     </Slider.RenderTransform>
                 </Slider>
-                <Slider x:Name="rudder" Value="{Binding Path=VM_Rudder}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" IsEnabled="False" Minimum="7">
+                <Slider x:Name="rudder" Value="{Binding Path=VM_Rudder}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" IsEnabled="False" Minimum="-1" Maximum="1">
                     <Slider.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="2.3" ScaleX="1"/>
@@ -66,8 +66,8 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Controls:Compass x:Name="compass" Grid.Column="2" Grid.Row="0"/>
-                <Controls:speedClock x:Name="speedClock" Grid.Column="1" Grid.Row="0"/>
-                <Slider x:Name="altitudeSlider" Value="{Binding Path=VM_Altitude}" Orientation="Vertical" HorizontalAlignment="Center" BorderThickness="1" IsEnabled="False" TickPlacement="Both" RenderTransformOrigin="0.5,0.5" BorderBrush="Black">
+                <Controls:speedClock x:Name="speedClock" Grid.Column="1" Grid.Row="0" MaxSpeed="100" Speed="{Binding Path=VM_Speed}"/>
+                <Slider x:Name="altitudeSlider" Value="{Binding Path=VM_Altitude}" Orientation="Vertical" HorizontalAlignment="Center" BorderThickness="1" IsEnabled="False" TickPlacement="Both" RenderTransformOrigin="0.5,0.5" BorderBrush="Black" MinHeight="0" Maximum="2000">
                     <Slider.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleX="2"/>
@@ -78,6 +78,14 @@
                     </Slider.RenderTransform>
                 </Slider>
                 <TextBlock x:Name="altitudeText" Text="{Binding Path=VM_Altitude}" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" RenderTransformOrigin="0.5,0.5" FontWeight="Bold">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="3" ScaleY="3"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
                 </TextBlock>
                 <TextBlock x:Name="speed" Text="{Binding Path=VM_Speed}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" RenderTransformOrigin="0.5,0.5" >
                     <TextBlock.RenderTransform>

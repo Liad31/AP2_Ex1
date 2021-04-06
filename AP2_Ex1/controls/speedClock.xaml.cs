@@ -25,6 +25,19 @@ namespace AP2_Ex1.controls
         private double maxDialAngle;
         private double dialRadius;
         private double maxSpeed;
+        private double speed;
+        public double Speed
+        {
+            get
+            {
+                return this.speed;
+            }
+            set
+            {
+                this.speed = value;
+                moveDiaglAccordingSpeed(this.speed);
+            }
+        }
         public double MaxSpeed
         {
             get

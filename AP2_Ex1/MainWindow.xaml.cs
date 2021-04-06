@@ -40,6 +40,7 @@ namespace AP2_Ex1
                     try
                     {
                         updateGraphs();
+                        //speedClock.moveDiaglAccordingSpeed(vm_steering.VM_Speed);
                     }
                     catch (Exception ex)
                     {

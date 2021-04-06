@@ -245,8 +245,8 @@ namespace AP2_Ex1
                     Speed = temp;
                     dic.TryGetValue("altitude-ft", out temp);
                     Altitude = temp;
-                    //add the "direction"!!!
-
+                    dic.TryGetValue("heading-deg", out temp);
+                    Direction = temp;
                     CurrentTimeString = (TimeSpan.FromSeconds(CurrentLine / LPS)).ToString(@"mm\:ss"); ;
                     Thread.Sleep((int)(1000 / (LPS * SpeedMultiplier)));
                 }
