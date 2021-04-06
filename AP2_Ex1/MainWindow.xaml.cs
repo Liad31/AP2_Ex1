@@ -22,6 +22,7 @@ namespace AP2_Ex1
     {
         private SteeringViewModel vm_steering;
         private GraphsPanelViewModel vm_graphs;
+        private ControlBarViewModel vm_controlBar;
 
         public MainWindow(string csvFilePath, string xmlFilePath)
         {
@@ -31,8 +32,10 @@ namespace AP2_Ex1
             GraphsModel graphsModel = new GraphsModel(database, model);
             vm_steering = new SteeringViewModel(model);
             vm_graphs = new GraphsPanelViewModel(graphsModel);
-            controlBar.Model = model;
+            vm_controlBar = new ControlBarViewModel(model);
+            controlBar.ViewModel = vm_controlBar;
             stick.VM_Steering = vm_steering;
+            speedClock.VM_Steering = vm_steering;
             vm_graphs.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
             {
                 if (e.PropertyName == "VM_Line")
@@ -65,8 +68,27 @@ namespace AP2_Ex1
                     }
                 }
             };
+            vm_controlBar.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
+            {
+                if (e.PropertyName == "VM_IsPaused")
+                {
+                    bool isPaused = vm_controlBar.VM_IsPaused;
+                    if (isPaused)
+                    {
+                        graph1.IsEnabled = true;
+                        graph2.IsEnabled = true;
+                        linearRegression.IsEnabled = true;
+                    }
+                    else
+                    {
+                        graph1.IsEnabled = false;
+                        graph2.IsEnabled = false;
+                        linearRegression.IsEnabled = false;
+                    }
+                }
+            };
 
-            roll.DataContext = vm_steering;
+                    roll.DataContext = vm_steering;
             yaw.DataContext = vm_steering;
             pitch.DataContext = vm_steering;
             altitudeSlider.DataContext = vm_steering;

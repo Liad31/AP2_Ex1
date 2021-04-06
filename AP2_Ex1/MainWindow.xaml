@@ -6,8 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="MainWindow"
-        WindowState="Maximized"
-        WindowStyle="None">
+        WindowState="Maximized">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -136,7 +135,7 @@
                             </TransformGroup>
                         </TextBlock.RenderTransform>
                     </TextBlock>
-                    <TextBlock x:Name="yaw" Text="{Binding Path=VM_Yaw}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" >
+                    <TextBlock x:Name="yaw" Text="{Binding Path=VM_Yaw}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.5,0.5">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="2" ScaleY="2"/>
@@ -146,7 +145,7 @@
                             </TransformGroup>
                         </TextBlock.RenderTransform>
                     </TextBlock>
-                    <TextBlock x:Name="roll" Text="{Binding Path=VM_Roll}" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" >
+                    <TextBlock x:Name="roll" Text="{Binding Path=VM_Roll}" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.5,0.5">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="2" ScaleY="2"/>
@@ -166,7 +165,7 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="pitch:" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold">
+                    <TextBlock Text="pitch:" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" >
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="2" ScaleY="2"/>

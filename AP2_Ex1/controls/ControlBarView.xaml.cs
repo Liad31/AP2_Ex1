@@ -19,11 +19,11 @@ namespace AP2_Ex1.controls
 
         }
 
-        public IModel Model
+        public ControlBarViewModel ViewModel
         {
             set
             {
-                this.viewModel = new ControlBarViewModel(value);
+                this.viewModel = value;
                 this.DataContext = viewModel;
             }
         }

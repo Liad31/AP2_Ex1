@@ -26,6 +26,7 @@ namespace AP2_Ex1
         private double direction;
         private double speedMultiplier;
         private string currentTime;
+        private bool isPaused = false;
 
         public event PropertyChangedEventHandler PropertyChanged;
         public Dictionary<String, double> LastLine { get; }
@@ -63,7 +64,17 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("CurrentTime");
             }
         }
-        public bool IsPaused { get; set; }
+        public bool IsPaused {
+            get
+            {
+                return isPaused;
+            }
+            set
+            {
+                isPaused = value;
+                NotifyPropertyChanged("IsPaused");
+            }
+        }
 
         public double CurrentTime { get; set; }
         public double Rudder
@@ -142,11 +153,11 @@ namespace AP2_Ex1
         {
             get
             {
-                return yaw;
+                return direction;
             }
             set
             {
-                yaw = value;
+                direction = value;
                 NotifyPropertyChanged("Direction");
             }
         }
