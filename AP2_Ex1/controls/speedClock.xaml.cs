@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,17 +26,27 @@ namespace AP2_Ex1.controls
         private double maxDialAngle;
         private double dialRadius;
         private double maxSpeed;
-        private double speed;
-        public double Speed
+        private SteeringViewModel vm_steering;
+        public SteeringViewModel VM_Steering
         {
             get
             {
-                return this.speed;
+                return vm_steering;
             }
             set
             {
-                this.speed = value;
-                moveDiaglAccordingSpeed(this.speed);
+                vm_steering = value;
+                vm_steering.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
+                {
+                    try
+                    {
+                        if (e.PropertyName == "VM_Speed")
+                        {
+                            this.Dispatcher.Invoke(() => { this.moveDiaglAccordingSpeed(vm_steering.VM_Speed); });
+                        }
+                    }
+                    catch (Exception ex) { Console.WriteLine("the execution has stopped"); }
+                };
             }
         }
         public double MaxSpeed

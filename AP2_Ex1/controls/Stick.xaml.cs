@@ -33,14 +33,18 @@ namespace AP2_Ex1.controls
                 vm_steering = value;
                 vm_steering.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
                 {
-                    if (e.PropertyName == "VM_Aileron")
+                    try
                     {
-                        this.Dispatcher.Invoke(() => { updateX(vm_steering.VM_Aileron); });
+                        if (e.PropertyName == "VM_Aileron")
+                        {
+                            this.Dispatcher.Invoke(() => { updateX(vm_steering.VM_Aileron); });
+                        }
+                        if (e.PropertyName == "VM_Elevator")
+                        {
+                            this.Dispatcher.Invoke(() => { updateY(vm_steering.VM_Elevator); });
+                        }
                     }
-                    if (e.PropertyName == "VM_Elevator")
-                    {
-                        this.Dispatcher.Invoke(() => { updateY(vm_steering.VM_Aileron); });
-                    }
+                    catch (Exception ex) { Console.WriteLine("the execution has stopped"); }
                 };
             }
         }
