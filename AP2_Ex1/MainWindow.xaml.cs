@@ -59,7 +59,7 @@ namespace AP2_Ex1
                         vm_graphs.maxLinearRegressionVal = vm_graphs.VM_FullValuesArray.Max();
                         linearRegression.Plot.AddLine(vm_graphs.VM_SlopeLinearRegression, vm_graphs.VM_InterceptLinearRegression,
                             (vm_graphs.minLinearRegressionVal, vm_graphs.maxLinearRegressionVal), lineWidth: 2);
-                        linearRegression.Plot.AxisAuto();
+                        linearRegression.Plot.AxisAuto(); 
                         this.Dispatcher.Invoke(() => { linearRegression.Render(); });
                     }
                     catch (Exception ex)

@@ -31,7 +31,7 @@
                 </Grid.RowDefinitions>
                 <Rectangle x:Name="panel1" Fill="#FF8FDBDE"/>
                 <Rectangle x:Name="panel2" Fill="#FF8FDBDE" Grid.Row="1" Grid.Column="1"/>
-                <Slider x:Name="throttle" Value="{Binding Path=VM_Throttle}" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" HorizontalAlignment="Center" IsEnabled="False" Minimum="-1" Maximum="1">
+                <Slider x:Name="throttle" Value="{Binding Path=VM_Throttle}" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" HorizontalAlignment="Center" IsEnabled="False" Minimum="0" Maximum="1">
                     <Slider.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleX="3.3" ScaleY="1"/>
