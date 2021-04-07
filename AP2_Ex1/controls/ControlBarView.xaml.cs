@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Windows.Controls;
+using System.Windows.Forms;
 
 namespace AP2_Ex1.controls
 {
-    public partial class ControlBarView : UserControl
+    public partial class ControlBarView : System.Windows.Controls.UserControl
     {
         private const int RWD_FWD = 5;
         ControlBarViewModel viewModel;
@@ -90,6 +91,17 @@ namespace AP2_Ex1.controls
             Progress.Value = e.NewValue;
         }
 
-        //TODO: organize controls in grid, implement all function, check if this works if it doesn't delete all and start from scratch
+        private void Button_Click_Open(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var dlg = new OpenFileDialog();
+            dlg.Filter = "Dll files (*.dll)| *.dll";
+            Nullable<bool> result = (dlg.ShowDialog() == DialogResult.OK);
+            if (result == true)
+            {
+                String dllPath = dlg.FileName; ;
+                //TODO: notify view model who will notify the model
+            }
+        }
+
     }
 }

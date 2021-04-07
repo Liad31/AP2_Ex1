@@ -16,7 +16,7 @@
             <ColumnDefinition Width="1*"></ColumnDefinition>
 
         </Grid.ColumnDefinitions>
-        <Button Content="Open" HorizontalAlignment="Left" Margin="0,3,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Open" HorizontalAlignment="Left" Margin="0,3,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Open"/>
         <Button Content="rwd" HorizontalAlignment="Left" Margin="89,3,0,0" VerticalAlignment="Top" Width="30" Click="rwdClick"/>
         <Button Name="StartPauseButton" Content="P" HorizontalAlignment="Left" Margin="124,3,0,0" VerticalAlignment="Top" Width="30" Click="SPButtonClick"/>
         <Button Content="fwd" HorizontalAlignment="Left" Margin="159,3,0,0" VerticalAlignment="Top" Width="30" Click="fwdClick"/>
