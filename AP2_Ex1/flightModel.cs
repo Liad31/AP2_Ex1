@@ -226,7 +226,7 @@ namespace AP2_Ex1
         {
             new Thread(delegate ()
             {
-                //Client client = new Client("127.0.0.1", 5400);
+                Client client = new Client("127.0.0.1", 5400);
                 stop = false;
                 Dictionary<string, double> dic = database.getLine(CurrentLine);
                 while (!stop)
@@ -235,7 +235,7 @@ namespace AP2_Ex1
                     {
                         CurrentLine++;
                     }
-                    //client.sendString(database.getLineString(CurrentLine) + "\n");
+                    client.sendString(database.getLineString(CurrentLine) + "\n");
                     dic = database.getLine(CurrentLine);
                     double temp;
                     dic.TryGetValue("roll-deg", out temp);
@@ -261,7 +261,7 @@ namespace AP2_Ex1
                     CurrentTimeString = (TimeSpan.FromSeconds(CurrentLine / LPS)).ToString(@"mm\:ss"); ;
                     Thread.Sleep((int)(1000 / (LPS * SpeedMultiplier)));
                 }
-                //client.close();
+                client.close();
             }).Start();
         }
 

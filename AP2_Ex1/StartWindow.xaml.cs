@@ -106,7 +106,7 @@ namespace AP2_Ex1
                     string workingDirectory = fgPath.Substring(0, indexOfLastSlash);
                     startInfo.WorkingDirectory = workingDirectory;
                     //TODO: insert actual launch arguments 
-                    startInfo.Arguments = "";
+                    startInfo.Arguments = "--generic=socket,in,10,127.0.0.1,5400,tcp,playback_small --fdm=null";
                     Process proc = Process.Start(startInfo);
                 }
                 catch
