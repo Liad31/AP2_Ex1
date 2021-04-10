@@ -26,7 +26,7 @@ namespace AP2_Ex1
         private double direction;
         private double speedMultiplier;
         private string currentTime;
-        private bool isPaused = false;
+        private bool isPaused = true;
 
         public event PropertyChangedEventHandler PropertyChanged;
         public Dictionary<String, double> LastLine { get; }
@@ -226,9 +226,9 @@ namespace AP2_Ex1
         {
             new Thread(delegate ()
             {
-                Client client = new Client("127.0.0.1", 5400);
                 stop = false;
                 Dictionary<string, double> dic = database.getLine(CurrentLine);
+                Client client = new Client("127.0.0.1", 5400);
                 while (!stop)
                 {
                     if (!IsPaused && CurrentLine < lineCount - 1)

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Net;
+using System.Threading;
 namespace AP2_Ex1
 {
     class Client
@@ -15,17 +16,31 @@ namespace AP2_Ex1
         private NetworkStream stream;
 
         public Client(String ipAddress, int port)
-        {
-            this.port = port;
-            this.ipAddress = ipAddress;
-            this.client = new TcpClient(ipAddress, port);
-            this.stream = client.GetStream();
+        {   try
+            {
+                this.port = port;
+                this.ipAddress = ipAddress;
+                this.client = new TcpClient(ipAddress, port);
+                this.stream = client.GetStream();
+            } catch (Exception ex)
+            {
+                Task initClient = new Task(() => {
+                    Thread.Sleep(200);
+                    this.port = port;
+                    this.ipAddress = ipAddress;
+                    this.client = new TcpClient(ipAddress, port);
+                    this.stream = client.GetStream();
+                });
+            }
         }
 
         public void sendString(String str)
-        {
-            stream.Write(Encoding.ASCII.GetBytes(str), 0, str.Length);
-            stream.Flush();
+        {   try
+            {
+                stream.Write(Encoding.ASCII.GetBytes(str), 0, str.Length);
+                stream.Flush();
+            }
+            catch (Exception ex) { }
         }
 
         public void close()

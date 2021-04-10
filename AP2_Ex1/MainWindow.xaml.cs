@@ -88,7 +88,7 @@ namespace AP2_Ex1
                 }
             };
 
-                    roll.DataContext = vm_steering;
+            roll.DataContext = vm_steering;
             yaw.DataContext = vm_steering;
             pitch.DataContext = vm_steering;
             altitudeSlider.DataContext = vm_steering;
