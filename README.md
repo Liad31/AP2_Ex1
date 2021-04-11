@@ -13,7 +13,7 @@ Using the app you can load a csv files holding your flight info. The app will sh
 ## Installation and Running
 
 ## Design
-#### Model, VMs and View's
+#### Model, VMs and Views
 The main architecture we use in the project is the MVVM architecture.
 In the MainWindow we create the FlightModel, the ControlBarViewModel and the SteeringViewModel. The MW also creates and holds references to our views, such as the Stick, SpeedClock and ControlBarView. The MW sets the VM's Model property (which they have) to the FlightModel it created, and then sets the VMs to be the views' data context (The SteeringViewModel is the VM of the Stick and SpeedClock, the ControlBarViewModel is the VM of the ControlBarView). Also, there is a 2-way binding for the views and VMs. After everything is set, the MW commands the model to start his operation.
 Now the model reads the csv file line by line (actually he reads it from the DataBase class, which saved the csv file in our memory).
