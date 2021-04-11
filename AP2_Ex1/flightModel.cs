@@ -31,7 +31,6 @@ namespace AP2_Ex1
 
         public event PropertyChangedEventHandler PropertyChanged;
         public Dictionary<String, double> LastLine { get; }
-        //please implement the set functions so they will invoke NotifyPropertyChanged!!!!
         public int LineCount
         {
             get

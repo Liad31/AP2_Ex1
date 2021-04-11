@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Threading;
+using ScottPlot;
 
 namespace AP2_Ex1
 {

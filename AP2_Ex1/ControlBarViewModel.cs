@@ -15,7 +15,7 @@ namespace AP2_Ex1
         {
             this.model = model;
             model.PropertyChanged += delegate(object sender, PropertyChangedEventArgs e)
-            {
+            {             
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
             VM_IsPaused = true;
