@@ -176,5 +176,13 @@
   <ItemGroup>
     <Resource Include="images\speed_clock.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="EO.Base.dll" />
+    <Resource Include="EO.Base.xml" />
+    <Content Include="EO.Pdf.Wpf.dll" />
+    <Resource Include="EO.Pdf.Wpf.xml" />
+    <Content Include="EO.Wpf.dll" />
+    <Resource Include="EO.Wpf.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
