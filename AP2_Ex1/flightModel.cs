@@ -27,6 +27,7 @@ namespace AP2_Ex1
         private double speedMultiplier;
         private string currentTime;
         private bool isPaused = true;
+        private List<double> exceptions;
 
         public event PropertyChangedEventHandler PropertyChanged;
         public Dictionary<String, double> LastLine { get; }
@@ -43,6 +44,18 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("LineCount");
             }
         } 
+        public List<double> Exceptions
+        {
+            get
+            {
+                return exceptions;
+            }
+            set
+            {
+                exceptions = value;
+                NotifyPropertyChanged("Exceptions");
+            }
+        }
         public int CurrentLine
         {
             get { return currentLine; }

@@ -29,6 +29,7 @@ namespace AP2_Ex1
         double Yaw { get; set; }
         double Roll { get; set; }
         double Pitch { get; set; }
+        List<double> Exceptions { get; set; }
         int LPS { get; }
     }
 }

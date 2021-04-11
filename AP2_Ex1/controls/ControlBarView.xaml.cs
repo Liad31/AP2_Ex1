@@ -16,8 +16,7 @@ namespace AP2_Ex1.controls
             //So cmb have defualt value, without invoking selction changed
             cmbSpeedMultiplier.SelectedIndex = 3;
             cmbSpeedMultiplier.SelectionChanged += ComboBox_SelectionChanged;
-
-
+            StartPauseButton.Content = "S";
         }
 
         public ControlBarViewModel ViewModel

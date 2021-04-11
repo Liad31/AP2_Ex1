@@ -38,6 +38,12 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EO.Pdf.Wpf">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Essential Objects\EO.Total 2021\EO.Pdf.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="EO.Wpf">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Essential Objects\EO.Total 2021\EO.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="ScottPlot, Version=4.1.10.0, Culture=neutral, PublicKeyToken=86698dc10387c39e, processorArchitecture=MSIL">
       <HintPath>..\packages\ScottPlot.4.1.10-beta\lib\net461\ScottPlot.dll</HintPath>
     </Reference>

@@ -18,13 +18,24 @@ namespace AP2_Ex1
             {
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
-            VM_IsPaused = false;
+            VM_IsPaused = true;
         }
         public int VM_LineCount
         {
             get
             {
                 return model.LineCount - 1;
+            }
+        }
+        public List<double> VM_Exceptions
+        {
+            get
+            {
+                return model.Exceptions;
+            }
+            set
+            {
+                this.model.Exceptions = value;
             }
         }
         public int VM_CurrentLine
