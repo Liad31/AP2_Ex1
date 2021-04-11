@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/liad3/source/repos/DLLmaybe/DLLmaybe/Entity.cpp
+Entity.h
+C:/Users/liad3/source/repos/DLLmaybe/DLLmaybe/Entity.h
+iostream
+-
+
+C:/Users/liad3/source/repos/DLLmaybe/DLLmaybe/Entity.h
+

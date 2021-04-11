@@ -1,0 +1,8 @@
+C:/Users/liad3/source/repos/DLLmaybe/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/liad3/source/repos/DLLmaybe/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/liad3/source/repos/DLLmaybe/cmake-build-debug/DLLmaybe/CMakeFiles/DllMaybe.dir
+C:/Users/liad3/source/repos/DLLmaybe/cmake-build-debug/DLLmaybe/CMakeFiles/edit_cache.dir
+C:/Users/liad3/source/repos/DLLmaybe/cmake-build-debug/DLLmaybe/CMakeFiles/rebuild_cache.dir
+C:/Users/liad3/source/repos/DLLmaybe/cmake-build-debug/Wrapper/CMakeFiles/edit_cache.dir
+C:/Users/liad3/source/repos/DLLmaybe/cmake-build-debug/Wrapper/CMakeFiles/wrapperDll.dir
+C:/Users/liad3/source/repos/DLLmaybe/cmake-build-debug/Wrapper/CMakeFiles/rebuild_cache.dir
