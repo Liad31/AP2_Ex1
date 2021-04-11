@@ -38,12 +38,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EO.Pdf.Wpf">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Essential Objects\EO.Total 2021\EO.Pdf.Wpf.dll</HintPath>
-    </Reference>
-    <Reference Include="EO.Wpf">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Essential Objects\EO.Total 2021\EO.Wpf.dll</HintPath>
-    </Reference>
     <Reference Include="ScottPlot, Version=4.1.10.0, Culture=neutral, PublicKeyToken=86698dc10387c39e, processorArchitecture=MSIL">
       <HintPath>..\packages\ScottPlot.4.1.10-beta\lib\net461\ScottPlot.dll</HintPath>
     </Reference>
@@ -177,12 +171,7 @@
     <Resource Include="images\speed_clock.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EO.Base.dll" />
-    <Resource Include="EO.Base.xml" />
-    <Content Include="EO.Pdf.Wpf.dll" />
-    <Resource Include="EO.Pdf.Wpf.xml" />
     <Content Include="EO.Wpf.dll" />
-    <Resource Include="EO.Wpf.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
