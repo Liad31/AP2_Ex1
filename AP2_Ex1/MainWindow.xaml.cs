@@ -23,7 +23,7 @@ namespace AP2_Ex1
         private SteeringViewModel vm_steering;
         private GraphsPanelViewModel vm_graphs;
         private ControlBarViewModel vm_controlBar;
-
+        //hello!
         public MainWindow(string csvFilePath, string xmlFilePath)
         {
             InitializeComponent();
