@@ -104,7 +104,7 @@ namespace AP2_Ex1
         //show and render the updated graphs after they changed
         private void updateGraphs()
         {
-            if (vm_graphs.VM_CurrentProperty != null)
+            if (vm_graphs.VM_CurrentProperty != null && vm_graphs.VM_Line > 0)
             {
                 try
                 {
