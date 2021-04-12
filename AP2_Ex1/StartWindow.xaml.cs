@@ -99,6 +99,7 @@ namespace AP2_Ex1
             {
                 try
                 {
+                    //open flight gear
                     var startInfo = new ProcessStartInfo();
                     string fgPath = settings.FlightGearPath;
                     startInfo.FileName = fgPath;

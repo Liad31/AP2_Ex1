@@ -35,6 +35,7 @@ namespace AP2_Ex1.controls
                 {
                     try
                     {
+                        //updates the stick
                         if (e.PropertyName == "VM_Aileron")
                         {
                             this.Dispatcher.Invoke(() => { updateX(vm_steering.VM_Aileron); });
@@ -53,6 +54,7 @@ namespace AP2_Ex1.controls
             InitializeComponent();
         }
 
+        //if the aileron changes
         public void updateX(double newX)
         {
             //positioning the insider stick at the middle of its space
@@ -60,6 +62,7 @@ namespace AP2_Ex1.controls
             margin.Left = (space.Margin.Left + space.Width / 2.0 - stick.Width / 2 + newX * space.Width / 2.0);
             stick.Margin = margin;
         }
+        //if the elevator changes
         public void updateY(double newY)
         {
             //positioning the insider stick at the middle of its space

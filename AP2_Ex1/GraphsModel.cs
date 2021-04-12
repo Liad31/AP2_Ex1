@@ -22,6 +22,16 @@ namespace AP2_Ex1
         public Dictionary<string, corellativeProperty> mostCorelative { get; private set; }
         public IDatabase database { get; }
         private string cProperty;
+        //the values array of the currentProperty
+        public List<double> values { get; private set; }
+        //the values array of the most correlative property with the currentProperty
+        public List<double> correlativeValues { get; private set; }
+        public int Line { get; private set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        // lines per second
+        private int lps;
+        public List<double> LineList { get; private set; }
+
         public string currentProperty { get
             {
                 return this.cProperty;
@@ -33,11 +43,6 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("MostCorellativeProperty");
             }
         }
-        public List<double> values { get; private set; }
-        public List<double> correlativeValues { get; private set; }
-        public int Line { get; private set; }
-        public event PropertyChangedEventHandler PropertyChanged;
-        private int lps;
         public int LPS
         {
             get
@@ -45,8 +50,6 @@ namespace AP2_Ex1
                 return lps;
             }
         }
-        public List<double> LineList { get; private set; }
-
         public GraphsModel(IDatabase database, IModel mainModel)
         {
             this.database = database;
@@ -65,6 +68,7 @@ namespace AP2_Ex1
             };
             initCorelatives();
         }
+        //checks which property it the most corelative to, for every property
         private void initCorelatives()
         {
             mostCorelative = new Dictionary<string, corellativeProperty>();
@@ -97,7 +101,7 @@ namespace AP2_Ex1
                 mostCorelative[property].slopeOfLinearRegression = slope;
             }
         }
-
+        //calculating the linear regression of 2 properties
         public static void LinearRegression(
             double[] xVals,
             double[] yVals,
@@ -149,7 +153,7 @@ namespace AP2_Ex1
                 slope = 0;
             }
         }
-
+        //calculating pearson
         private double getPearson(List<double> arr1, List<double> arr2)
         {
             if (arr1.Count() != arr2.Count())
@@ -177,6 +181,7 @@ namespace AP2_Ex1
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
+        //when the cureent property changes and there is a need to switch the graphs
         public void switchGraphs()
         {
             try

@@ -67,6 +67,7 @@ namespace AP2_Ex1
                 d.Add("vertical-speed-indicator_indicated-speed-fpm", Convert.ToDouble(values[40]));
                 d.Add("engine_rpm", Convert.ToDouble(values[41]));
 
+                //data contains a dictonary for each line in the csv
                 data.Add(d);
             }
             //loop to get keys (yes, I am lazy)
@@ -84,6 +85,7 @@ namespace AP2_Ex1
             }
         }
 
+        //get the data of a specific line
         public Dictionary<string, double> getLine(int lineNumber)
         {
             if (lineNumber < data.Count)
@@ -92,12 +94,12 @@ namespace AP2_Ex1
             }
             return (Dictionary<string, double>)data[data.Count - 1];
         }
-
+        //returns the data of a line seperated by ","
         public string getLineString(int lineNumber)
         {
             return (string)lines[lineNumber];
         }
-
+        //returns the full array from the start of the flight to the end of a given property
         public List<double> getPropertyArray(string key)
         {
             IList values = new ArrayList();

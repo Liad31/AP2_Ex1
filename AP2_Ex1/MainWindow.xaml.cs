@@ -53,6 +53,7 @@ namespace AP2_Ex1
                 {
                     try
                     {
+                        //switches the graphs when a property changes
                         linearRegression.Plot.Clear();
                         updateGraphs();
                         vm_graphs.minLinearRegressionVal = vm_graphs.VM_FullValuesArray.Min();
@@ -101,7 +102,7 @@ namespace AP2_Ex1
             properties.DataContext = vm_graphs;
             model.Start();
         }
-
+        //show and render the updated graphs after they changed
         private void updateGraphs()
         {
             if (vm_graphs.VM_CurrentProperty != null)

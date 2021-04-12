@@ -31,6 +31,7 @@ namespace AP2_Ex1
 
         public event PropertyChangedEventHandler PropertyChanged;
         public Dictionary<String, double> LastLine { get; }
+        //how many lines are in the csv
         public int LineCount
         {
             get
@@ -43,6 +44,7 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("LineCount");
             }
         } 
+        //list of the lines with an exception
         public List<double> Exceptions
         {
             get
@@ -247,8 +249,11 @@ namespace AP2_Ex1
                     {
                         CurrentLine++;
                     }
+                    //show the flight on flight gear
                     client.sendString(database.getLineString(CurrentLine) + "\n");
                     dic = database.getLine(CurrentLine);
+
+                    //update all the properties
                     double temp;
                     dic.TryGetValue("roll-deg", out temp);
                     Roll = temp;
