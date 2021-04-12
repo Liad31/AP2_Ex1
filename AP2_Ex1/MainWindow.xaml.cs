@@ -24,10 +24,9 @@ namespace AP2_Ex1
         private GraphsPanelViewModel vm_graphs;
         private ControlBarViewModel vm_controlBar;
         //hello!
-        public MainWindow(string csvFilePath, string xmlFilePath)
+        public MainWindow(IDatabase database, string xmlFilePath)
         {
             InitializeComponent();
-            IDatabase database = new FlightDatabase(csvFilePath);
             IModel model = new FlightModel(database, 10);
             GraphsModel graphsModel = new GraphsModel(database, model);
             vm_steering = new SteeringViewModel(model);

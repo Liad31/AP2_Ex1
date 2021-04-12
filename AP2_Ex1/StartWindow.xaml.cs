@@ -89,6 +89,18 @@ namespace AP2_Ex1
                 MessageBox.Show("Flight file is invalid or doesn't exist, please pick a valid one.");
                 return;
             }
+
+            IDatabase flightdb = null;
+            try
+            {
+                flightdb = new FlightDatabase(settings.FlightCsvPath);
+            }
+            catch
+            {
+                MessageBox.Show("The flight file is not in the right format.");
+                return;
+            }
+
             var serializer = new XmlSerializer(settings.GetType());
             using (var writer = XmlWriter.Create("settings.xml"))
             {
@@ -115,7 +127,7 @@ namespace AP2_Ex1
                    MessageBox.Show("flight gear path is invalid");
                 }
             }
-            var mw = new MainWindow(settings.FlightCsvPath, settings.TrainingCsvPath);
+            var mw = new MainWindow(flightdb, settings.TrainingCsvPath);
             mw.Show();
             this.Close();
         }
