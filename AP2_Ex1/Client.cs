@@ -16,36 +16,51 @@ namespace AP2_Ex1
         private NetworkStream stream;
 
         public Client(String ipAddress, int port)
-        {   try
+        {
+            try
             {
                 this.port = port;
                 this.ipAddress = ipAddress;
                 this.client = new TcpClient(ipAddress, port);
                 this.stream = client.GetStream();
-            } catch (Exception ex)
+            }
+            catch
             {
-                Task initClient = new Task(() => {
-                    Thread.Sleep(200);
-                    this.port = port;
-                    this.ipAddress = ipAddress;
-                    this.client = new TcpClient(ipAddress, port);
-                    this.stream = client.GetStream();
-                });
+                client = null;
+                stream = null;
             }
         }
 
         public void sendString(String str)
-        {   try
+        {
+            if (client == null)
             {
-                stream.Write(Encoding.ASCII.GetBytes(str), 0, str.Length);
-                stream.Flush();
+                Task initClient = new Task(() =>
+                {
+                    try
+                    {
+                        this.client = new TcpClient(ipAddress, port);
+                        this.stream = client.GetStream();
+                    }
+                    catch
+                    {
+                        client = null;
+                        stream = null;
+                        return;
+                    }
+                });
+                return;
             }
-            catch (Exception ex) { }
+            stream.Write(Encoding.ASCII.GetBytes(str), 0, str.Length);
+            stream.Flush();
         }
 
         public void close()
         {
-            client.Close();
+            if (client != null)
+            {
+                client.Close();
+            }
         }
     }
 }
