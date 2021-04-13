@@ -24,10 +24,11 @@ In order to close the app, just click the exit button.
 
 #### Running
 If you want to run FG manually, you should to it with the next settings:
-```java
-int x = 5;
-
 ```
+--generic=socket,in,10,127.0.0.1,5400,tcp,playback_small
+--fdm=null
+```
+
 ## Design
 #### Model, VMs and Views
 The main architecture we use in the project is the MVVM architecture.
