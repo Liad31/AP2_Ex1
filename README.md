@@ -5,7 +5,10 @@ Using the app you can load a csv files holding your flight info. The app will sh
 ## Usage And Features
 In the first window, you will be required to insert a path to the flight's properties file. You do it by typing in the text box, or by clicking the button, and then using the open file dialog that opens. It is optional to insert locations to a FG executable, and for a dll of anomaly detection algorithm. If the path entered for the FG executable is valid, the app will open with the FG, and if not, it will open without it.
 **Note:** The paths you enter are saved from run to run, so you don't have to re enter them.
-The user can open the FG by himself with the current settings (as described in the [Installation and Running](#installation-and-running) section, and the app will connect to it's server, but th
+The user can open the FG by himself with the correct settings (as described in the [Installation and Running](#installation-and-running) section, and the app will connect to its server start project the flight. If the FG is closed, the app will still work and show data through time, like: height, speed, direction, yaw, roll, pitch, and the joystick's state. Nevertheless, the user can choose one of the flight's properties, and then 3 graphs will appear:
+1. Graph of the value of the chosen property through time, from the start of the flight until this point.
+2. Graph of the value of the most colerative property to the chosen property through time, from the start of the flight until this point.
+3. Graph of the linear regression between the 2 properties mentioned above, with the actual points from the last 30 seconds (relative to the current time) of the flight marked in red.
 
 
 ## Files And Directories
