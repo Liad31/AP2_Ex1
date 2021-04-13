@@ -1,6 +1,6 @@
 # Advanced Programing 2 Exercise 1
 In this exercise we made a flight inspection app.
-Using the app you can load a csv files holding your flight info. The app will show you data about the app (more details ahead), and project the flight on the Flight Gear simulator. Also, the app uses an algorithm (that the user can load) in order to detect anomalies and notify the user about them.
+Using the app you can load a csv files holding your flight info. The app will show you data about the flight (more details in [Usage And Features](#Usage-And-Features)), and project the flight on the Flight Gear simulator. Also, the app uses an algorithm (that the user can load) in order to detect anomalies and notify the user about them.
 
 ## Usage And Features
 In the first window, you will be required to insert a path to the flight's properties file. You do it by typing in the text box, or by clicking the button, and then using the open file dialog that opens. It is optional to insert locations to a FG executable, and for a dll of anomaly detection algorithm. If the path entered for the FG executable is valid, the app will open with the FG, and if not, it will open without it.
