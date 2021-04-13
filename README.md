@@ -20,7 +20,14 @@ In order to close the app, just click the exit button.
 
 
 ## Installation and Running
+#### Installation
 
+#### Running
+If you want to run FG manually, you should to it with the next settings:
+```java
+x = 5;
+
+```
 ## Design
 #### Model, VMs and Views
 The main architecture we use in the project is the MVVM architecture.
