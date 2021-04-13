@@ -119,7 +119,7 @@
                 </Grid>
                 <Grid Grid.Row="1" Grid.Column="2">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="26"/>
+                        <RowDefinition Height="1*"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <TextBlock Text="direction" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25"/>
