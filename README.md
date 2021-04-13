@@ -8,7 +8,9 @@ In the first window, you will be required to insert a path to the flight's prope
 The user can open the FG by himself with the correct settings (as described in the [Installation and Running](#installation-and-running) section, and the app will connect to its server start project the flight. If the FG is closed, the app will still work and show data through time, like: height, speed, direction, yaw, roll, pitch, and the joystick's state. Nevertheless, the user can choose one of the flight's properties, and then 3 graphs will appear:
 1. Graph of the value of the chosen property through time, from the start of the flight until this point.
 2. Graph of the value of the most colerative property to the chosen property through time, from the start of the flight until this point.
-3. Graph of the linear regression between the 2 properties mentioned above, with the actual points from the last 30 seconds (relative to the current time) of the flight marked in red.
+3. Graph of the linear regression between the 2 properties mentioned above, with the actual points from the last 30 seconds (relative to the current time) of the flight marked in red (points from before that are colored gray).
+In order to close the app, just click the exit button.
+**//Need the add about plugins and anomaly detection **
 
 
 ## Files And Directories
