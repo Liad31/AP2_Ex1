@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Net;
 using System.Threading;
+using System.Net.NetworkInformation;
+
 namespace AP2_Ex1
 {
     class Client
@@ -17,20 +19,23 @@ namespace AP2_Ex1
 
         public Client(String ipAddress, int port)
         {
-            try
+            this.port = port;
+            this.ipAddress = ipAddress;
+            if (PortInUse(port))
             {
-                this.port = port;
-                this.ipAddress = ipAddress;
-                this.client = new TcpClient(ipAddress, port);
-                this.stream = client.GetStream();
-            }
-            catch
-            {
-                client = null;
-                stream = null;
+                try
+                {
+
+                    this.client = new TcpClient(ipAddress, port);
+                    this.stream = client.GetStream();
+                }
+                catch
+                {
+                    client = null;
+                    stream = null;
+                }
             }
         }
-
         public void sendString(String str)
         {
             if (client == null)
@@ -39,13 +44,14 @@ namespace AP2_Ex1
                 {
                     try
                     {
-                        this.client = new TcpClient(ipAddress, port);
-                        this.stream = client.GetStream();
+                        if (PortInUse(port))
+                        {
+                            this.client = new TcpClient(ipAddress, port);
+                            this.stream = client.GetStream();
+                        }
                     }
                     catch
                     {
-                        client = null;
-                        stream = null;
                         return;
                     }
                 });
@@ -70,6 +76,27 @@ namespace AP2_Ex1
             {
                 client.Close();
             }
+        }
+
+        public static bool PortInUse(int port)
+        {
+            bool inUse = false;
+
+            IPGlobalProperties ipProperties = IPGlobalProperties.GetIPGlobalProperties();
+            IPEndPoint[] ipEndPoints = ipProperties.GetActiveTcpListeners();
+
+
+            foreach (IPEndPoint endPoint in ipEndPoints)
+            {
+                if (endPoint.Port == port)
+                {
+                    inUse = true;
+                    break;
+                }
+            }
+
+
+            return inUse;
         }
     }
 }
