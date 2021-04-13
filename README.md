@@ -32,6 +32,7 @@ If you want to run FG manually, you should to it with the next settings:
 (need to add about how to run)
 
 ## Design
+You can see here our UML diagram: (add link)
 #### Model, VMs and Views
 The main architecture we use in the project is the MVVM architecture.
 In the MainWindow we create the FlightModel, the ControlBarViewModel and the SteeringViewModel. The MW also creates and holds references to our views, such as the Stick, SpeedClock and ControlBarView. The MW sets the VM's Model property (which they have) to the FlightModel it created, and then sets the VMs to be the views' data context (The SteeringViewModel is the VM of the Stick and SpeedClock, the ControlBarViewModel is the VM of the ControlBarView). Also, there is a 2-way binding for the views and VMs. After everything is set, the MW commands the model to start his operation.
@@ -47,3 +48,4 @@ In order to draw the graphs we used the ScotPlot package. We tried to use MVVM h
 
 #### Plugins
 ## Video
+(add link to video)
