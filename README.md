@@ -3,12 +3,13 @@ In this exercise we made a flight inspection app.
 Using the app you can load a csv files holding your flight info. The app will show you data about the app (more details ahead), and project the flight on the Flight Gear simulator. Also, the app uses an algorithm (that the user can load) in order to detect anomalies and notify the user about them.
 
 ## Usage And Features
-(need to add here details about features)
+In the first window, you will be required
 
 ## Files And Directories
 
 ## Development
 (need to add here versions, framwork, etc)
+
 
 ## Installation and Running
 
@@ -25,4 +26,6 @@ The data flow works using the MVVM. As described above, every property in the Mo
 
 #### Graphs
 In order to draw the graphs we used the ScotPlot package. We tried to use MVVM here, but we couldn't do it perfectly, because we can't do data binding to the plot's values (the plot is the view which shows the graphs). We do have a VM and a Model for the graphs. The model does most of the calculation at the start of the program's run (which propery it most corelative it which), and has properties like the values we want to show in each graph at the moment. The logic of showing the graphs takes place in the MainWindow, but to logic of what is the data we will show, is handled in the Model. Every moment MainWindow ask the VM (which asks the Model) for the data he should show in the graphs, and then it shows it. If the User uses the GUI to request to show the graph of another flight property, the MainWindow will command the graph's VM to change the data according to the new property we need to show, which will command the the Model to change it (The MainWindow only says what property, the Model will give him all the points of the graph), so now each moment, when the MainWindow commands the VM to give him the data, it will be according to the new property.
+
+#### Plugins
 ## Video
