@@ -10,7 +10,7 @@ The user can open the FG by himself with the correct settings (as described in t
 2. Graph of the value of the most colerative property to the chosen property through time, from the start of the flight until this point.
 3. Graph of the linear regression between the 2 properties mentioned above, with the actual points from the last 30 seconds (relative to the current time) of the flight marked in red (points from before that are colored gray).
 In order to close the app, just click the exit button.
-**//Need the add about plugins and anomaly detection **
+** //Need the add about plugins and anomaly detection **
 
 
 ## Files And Directories
