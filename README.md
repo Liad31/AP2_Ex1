@@ -12,6 +12,10 @@ The user can open the FG by himself with the correct settings (as described in t
 In order to close the app, just click the exit button.
 **//Need the add about plugins and anomaly detection**
 
+#### Special Features ####
+1. The app can open FG using a given path
+2. When using an anomaly detector and choosing property to search, red dots will appear above the video slider at the points there are anomalies, and when clicked the video will move to that point
+3. The paths entered in the starting window are saved
 
 ## Files And Directories
 (??????)
