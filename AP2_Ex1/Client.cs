@@ -49,10 +49,19 @@ namespace AP2_Ex1
                         return;
                     }
                 });
+                initClient.Start();
                 return;
             }
-            stream.Write(Encoding.ASCII.GetBytes(str), 0, str.Length);
-            stream.Flush();
+            try
+            {
+                stream.Write(Encoding.ASCII.GetBytes(str), 0, str.Length);
+                stream.Flush();
+            }
+            catch
+            {
+                client = null;
+                stream = null;
+            }
         }
 
         public void close()
