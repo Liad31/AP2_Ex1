@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using System.Windows.Shapes;
+using System.Windows;
+using System.Drawing;
 
 namespace AP2_Ex1.controls
 {
@@ -9,6 +13,7 @@ namespace AP2_Ex1.controls
         private const int RWD_FWD = 5;
         ControlBarViewModel viewModel;
         private bool isMouseDownInProgress;
+        private List<ExceptionDot> exceptions;
         public ControlBarView()
         {
             InitializeComponent();
@@ -17,6 +22,7 @@ namespace AP2_Ex1.controls
             cmbSpeedMultiplier.SelectedIndex = 3;
             cmbSpeedMultiplier.SelectionChanged += ComboBox_SelectionChanged;
             StartPauseButton.Content = "S";
+            exceptions = new List<ExceptionDot>();
         }
 
         public ControlBarViewModel ViewModel
@@ -101,7 +107,33 @@ namespace AP2_Ex1.controls
                 //TODO: notify view model who will notify the model
             }
         }
+       
 
+        public void setExceptions(List<int> exceptionsColumn)
+        {
+            foreach(int exceptionColumn in exceptionsColumn)
+            {
+                ExceptionDot exception = new ExceptionDot();
+                this.exceptions.Add(exception);
+                exception.ExceptionColumn = exceptionColumn;
+                exception.dot.Margin = new Thickness((((double)exceptionColumn / viewModel.VM_LineCount) * 490), 0, 495 - (((double)exceptionColumn / viewModel.VM_LineCount) * 490), 0);
+                exception.dot.Click += (sender, EventArgs) => { Dot_Click(sender, exceptionColumn); }; ;
+                grid.Children.Add(exception);
+                Grid.SetRow(exception, 1);
+            }
+        }
 
+        public void removeExceptions()
+        {
+            foreach(ExceptionDot exception in this.exceptions)
+            {
+                grid.Children.Remove(exception);
+            }
+        }
+
+        private void Dot_Click(object sender, int exceptionColumn)
+        {
+            Progress.Value = exceptionColumn;
+        }
     }
 }
