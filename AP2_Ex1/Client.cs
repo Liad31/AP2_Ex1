@@ -78,6 +78,11 @@ namespace AP2_Ex1
             }
         }
 
+        /// <summary>
+        /// checks if someone listens to given port
+        /// </summary>
+        /// <param name="port">port number we want to check</param>
+        /// <returns>true is someone is listening</returns>
         public static bool PortInUse(int port)
         {
             bool inUse = false;
