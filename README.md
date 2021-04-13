@@ -5,7 +5,7 @@ Using the app you can load a csv files holding your flight info. The app will sh
 ## Usage And Features
 In the first window, you will be required to insert a path to the flight's properties file. You do it by typing in the text box, or by clicking the button, and then using the open file dialog that opens. It is optional to insert locations to a FG executable, and for a dll of anomaly detection algorithm. If the path entered for the FG executable is valid, the app will open with the FG, and if not, it will open without it.
 **Note:** The paths you enter are saved from run to run, so you don't have to re enter them.
-The user can open the FG by himself with the current settings (as described in the [a link](# Installation and Running) section, and the app will connect to it's server, but th
+The user can open the FG by himself with the current settings (as described in the [Installation and Running](#installation-and-running) section, and the app will connect to it's server, but th
 
 
 ## Files And Directories
