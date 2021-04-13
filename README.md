@@ -25,7 +25,7 @@ In order to close the app, just click the exit button.
 #### Running
 If you want to run FG manually, you should to it with the next settings:
 ```java
-x = 5;
+int x = 5;
 
 ```
 ## Design
