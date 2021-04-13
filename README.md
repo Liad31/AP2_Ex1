@@ -35,6 +35,8 @@ If you want to run FG manually, you should to it with the next settings:
 ```
 (need to add about how to run)
 
+Once you run the app, you can use it as described in the [Usage And Features](#usage-and-features)
+
 ## Design
 You can see here our UML diagram: (add link)
 #### Model, VMs and Views
