@@ -171,5 +171,10 @@ namespace AP2_Ex1
             }
             catch (Exception ex) { }
         }
+
+        private void WhenCloses(object sender, CancelEventArgs e)
+        {
+            vm_controlBar.Stop();
+        }
     }
 }

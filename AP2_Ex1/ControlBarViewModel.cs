@@ -96,6 +96,9 @@ namespace AP2_Ex1
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
         
-
+        public void Stop()
+        {
+            model.Stop();
+        }
     }
 }
