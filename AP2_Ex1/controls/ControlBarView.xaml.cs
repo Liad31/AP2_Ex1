@@ -14,6 +14,7 @@ namespace AP2_Ex1.controls
         ControlBarViewModel viewModel;
         private bool isMouseDownInProgress;
         private List<ExceptionDot> exceptions;
+        private List<int> exceptionsValues; 
         public ControlBarView()
         {
             InitializeComponent();
@@ -23,6 +24,7 @@ namespace AP2_Ex1.controls
             cmbSpeedMultiplier.SelectionChanged += ComboBox_SelectionChanged;
             StartPauseButton.Content = "S";
             exceptions = new List<ExceptionDot>();
+            exceptionsValues = new List<int>();
         }
 
         public ControlBarViewModel ViewModel
@@ -31,6 +33,14 @@ namespace AP2_Ex1.controls
             {
                 this.viewModel = value;
                 this.DataContext = viewModel;
+            }
+        }
+
+        public List<int> Exceptions
+        {
+            set
+            {
+                this.exceptionsValues = value;
             }
         }
 
@@ -109,9 +119,9 @@ namespace AP2_Ex1.controls
         }
        
 
-        public void setExceptions(List<int> exceptionsColumn)
+        public void setExceptions()
         {
-            foreach(int exceptionColumn in exceptionsColumn)
+            foreach(int exceptionColumn in this.exceptionsValues)
             {
                 ExceptionDot exception = new ExceptionDot();
                 this.exceptions.Add(exception);
@@ -128,6 +138,7 @@ namespace AP2_Ex1.controls
             foreach(ExceptionDot exception in this.exceptions)
             {
                 grid.Children.Remove(exception);
+                this.exceptions.Remove(exception);
             }
         }
 
