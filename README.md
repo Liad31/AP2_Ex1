@@ -26,7 +26,7 @@ In order to close the app, just click the exit button.
 
 ## Installation and Running
 #### Installation
-(need to add about installing the app) /n
+(need to add about installing the app)  
 **About FG:** If you want to use FG, you should install it, and put the "playback_small.xml" from the moodle in the folder "/data/protocols", inside the folder you installed FG in.
 #### Running
 If you want to run FG manually, you should to it with the next settings:
