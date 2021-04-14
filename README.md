@@ -19,7 +19,13 @@ In order to close the app, just click the exit button.
 4. You can open FG while the app is running, close it and reopen it, and the projection should work
 
 ## Files And Directories
-(??????)
+#### Directories
+There are 3 main Directories in the project:  
+1. controls: There are all the user controls we made
+2. References: There are the dll files we used (like scottPlot)
+3. Main Directory: There are the other directories, and the src code files 
+#### Files
+The main files are the src code files, like the FlightModel.cs, MainWindow.cs, their xamls files, and dll files (like scottPlot)
 
 ## Development
 This app was developed on .Net Framwork 4.7.2.  
