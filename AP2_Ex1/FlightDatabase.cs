@@ -10,9 +10,10 @@ namespace AP2_Ex1
 {
     class FlightDatabase : IDatabase
     {
-        private ArrayList data;
-        private ArrayList lines;
-        private List<string> keys;
+        private ArrayList data; // array of dictionaries that holds data (each dictionary is a line)
+        private ArrayList lines; // array of strings, each string is a line
+        private List<string> keys; // the keys we have in each dictionary
+
         public FlightDatabase(string CSVFilePath)
         {
             StreamReader reader = new StreamReader(File.OpenRead(CSVFilePath));
@@ -23,6 +24,7 @@ namespace AP2_Ex1
                 Dictionary<String, Double> d = new Dictionary<string, double>();
                 String line = reader.ReadLine();
                 lines.Add(line);
+
                 String[] values = line.Split(',');
                 d.Add("aileron", Convert.ToDouble(values[0]));
                 d.Add("elevator", Convert.ToDouble(values[1]));
@@ -70,6 +72,7 @@ namespace AP2_Ex1
                 //data contains a dictonary for each line in the csv
                 data.Add(d);
             }
+
             //loop to get keys (yes, I am lazy)
             keys = new List<string>();
             foreach (KeyValuePair<string, double> p in (Dictionary<string, double>)data[0])
@@ -77,6 +80,7 @@ namespace AP2_Ex1
                 keys.Add(p.Key);
             }
         }
+
         public List<string> Properties
         {
             get
@@ -85,7 +89,6 @@ namespace AP2_Ex1
             }
         }
 
-        //get the data of a specific line
         public Dictionary<string, double> getLine(int lineNumber)
         {
             if (lineNumber < data.Count)
@@ -94,12 +97,13 @@ namespace AP2_Ex1
             }
             return (Dictionary<string, double>)data[data.Count - 1];
         }
-        //returns the data of a line seperated by ","
+
+
         public string getLineString(int lineNumber)
         {
             return (string)lines[lineNumber];
         }
-        //returns the full array from the start of the flight to the end of a given property
+
         public List<double> getPropertyArray(string key)
         {
             IList values = new ArrayList();
@@ -111,7 +115,6 @@ namespace AP2_Ex1
             }
             return ConvertToListOf<double>(values);
         }
-
 
         public static List<T> ConvertToListOf<T>(IList iList)
         {

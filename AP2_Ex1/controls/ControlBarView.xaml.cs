@@ -10,11 +10,11 @@ namespace AP2_Ex1.controls
 {
     public partial class ControlBarView : System.Windows.Controls.UserControl
     {
-        private const int RWD_FWD = 5;
+        private const int RWD_FWD = 5; //how many second does rewind and forward should move
         ControlBarViewModel viewModel;
-        private bool isMouseDownInProgress;
         private List<ExceptionDot> exceptions;
         private List<int> exceptionsValues; 
+
         public ControlBarView()
         {
             InitializeComponent();
@@ -22,11 +22,16 @@ namespace AP2_Ex1.controls
             //So cmb have defualt value, without invoking selction changed
             cmbSpeedMultiplier.SelectedIndex = 3;
             cmbSpeedMultiplier.SelectionChanged += ComboBox_SelectionChanged;
+
             StartPauseButton.Content = "S";
+
             exceptions = new List<ExceptionDot>();
             exceptionsValues = new List<int>();
         }
 
+        /// <summary>
+        /// View Model property
+        /// </summary>
         public ControlBarViewModel ViewModel
         {
             set
@@ -44,15 +49,25 @@ namespace AP2_Ex1.controls
             }
         }
 
+        /// <summary>
+        /// pauses/resumed the video. Called when Pause/Start button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SPButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
             viewModel.VM_IsPaused = !viewModel.VM_IsPaused;
             StartPauseButton.Content= viewModel.VM_IsPaused ? "S" : "P";
         }
 
+        /// <summary>
+        /// Rewinds the video. Called when rwd button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rwdClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            int lineToMove = RWD_FWD * viewModel.VM_LPS;
+            int lineToMove = RWD_FWD * viewModel.VM_LPS; //number of line we will move
             if (viewModel.VM_CurrentLine < lineToMove)
             {
                 viewModel.VM_CurrentLine = 0;
@@ -63,9 +78,14 @@ namespace AP2_Ex1.controls
             }
         }
 
+        /// <summary>
+        /// Forwards the video. Called when fwd button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void fwdClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            int lineToMove = RWD_FWD * viewModel.VM_LPS;
+            int lineToMove = RWD_FWD * viewModel.VM_LPS; //number of lined we will move
             if (viewModel.VM_CurrentLine > viewModel.VM_LineCount - lineToMove)
             {
                 viewModel.VM_CurrentLine = viewModel.VM_LineCount;
@@ -76,6 +96,11 @@ namespace AP2_Ex1.controls
             }
         }
 
+        /// <summary>
+        /// Handled combo box selction changed. Called when user wants to change video spped multiplier.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             switch (cmbSpeedMultiplier.SelectedIndex)
@@ -99,11 +124,6 @@ namespace AP2_Ex1.controls
                     viewModel.VM_SpeedMultiplier = 0.25;
                     break;
             }
-        }
-
-        private void Progress_ValueChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<double> e)
-        {
-            Progress.Value = e.NewValue;
         }
 
         private void Button_Click_Open(object sender, System.Windows.RoutedEventArgs e)

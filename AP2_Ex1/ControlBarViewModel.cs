@@ -11,6 +11,7 @@ namespace AP2_Ex1
     {
         IModel model;
         public event PropertyChangedEventHandler PropertyChanged;
+
         public ControlBarViewModel(IModel model)
         {
             this.model = model;
@@ -20,6 +21,10 @@ namespace AP2_Ex1
             };
             VM_IsPaused = true;
         }
+
+        /// <summary>
+        /// how many lines does we have to read (actually index of last one, starting from 0, this is why -1)
+        /// </summary>
         public int VM_LineCount
         {
             get
@@ -27,6 +32,7 @@ namespace AP2_Ex1
                 return model.LineCount - 1;
             }
         }
+
         public List<double> VM_Exceptions
         {
             get
@@ -38,6 +44,10 @@ namespace AP2_Ex1
                 this.model.Exceptions = value;
             }
         }
+
+        /// <summary>
+        /// number of current line we are reading
+        /// </summary>
         public int VM_CurrentLine
         {
             get
@@ -50,6 +60,10 @@ namespace AP2_Ex1
             }
 
         }
+
+        /// <summary>
+        /// Is the vidow paused
+        /// </summary>
         public bool VM_IsPaused
         {
             get
@@ -61,6 +75,10 @@ namespace AP2_Ex1
                 this.model.IsPaused = value;
             }
         }
+
+        /// <summary>
+        /// Video's speed multiplier
+        /// </summary>
         public double VM_SpeedMultiplier
         {
             get
@@ -73,6 +91,9 @@ namespace AP2_Ex1
             }
         }
 
+        /// <summary>
+        /// How many Lines Per Second do we read.
+        /// </summary>
         public int VM_LPS
         {
             get
@@ -96,6 +117,9 @@ namespace AP2_Ex1
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
         
+        /// <summary>
+        /// stops the model
+        /// </summary>
         public void Stop()
         {
             model.Stop();

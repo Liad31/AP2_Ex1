@@ -36,14 +36,21 @@ namespace AP2_Ex1
                 }
             }
         }
+
+        /// <summary>
+        /// tries to send string to the server. If not connected, tries to connect and send.
+        /// </summary>
+        /// <param name="str"></param>
         public void sendString(String str)
-        {
+        {   
+            //if client is null, try to connect to the server
             if (client == null)
             {
                 Task initClient = new Task(() =>
                 {
                     try
                     {
+                        //try to connect only if the port is in use, so we won't open a lot of clients that will wait for nothing.
                         if (PortInUse(port))
                         {
                             this.client = new TcpClient(ipAddress, port);
@@ -65,11 +72,19 @@ namespace AP2_Ex1
             }
             catch
             {
+                //if we failed to send message, assume server is closed.
+                if (client != null)
+                {
+                    client.Close();
+                }
                 client = null;
                 stream = null;
             }
         }
 
+        /// <summary>
+        /// closes the connection
+        /// </summary>
         public void close()
         {
             if (client != null)

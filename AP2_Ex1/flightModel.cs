@@ -10,7 +10,7 @@ namespace AP2_Ex1
 {
     public class FlightModel : IModel
     {
-        private bool stop;
+        private bool stop; //for stopping the model
         private IDatabase database;
         private int currentLine;
         private int lineCount;
@@ -30,8 +30,9 @@ namespace AP2_Ex1
         private List<double> exceptions;
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         public Dictionary<String, double> LastLine { get; }
-        //how many lines are in the csv
+
         public int LineCount
         {
             get
@@ -44,7 +45,7 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("LineCount");
             }
         } 
-        //list of the lines with an exception
+
         public List<double> Exceptions
         {
             get
@@ -57,6 +58,7 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("Exceptions");
             }
         }
+
         public int CurrentLine
         {
             get { return currentLine; }
@@ -66,6 +68,7 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("CurrentLine");
             }
         }
+
         public string CurrentTimeString
         {
             get
@@ -78,6 +81,7 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("CurrentTime");
             }
         }
+
         public bool IsPaused {
             get
             {
@@ -103,6 +107,8 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("Rudder");
             }
         }
+
+        //Flight properties we will show on screen
         public double Throttle
         {
             get
@@ -115,6 +121,7 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("Throttle");
             }
         }
+
         public double Aileron
         {
             get
@@ -127,6 +134,7 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("Aileron");
             }
         }
+
         public double Elevator
         {
             get
@@ -139,6 +147,7 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("Elevator");
             }
         }
+
         public double Altitude
         {
             get
@@ -151,6 +160,7 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("Altitude");
             }
         }
+
         public double Speed
         {
             get
@@ -163,6 +173,7 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("Speed");
             }
         }
+
         public double Direction
         {
             get
@@ -175,6 +186,7 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("Direction");
             }
         }
+
         public double Yaw
         {
             get
@@ -187,6 +199,7 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("Yaw");
             }
         }
+
         public double Roll
         {
             get
@@ -197,6 +210,7 @@ namespace AP2_Ex1
             {
                 roll = value;
                 NotifyPropertyChanged("Roll");
+          
             }
         }
         public double Pitch
@@ -211,6 +225,7 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("Pitch");
             }
         }
+
         public double SpeedMultiplier
         {
             get { return speedMultiplier; }
@@ -222,6 +237,7 @@ namespace AP2_Ex1
         }
 
         public int LPS { get; private set; }
+
         public FlightModel(IDatabase database, int lps)
         {
             this.database = database;
@@ -230,6 +246,7 @@ namespace AP2_Ex1
             LPS = lps;
             //init propertyByColumn
         }
+
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
@@ -249,7 +266,7 @@ namespace AP2_Ex1
                     {
                         CurrentLine++;
                     }
-                    //show the flight on flight gear
+                    //project the flight on flight gear
                     client.sendString(database.getLineString(CurrentLine) + "\n");
                     dic = database.getLine(CurrentLine);
 
@@ -276,9 +293,15 @@ namespace AP2_Ex1
                     dic.TryGetValue("heading-deg", out temp);
                     Direction = temp;
                     CurrentTimeString = (TimeSpan.FromSeconds(CurrentLine / LPS)).ToString(@"mm\:ss"); ;
+
+                    //this adjust the video speed
                     Thread.Sleep((int)(1000 / (LPS * SpeedMultiplier)));
                 }
-                client.close();
+
+                if (client != null)
+                {
+                    client.close();
+                }
             }).Start();
         }
 

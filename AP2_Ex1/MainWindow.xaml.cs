@@ -173,6 +173,11 @@ namespace AP2_Ex1
             catch (Exception ex) { }
         }
 
+        /// <summary>
+        /// Called when the user closed. Stops the Model (so there are no more threads working)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WhenCloses(object sender, CancelEventArgs e)
         {
             vm_controlBar.Stop();
