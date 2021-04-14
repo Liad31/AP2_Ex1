@@ -131,9 +131,15 @@ namespace AP2_Ex1
                 return model.dllPath;
             }
         }
-    }
-}
 
+
+
+        public void NotifyDLLChanged(String path)
+        {
+            model.changeDLL(path);
+        }
+
+    }
 }
 
 
