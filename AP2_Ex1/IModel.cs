@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AP2_Ex1
 {
-     public interface IModel : INotifyPropertyChanged
+    public interface IModel : INotifyPropertyChanged
     {
         /// <summary>
         /// starting the simulation in a new thread
@@ -77,3 +77,6 @@ namespace AP2_Ex1
         void changeDLL(string path);
     }
 }
+
+
+

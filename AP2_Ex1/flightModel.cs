@@ -321,7 +321,7 @@ namespace AP2_Ex1
                 NotifyPropertyChanged("DLL");
                 
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("the dll doesnt fit to the application");
             }

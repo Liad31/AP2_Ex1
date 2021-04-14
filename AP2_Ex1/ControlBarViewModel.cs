@@ -15,8 +15,8 @@ namespace AP2_Ex1
         public ControlBarViewModel(IModel model)
         {
             this.model = model;
-            model.PropertyChanged += delegate(object sender, PropertyChangedEventArgs e)
-            {             
+            model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
+            {
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
             VM_IsPaused = true;
@@ -109,7 +109,7 @@ namespace AP2_Ex1
                 return model.CurrentTimeString;
             }
         }
-       
+
 
         public void NotifyPropertyChanged(string propName)
         {
@@ -126,7 +126,7 @@ namespace AP2_Ex1
         }
         public void NotifyDLLChanged(string path)
         {
-            model.changeDLL(path);
+            model.Stop();
         }
         public string VM_DLL
         {
@@ -137,3 +137,6 @@ namespace AP2_Ex1
         }
     }
 }
+
+
+

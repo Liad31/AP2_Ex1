@@ -76,6 +76,9 @@ namespace AP2_Ex1
                         graph.PropertyName = vm_graphs.VM_CurrentProperty;
                         forDll.Children.Clear();
                         forDll.Children.Add(graph);
+                        controlBar.removeExceptions();
+                        controlBar.Exceptions = graph.getAnomalies();
+                        controlBar.setExceptions();
                     }
                     catch(Exception ex)
                     {
@@ -112,12 +115,15 @@ namespace AP2_Ex1
                         var dll = Assembly.LoadFrom(vm_controlBar.VM_DLL);
 
                         object[] argsEntity = { trainingFilePath, database.csvFilePath };
-                        graph = Activator.CreateInstance(dll.GetType("controls.SimpleAnomalyDetector"), argsEntity);// there is another type!!!
+                        graph = Activator.CreateInstance(dll.GetType("controls.AnomalyDetector"), argsEntity);// there is another type!!!
                         if (vm_graphs.VM_CurrentProperty!=null)
                         {
                             graph.PropertyName = vm_graphs.VM_CurrentProperty;
                             forDll.Children.Clear();
                             forDll.Children.Add(graph);
+                            controlBar.removeExceptions();
+                            controlBar.Exceptions = graph.getAnomalies();
+                            controlBar.setExceptions();
                         }
                         
                        

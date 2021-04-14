@@ -64,10 +64,10 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <WrapPanel Grid.Column="2" Name="forDll">
+                <WrapPanel Grid.Column="2" Name="forDll" >
                     
                 </WrapPanel>
                 <Controls:speedClock x:Name="speedClock" Grid.Column="1" Grid.Row="0" MaxSpeed="100"/>

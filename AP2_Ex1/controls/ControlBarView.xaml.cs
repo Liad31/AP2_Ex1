@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ namespace AP2_Ex1.controls
         private const int RWD_FWD = 5; //how many second does rewind and forward should move
         ControlBarViewModel viewModel;
         private List<ExceptionDot> exceptions;
-        private List<int> exceptionsValues; 
+        private List<int> exceptionsValues;
 
         public ControlBarView()
         {
@@ -62,7 +61,7 @@ namespace AP2_Ex1.controls
         private void SPButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
             viewModel.VM_IsPaused = !viewModel.VM_IsPaused;
-            StartPauseButton.Content= viewModel.VM_IsPaused ? "S" : "P";
+            StartPauseButton.Content = viewModel.VM_IsPaused ? "S" : "P";
         }
 
         /// <summary>
@@ -140,10 +139,10 @@ namespace AP2_Ex1.controls
             {
                 String dllPath = dlg.FileName; ;
                 viewModel.NotifyDLLChanged(dllPath);
-
             }
         }
-       
+        
+      
         /// <summary>
         /// Set exceptions points to progress bar.
         /// </summary>

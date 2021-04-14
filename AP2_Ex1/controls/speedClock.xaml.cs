@@ -98,7 +98,7 @@ namespace AP2_Ex1.controls
         }
 
 
-        
+
 
         /// <summary>
         /// Move speed clock dial according angle
