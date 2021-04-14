@@ -126,7 +126,7 @@ namespace AP2_Ex1
                    MessageBox.Show("flight gear path is invalid");
                 }
             }
-            var mw = new MainWindow(flightdb, settings.TrainingCsvPath);
+            var mw = new MainWindow(settings.FlightCsvPath, settings.TrainingCsvPath);
             mw.Show();
             this.Close();
         }

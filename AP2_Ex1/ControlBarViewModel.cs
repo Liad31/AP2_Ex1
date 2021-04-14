@@ -124,5 +124,16 @@ namespace AP2_Ex1
         {
             model.Stop();
         }
+        public void NotifyDLLChanged(string path)
+        {
+            model.changeDLL(path);
+        }
+        public string VM_DLL
+        {
+            get
+            {
+                return model.dllPath;
+            }
+        }
     }
 }

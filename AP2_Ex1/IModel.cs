@@ -72,5 +72,8 @@ namespace AP2_Ex1
         /// How many Lines Per Second should the Model read.
         /// </summary>
         int LPS { get; }
+        string dllPath { get; set; }
+
+        void changeDLL(string path);
     }
 }

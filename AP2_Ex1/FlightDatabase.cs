@@ -13,12 +13,14 @@ namespace AP2_Ex1
         private ArrayList data; // array of dictionaries that holds data (each dictionary is a line)
         private ArrayList lines; // array of strings, each string is a line
         private List<string> keys; // the keys we have in each dictionary
-
+        public string csvFilePath { get; set; }
         public FlightDatabase(string CSVFilePath)
         {
+            csvFilePath = CSVFilePath;
             StreamReader reader = new StreamReader(File.OpenRead(CSVFilePath));
             data = new ArrayList();
             lines = new ArrayList();
+            reader.ReadLine();
             while (!reader.EndOfStream)
             {
                 Dictionary<String, Double> d = new Dictionary<string, double>();

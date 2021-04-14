@@ -37,5 +37,7 @@ namespace AP2_Ex1
         /// </summary>
         /// <returns>num of lines</returns>
         int numOfLines();
+
+        string csvFilePath { get; set; }
     }
 }
