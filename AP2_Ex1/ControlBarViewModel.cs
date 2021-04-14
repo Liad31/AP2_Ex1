@@ -124,10 +124,7 @@ namespace AP2_Ex1
         {
             model.Stop();
         }
-        public void NotifyDLLChanged(string path)
-        {
-            model.Stop();
-        }
+
         public string VM_DLL
         {
             get
