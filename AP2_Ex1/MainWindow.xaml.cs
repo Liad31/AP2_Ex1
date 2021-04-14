@@ -80,7 +80,7 @@ namespace AP2_Ex1
                         controlBar.Exceptions = graph.getAnomalies();
                         controlBar.setExceptions();
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
 
                     }
@@ -115,7 +115,7 @@ namespace AP2_Ex1
                         var dll = Assembly.LoadFrom(vm_controlBar.VM_DLL);
 
                         object[] argsEntity = { trainingFilePath, database.csvFilePath };
-                        graph = Activator.CreateInstance(dll.GetType("controls.AnomalyDetector"), argsEntity);// there is another type!!!
+                        graph = Activator.CreateInstance(dll.GetType("controls.AnomalyDetector"), argsEntity);
                         if (vm_graphs.VM_CurrentProperty!=null)
                         {
                             graph.PropertyName = vm_graphs.VM_CurrentProperty;
@@ -125,12 +125,12 @@ namespace AP2_Ex1
                             controlBar.Exceptions = graph.getAnomalies();
                             controlBar.setExceptions();
                         }
-                        
-                       
+
+
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("the dll doesnt fit to the application");
+                        MessageBox.Show("the dll doesnt fit the application");
                     }
                 }
             };

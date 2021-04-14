@@ -13,7 +13,7 @@ namespace AP2_Ex1.controls
         private const int RWD_FWD = 5; //how many second does rewind and forward should move
         ControlBarViewModel viewModel;
         private List<ExceptionDot> exceptions;
-        private List<int> exceptionsValues;
+        private List<long> exceptionsValues;
 
         public ControlBarView()
         {
@@ -26,7 +26,7 @@ namespace AP2_Ex1.controls
             StartPauseButton.Content = "S";
 
             exceptions = new List<ExceptionDot>();
-            exceptionsValues = new List<int>();
+            exceptionsValues = new List<long>();
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace AP2_Ex1.controls
         /// <summary>
         /// exceptions list property
         /// </summary>
-        public List<int> Exceptions
+        public List<long> Exceptions
         {
             set
             {
@@ -165,10 +165,10 @@ namespace AP2_Ex1.controls
         /// </summary>
         public void removeExceptions()
         {
-            foreach(ExceptionDot exception in this.exceptions)
+            for (int i = this.exceptions.Count - 1; i >= 0; i--)
             {
-                grid.Children.Remove(exception);
-                this.exceptions.Remove(exception);
+                grid.Children.Remove(exceptions[i]);
+                this.exceptions.Remove(exceptions[i]);
             }
         }
 

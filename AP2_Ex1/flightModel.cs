@@ -319,13 +319,13 @@ namespace AP2_Ex1
             {
                 dllPath = path;
                 NotifyPropertyChanged("DLL");
-                
+
             }
             catch
             {
-                MessageBox.Show("the dll doesnt fit to the application");
+                MessageBox.Show("the dll doesnt fit the application");
             }
-        }
+}
 
     }
 }
