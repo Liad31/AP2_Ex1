@@ -39,9 +39,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ScottPlot, Version=4.1.10.0, Culture=neutral, PublicKeyToken=86698dc10387c39e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ScottPlot.4.1.10-beta\lib\net461\ScottPlot.dll</HintPath>
     </Reference>
     <Reference Include="ScottPlot.WPF, Version=4.1.10.0, Culture=neutral, PublicKeyToken=e53b06131e34a3aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ScottPlot.WPF.4.1.10-beta\lib\net472\ScottPlot.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -169,9 +171,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\speed_clock.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="EO.Wpf.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

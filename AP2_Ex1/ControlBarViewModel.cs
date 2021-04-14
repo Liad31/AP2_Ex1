@@ -95,7 +95,16 @@ namespace AP2_Ex1
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
-        
-
+        public void NotifyDLLChanged(string path)
+        {
+            model.changeDLL(path);
+        }
+        public string VM_DLL
+        {
+            get
+            {
+                return model.dllPath;
+            }
+        }
     }
 }

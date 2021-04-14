@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Windows.Controls;
 using System.Windows.Forms;
 
@@ -98,10 +99,10 @@ namespace AP2_Ex1.controls
             if (result == true)
             {
                 String dllPath = dlg.FileName; ;
-                //TODO: notify view model who will notify the model
+                viewModel.NotifyDLLChanged(dllPath);
+
             }
         }
-
 
     }
 }

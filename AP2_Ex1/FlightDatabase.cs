@@ -13,11 +13,14 @@ namespace AP2_Ex1
         private ArrayList data;
         private ArrayList lines;
         private List<string> keys;
+        public string csvFilePath { get; set; }
         public FlightDatabase(string CSVFilePath)
         {
+            csvFilePath = CSVFilePath;
             StreamReader reader = new StreamReader(File.OpenRead(CSVFilePath));
             data = new ArrayList();
             lines = new ArrayList();
+            reader.ReadLine();
             while (!reader.EndOfStream)
             {
                 Dictionary<String, Double> d = new Dictionary<string, double>();
@@ -77,6 +80,7 @@ namespace AP2_Ex1
                 keys.Add(p.Key);
             }
         }
+
         public List<string> Properties
         {
             get

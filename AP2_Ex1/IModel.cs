@@ -31,5 +31,8 @@ namespace AP2_Ex1
         double Pitch { get; set; }
         List<double> Exceptions { get; set; }
         int LPS { get; }
+        string dllPath { get; set; }
+
+        void changeDLL(string path);
     }
 }

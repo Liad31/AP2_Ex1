@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AP2_Ex1
 {
@@ -28,6 +30,7 @@ namespace AP2_Ex1
         private string currentTime;
         private bool isPaused = true;
         private List<double> exceptions;
+        public string dllPath { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public Dictionary<String, double> LastLine { get; }
@@ -286,5 +289,20 @@ namespace AP2_Ex1
         {
             stop = true;
         }
+
+        public void changeDLL(string path)
+        {
+            try
+            {
+                dllPath = path;
+                NotifyPropertyChanged("DLL");
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("the dll doesnt fit to the application");
+            }
+        }
+
     }
 }

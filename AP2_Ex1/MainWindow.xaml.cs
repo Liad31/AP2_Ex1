@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,10 +24,11 @@ namespace AP2_Ex1
         private SteeringViewModel vm_steering;
         private GraphsPanelViewModel vm_graphs;
         private ControlBarViewModel vm_controlBar;
-        //hello!
-        public MainWindow(string csvFilePath, string xmlFilePath)
+        private string trainingFilePath;
+        public MainWindow(string csvFilePath, string trainingFile)
         {
             InitializeComponent();
+            trainingFilePath = trainingFile;
             IDatabase database = new FlightDatabase(csvFilePath);
             IModel model = new FlightModel(database, 10);
             GraphsModel graphsModel = new GraphsModel(database, model);
@@ -88,6 +90,27 @@ namespace AP2_Ex1
                     }
                 }
             };
+            vm_controlBar.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
+            {
+                
+                if (e.PropertyName == "VM_DLL")
+                {
+                    try
+                    {
+                        var dll = Assembly.LoadFrom(vm_controlBar.VM_DLL);
+
+                        object[] argsEntity = { trainingFilePath, database.csvFilePath };
+                        dynamic graph = Activator.CreateInstance(dll.GetType("controls.SimpleAnomalyDetector"), argsEntity);// there is another type!!!
+                        graph.PropertyName = vm_graphs.VM_CurrentProperty;
+                        forDll.Children.Clear();
+                        forDll.Children.Add(graph);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("the dll doesnt fit to the application");
+                    }
+                }
+            };
 
             roll.DataContext = vm_steering;
             yaw.DataContext = vm_steering;
@@ -105,7 +128,7 @@ namespace AP2_Ex1
         //show and render the updated graphs after they changed
         private void updateGraphs()
         {
-            if (vm_graphs.VM_CurrentProperty != null)
+            if (vm_graphs.VM_CurrentProperty != null && vm_graphs.VM_Line> 0) 
             {
                 try
                 {
@@ -138,7 +161,7 @@ namespace AP2_Ex1
                         }
                         catch (Exception e) { }
                     });
-
+                    
                     linearRegression.Plot.Clear();
                     linearRegression.Plot.AddLine(vm_graphs.VM_SlopeLinearRegression, vm_graphs.VM_InterceptLinearRegression,
                         (vm_graphs.minLinearRegressionVal, vm_graphs.maxLinearRegressionVal), lineWidth: 2);
