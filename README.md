@@ -8,10 +8,11 @@ In the first window, you will be required to insert a path to the flight's prope
 The user can open the FG by himself with the correct settings (as described in the [Installation and Running](#installation-and-running) section, and the app will connect to its server start project the flight. If the FG is closed, the app will still work and show data through time, like: height, speed, direction, yaw, roll, pitch, and the joystick's state. Nevertheless, the user can choose one of the flight's properties, and then 3 graphs will appear:
 1. Graph of the value of the chosen property through time, from the start of the flight until this point.
 2. Graph of the value of the most colerative property to the chosen property through time, from the start of the flight until this point.
-3. Graph of the linear regression between the 2 properties mentioned above, with the actual points from the last 30 seconds (relative to the current time) of the flight marked in red (points from before that are colored gray).
-In order to close the app, just click the exit button.
-**//Need the add about plugins and anomaly detection**
-
+3. Graph of the linear regression between the 2 properties mentioned above, with the actual points from the last 30 seconds (relative to the current time) of the flight marked in red (points from before that are colored gray). 
+In order to close the app, just click the exit button
+   
+After leaving the first window you can press the "Open" button to pick a anomaly detection DLL for the app to use (given you have picked a training flight file), those DLLs can be replaced in runtime. you can also create you own DLL and use it in the application.
+see [the Plugins section](#Plugins)
 #### Special Features ####
 1. The app can open FG using a given path
 2. When using an anomaly detector and choosing property to search, red dots will appear above the video slider at the points there are anomalies, and when clicked the video will move to that point
@@ -60,8 +61,19 @@ Now, the User can use the ControlBar GUI to move to another point in time (using
 The data flow works using the MVVM. As described above, every property in the Model has a matching property in a VM and a View, when the property changed in the Model, it notifies the VM, which notifies about the change to the View, thanks to the binding between the View's and VM's properties. Now the View will request the VM to give him the new value, and he will give it using the Model (The VM behaves as a pipe). Data flows from the View to the Model as well. The user can change the View and it's Values, this causes change to the binded propery in the VM, and it will command the Model to change its propery as well. 
 
 #### Graphs
-In order to draw the graphs we used the ScotPlot package. We tried to use MVVM here, but we couldn't do it perfectly, because we can't do data binding to the plot's values (the plot is the view which shows the graphs). We do have a VM and a Model for the graphs. The model does most of the calculation at the start of the program's run (which propery it most corelative it which), and has properties like the values we want to show in each graph at the moment, and the current line (which is updated when the main Model's current line property changes). The logic of showing the graphs takes place in the MainWindow, but to logic of what is the data we will show, is handled in the Model. When the MainWindow gets notified by the GraphsModel that the line number has changed, it ask the VM (which asks the Model) for the data he should show in the graphs, and then it shows it. If the User uses the GUI to request to show the graph of another flight property, the MainWindow will command the graph's VM to change the data according to the new property we need to show, which will command the the Model to change it (The MainWindow only says what property, the Model will give him all the points of the graph), so now each moment, when the MainWindow commands the VM to give him the data, it will be according to the new property.
+In order to draw the graphs we used the ScottPlot package. We tried to use MVVM here, but we couldn't do it perfectly, because we can't data bind the plot's values (the plot is the view which shows the graphs). We do have a VM and a Model for the graphs. The model does most of the calculation at the start of the program's run (which propery it most corelative it which), and has properties like the values we want to show in each graph at the moment, and the current line (which is updated when the main Model's current line property changes). The logic of showing the graphs takes place in the MainWindow, but to logic of what is the data we will show, is handled in the Model. When the MainWindow gets notified by the GraphsModel that the line number has changed, it ask the VM (which asks the Model) for the data he should show in the graphs, and then it shows it. If the User uses the GUI to request to show the graph of another flight property, the MainWindow will command the graph's VM to change the data according to the new property we need to show, which will command the the Model to change it (The MainWindow only says what property, the Model will give him all the points of the graph), so now each moment, when the MainWindow commands the VM to give him the data, it will be according to the new property.
 
 #### Plugins
+In order to allow for easy extension for our app, our Anomaly Detection algorithms are implemented as DLLs that can be loaded by the application at runtime. A user can also create his own algorithm and load it in the app.  
+In order for the custom made DLL to work it needs to do a couple of things:
+1. have a WPF user control called AnomalyDetector, this user control needs to be in the namespace controls.
+2. AnomalyDetector should also have a constructor accepting 2 strings, the learning file path and the anomaly detection file path (in that order).
+3. Have a property called PropertyName, this Property tells the DLL which parameter the user is investigating right now.
+4. Have a method called getAnomalies that returns a list of longs, those longs are the timestamps for anomalies.
+
+In order to load such plugins at run time we used the ```Assembly.Load``` and ```Activator.CreateInstance``` methods that load an external assembly and create an instance from an external DLL respectively.
+In order to create our DLLs we used an unmanaged c++ Anomaly detection code that we created in the previous semester. 
+In order to use that unmanaged c++ code in a C# code we wrapped it in a managed c++ shell that can compile with .NET application.  
+finally we created a WPF user control library (a user control that can compile to a DLL) and used the previous c++ code in it.
 ## Video
-(add link to video)
+https://drive.google.com/file/d/1XUBg9Aow909JeZTwuSHYgl9e3C0RWly8/view?usp=sharing
