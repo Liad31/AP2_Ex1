@@ -21,8 +21,10 @@ In order to close the app, just click the exit button.
 ## Files And Directories
 (??????)
 ## Development
-(need to add here versions, framwork, etc)
-
+This app was developed on .Net Framwork 4.7.2.  
+** Tools we used: **  
+1. Visual Studio 2019+
+2. ScottPlot package
 
 ## Installation and Running
 #### Installation
