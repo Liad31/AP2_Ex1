@@ -29,7 +29,7 @@ This app was developed on .Net Framwork 4.7.2.
 
 ## Installation and Running
 #### Installation
-Clone this git repository into a directory in your computer, and then 
+Clone this git repository into a directory in your computer.  
 **About FG:** If you want to use FG, you should install it, and put the "playback_small.xml" from the moodle in the folder "/data/protocols", inside the folder you installed FG in.
 #### Running
 If you want to run FG manually, you should to it with the next settings:
@@ -37,7 +37,8 @@ If you want to run FG manually, you should to it with the next settings:
 --generic=socket,in,10,127.0.0.1,5400,tcp,playback_small
 --fdm=null
 ```
-Use an IDE which supports .Net Framwork to open the project from the directory you cloned it into earlier. Now from your IDE, run the app.
+Use an IDE which supports .Net Framwork to open the project from the directory you cloned it into earlier. Now from your IDE, run the app.  
+(Note: you can run the app without the IDE if you have its exe and required dll files in the same directory)  
 Once you run the app, you can use it as described in the [Usage And Features](#usage-and-features)
 
 ## Design
