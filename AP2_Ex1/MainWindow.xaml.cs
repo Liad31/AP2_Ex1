@@ -25,6 +25,7 @@ namespace AP2_Ex1
         private GraphsPanelViewModel vm_graphs;
         private ControlBarViewModel vm_controlBar;
         private string trainingFilePath;
+        dynamic graph;
         public MainWindow(string csvFilePath, string trainingFile)
         {
             InitializeComponent();
@@ -69,6 +70,16 @@ namespace AP2_Ex1
                     {
                         MessageBox.Show(ex.Message);
                     }
+                    try
+                    {
+                        graph.PropertyName = vm_graphs.VM_CurrentProperty;
+                        forDll.Children.Clear();
+                        forDll.Children.Add(graph);
+                    }
+                    catch(Exception ex)
+                    {
+
+                    }
                 }
             };
             vm_controlBar.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
@@ -100,10 +111,15 @@ namespace AP2_Ex1
                         var dll = Assembly.LoadFrom(vm_controlBar.VM_DLL);
 
                         object[] argsEntity = { trainingFilePath, database.csvFilePath };
-                        dynamic graph = Activator.CreateInstance(dll.GetType("controls.SimpleAnomalyDetector"), argsEntity);// there is another type!!!
-                        graph.PropertyName = vm_graphs.VM_CurrentProperty;
-                        forDll.Children.Clear();
-                        forDll.Children.Add(graph);
+                        graph = Activator.CreateInstance(dll.GetType("controls.SimpleAnomalyDetector"), argsEntity);// there is another type!!!
+                        if (vm_graphs.VM_CurrentProperty!=null)
+                        {
+                            graph.PropertyName = vm_graphs.VM_CurrentProperty;
+                            forDll.Children.Clear();
+                            forDll.Children.Add(graph);
+                        }
+                        
+                       
                     }
                     catch (Exception ex)
                     {
