@@ -86,6 +86,9 @@
     <Compile Include="controls\ControlBarView.xaml.cs">
       <DependentUpon>ControlBarView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="controls\ExceptionDot.xaml.cs">
+      <DependentUpon>ExceptionDot.xaml</DependentUpon>
+    </Compile>
     <Compile Include="controls\speedClock.xaml.cs">
       <DependentUpon>speedClock.xaml</DependentUpon>
     </Compile>
@@ -109,6 +112,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="controls\ControlBarView.xaml" />
+    <Page Include="controls\ExceptionDot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="controls\speedClock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

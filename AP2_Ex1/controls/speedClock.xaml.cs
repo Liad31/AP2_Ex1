@@ -49,6 +49,10 @@ namespace AP2_Ex1.controls
                 };
             }
         }
+
+        /// <summary>
+        /// Max speed of airplane property
+        /// </summary>
         public double MaxSpeed
         {
             get
@@ -61,6 +65,9 @@ namespace AP2_Ex1.controls
             }
         }
 
+        /// <summary>
+        /// Constructor of speed clock
+        /// </summary>
         public speedClock()
         {
             InitializeComponent();
@@ -70,6 +77,10 @@ namespace AP2_Ex1.controls
             this.maxDialAngle = 360 - ((Math.Acos((Math.Pow(((dial.X1 - dial.X2) * 2), 2) - 2 * Math.Pow(dialRadius, 2)) / (-2 * Math.Pow(dialRadius, 2))) / Math.PI) * 180);
         }
 
+        /// <summary>
+        /// Move speed clock dial according airplane speed 
+        /// </summary>
+        /// <param name="speed"></param>
         public void moveDiaglAccordingSpeed(double speed)
         {
             if (speed <= 0)
@@ -87,9 +98,12 @@ namespace AP2_Ex1.controls
         }
 
 
-        
 
 
+        /// <summary>
+        /// Move speed clock dial according angle
+        /// </summary>
+        /// <param name="angle"></param>
         private void moveDialAccordingAngle(double angle)
         {
             dial.X2 = dial.X1 - Math.Cos(((angle - ((180 - (360 - maxDialAngle)) / 2)) * (Math.PI)) / 180) * dialRadius;
