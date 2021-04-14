@@ -179,5 +179,13 @@
   <ItemGroup>
     <Resource Include="images\speed_clock.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Plugins\ScottPlot.dll" />
+    <Content Include="Plugins\ScottPlot.WPF.dll" />
+    <Content Include="Plugins\System.Drawing.Common.dll" />
+    <Content Include="Plugins\System.ValueTuple.dll" />
+    <Content Include="Plugins\WpfDll.dll" />
+    <Content Include="Plugins\Wrapper.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
