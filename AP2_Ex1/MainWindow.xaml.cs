@@ -101,13 +101,6 @@ namespace AP2_Ex1
             titleGraph2.DataContext = vm_graphs;
             properties.DataContext = vm_graphs;
             model.Start();
-
-            List<int> l = new List<int>();
-            l.Add(100);
-            l.Add(250);
-            l.Add(500);
-            controlBar.Exceptions = l;
-            controlBar.setExceptions();
         }
         //show and render the updated graphs after they changed
         private void updateGraphs()
