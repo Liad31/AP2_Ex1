@@ -16,6 +16,7 @@ In order to close the app, just click the exit button.
 1. The app can open FG using a given path
 2. When using an anomaly detector and choosing property to search, red dots will appear above the video slider at the points there are anomalies, and when clicked the video will move to that point
 3. The paths entered in the starting window are saved
+4. You can open FG while the app is running, close it and reopen it, and the projection should work
 
 ## Files And Directories
 (??????)
