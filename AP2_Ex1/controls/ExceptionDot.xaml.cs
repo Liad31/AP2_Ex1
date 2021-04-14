@@ -26,6 +26,9 @@ namespace AP2_Ex1.controls
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Exception Column property
+        /// </summary>
         public int ExceptionColumn
         {
             get

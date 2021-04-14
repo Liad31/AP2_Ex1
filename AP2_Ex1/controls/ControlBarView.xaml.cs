@@ -41,6 +41,9 @@ namespace AP2_Ex1.controls
             }
         }
 
+        /// <summary>
+        /// exceptions list property
+        /// </summary>
         public List<int> Exceptions
         {
             set
@@ -48,6 +51,7 @@ namespace AP2_Ex1.controls
                 this.exceptionsValues = value;
             }
         }
+
 
         /// <summary>
         /// pauses/resumed the video. Called when Pause/Start button is clicked.
@@ -138,7 +142,9 @@ namespace AP2_Ex1.controls
             }
         }
        
-
+        /// <summary>
+        /// Set exceptions points to progress bar.
+        /// </summary>
         public void setExceptions()
         {
             foreach(int exceptionColumn in this.exceptionsValues)
@@ -153,6 +159,9 @@ namespace AP2_Ex1.controls
             }
         }
 
+        /// <summary>
+        /// Remove all exception points from progress bar.
+        /// </summary>
         public void removeExceptions()
         {
             foreach(ExceptionDot exception in this.exceptions)
@@ -162,6 +171,11 @@ namespace AP2_Ex1.controls
             }
         }
 
+        /// <summary>
+        /// Update progress bar value according exception point coordinates.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="exceptionColumn"></param>
         private void Dot_Click(object sender, int exceptionColumn)
         {
             Progress.Value = exceptionColumn;
