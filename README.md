@@ -25,11 +25,11 @@ In order to close the app, just click the exit button.
 This app was developed on .Net Framwork 4.7.2.  
 **Tools we used:**  
 1. Visual Studio 2019+
-2. ScottPlot package (The dll files are in the project, so no installation needed)
+2. ScottPlot package (The dll files are in the project in the refrences directory, so no special installation needed)
 
 ## Installation and Running
 #### Installation
-(need to add about installing the app)  
+Clone this git repository into a directory in your computer, and then 
 **About FG:** If you want to use FG, you should install it, and put the "playback_small.xml" from the moodle in the folder "/data/protocols", inside the folder you installed FG in.
 #### Running
 If you want to run FG manually, you should to it with the next settings:
@@ -37,8 +37,7 @@ If you want to run FG manually, you should to it with the next settings:
 --generic=socket,in,10,127.0.0.1,5400,tcp,playback_small
 --fdm=null
 ```
-(need to add about how to run)
-
+Use an IDE which supports .Net Framwork to open the project from the directory you cloned it into earlier. Now from your IDE, run the app.
 Once you run the app, you can use it as described in the [Usage And Features](#usage-and-features)
 
 ## Design
