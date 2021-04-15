@@ -52,7 +52,7 @@ Use an IDE which supports .Net Framwork to open the project from the directory y
 Once you run the app, you can use it as described in the [Usage And Features](#usage-and-features)
 
 ## Design
-You can see here our UML diagram: (add link)
+You can see here our [UML diagram](https://online.visual-paradigm.com/community/share/ap2-ex1-vpd-ip9ad2inn)
 #### Model, VMs and Views (MVVM)
 The main architecture we use in the project is the MVVM architecture.
 In the MainWindow we create the FlightModel, the ControlBarViewModel and the SteeringViewModel. The MW also creates and holds references to our views, such as the Joystick, SpeedClock and ControlBarView. The MW sets the VM's Model property (which they have) to the FlightModel it created, and then sets the VMs to be the views' data context (The SteeringViewModel is the VM of the Stick and SpeedClock, the ControlBarViewModel is the VM of the ControlBarView). there is also a 2-way binding for the views and VMs. After everything is set, the MW tells the model to start his operation.
@@ -80,4 +80,4 @@ In order to create our DLLs we used an unmanaged c++ Anomaly detection code that
 In order to use that unmanaged c++ code in a C# code we wrapped it in managed c++ classes that can compile with .NET application.  
 finally we created a WPF user control library (a user control that compiles to a DLL) and used the previous managed c++ code in it.
 ## Video
-https://drive.google.com/file/d/1XUBg9Aow909JeZTwuSHYgl9e3C0RWly8/view?usp=sharing
+https://drive.google.com/file/d/1Bug-XTDpK8xEI3HNDZC4NhSzgk__O3FH/view?usp=sharing
