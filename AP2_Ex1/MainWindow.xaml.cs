@@ -110,29 +110,37 @@ namespace AP2_Ex1
                 
                 if (e.PropertyName == "VM_DLL")
                 {
-                    try
+                    if (!string.IsNullOrEmpty(trainingFilePath))
                     {
-                        var dll = Assembly.LoadFrom(vm_controlBar.VM_DLL);
-
-                        object[] argsEntity = { trainingFilePath, database.csvFilePath };
-                        graph = Activator.CreateInstance(dll.GetType("controls.AnomalyDetector"), argsEntity);
-                        if (vm_graphs.VM_CurrentProperty!=null)
+                        try
                         {
-                            graph.PropertyName = vm_graphs.VM_CurrentProperty;
-                            forDll.Children.Clear();
-                            forDll.Children.Add(graph);
-                            controlBar.removeExceptions();
-                            controlBar.Exceptions = graph.getAnomalies();
-                            controlBar.setExceptions();
+                            var dll = Assembly.LoadFrom(vm_controlBar.VM_DLL);
+
+                            object[] argsEntity = { trainingFilePath, database.csvFilePath };
+                            graph = Activator.CreateInstance(dll.GetType("controls.AnomalyDetector"), argsEntity);
+                            if (vm_graphs.VM_CurrentProperty != null)
+                            {
+                                graph.PropertyName = vm_graphs.VM_CurrentProperty;
+                                forDll.Children.Clear();
+                                forDll.Children.Add(graph);
+                                controlBar.removeExceptions();
+                                controlBar.Exceptions = graph.getAnomalies();
+                                controlBar.setExceptions();
+                            }
+
+
                         }
-
-
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("the dll doesnt fit the application");
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("the dll doesnt fit the application");
+                        MessageBox.Show("please provide a traing csv file next time...");
                     }
                 }
+               
             };
 
             roll.DataContext = vm_steering;
@@ -193,6 +201,7 @@ namespace AP2_Ex1
                     //printing the last 30 seconds samples
                     linearRegression.Plot.AddScatter(vm_graphs.VM_Values.GetRange(Math.Max(vm_graphs.VM_Values.Count() - vm_graphs.LPS * 30, 0), Math.Min(vm_graphs.LPS * 30, vm_graphs.VM_Values.Count())).ToArray(),
                      vm_graphs.VM_CorellativeValues.GetRange(Math.Max(vm_graphs.VM_Values.Count() - vm_graphs.LPS * 30, 0), Math.Min(vm_graphs.LPS * 30, vm_graphs.VM_Values.Count())).ToArray(), System.Drawing.Color.Red, lineWidth: 0);
+
                     linearRegression.Plot.AxisAuto();
                     this.Dispatcher.Invoke(() => 
                     {
